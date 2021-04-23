@@ -1,0 +1,190 @@
+@import "/imports/variable.css";
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: "Playfair Display", sans-serif;
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.skip-links {
+    position: absolute;
+    top: -10rem;
+}
+
+.skip-links a {
+    padding: 1rem 0.4rem;
+    line-height: 3;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.skip-links:focus-within {
+    left: 0;
+    top: 0;
+}
+
+.tags {
+    margin-top: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.tag {
+    display: inline-block;
+    color: #fff;
+    position: relative;
+    padding: 6px 25px;
+    border-radius: 8px;
+    margin: 30px;
+    cursor: pointer;
+}
+
+.tag:before {
+    border: 10px solid;
+    height: 0;
+    width: 0;
+    position: absolute;
+    left: -18px;
+    top: 6px;
+    content: "";
+    display: inline-block;
+}
+
+.tag:after {
+    border: 10px solid;
+    height: 0;
+    width: 0;
+    position: absolute;
+    right: -18px;
+    top: 6px;
+    content: "";
+    display: inline-block;
+}
+
+.purple-tag {
+    background: var(--purple);
+}
+
+.purple-tag:before {
+    border-color: transparent var(--purple) transparent transparent;
+}
+
+.purple-tag:after {
+    border-color: transparent transparent transparent var(--purple);
+}
+
+.purple-tag:hover:after {
+    border-color: transparent transparent transparent var(--light-purple);
+}
+
+.purple-tag:hover:before {
+    border-color: transparent var(--light-purple) transparent transparent;
+}
+
+.purple-tag:hover {
+    background-color: var(--light-purple);
+}
+
+.blue-tag {
+    background: var(--blue);
+}
+
+.blue-tag:before {
+    border-color: transparent var(--blue) transparent transparent;
+}
+
+.blue-tag:after {
+    border-color: transparent transparent transparent var(--blue);
+}
+
+.blue-tag:hover:after {
+    border-color: transparent transparent transparent var(--light-blue);
+}
+
+.blue-tag:hover:before {
+    border-color: transparent var(--light-blue) transparent transparent;
+}
+
+.blue-tag:hover {
+    background-color: var(--light-blue);
+}
+
+.sand-tag {
+    background: var(--sand);
+}
+
+.sand-tag:before {
+    border-color: transparent var(--sand) transparent transparent;
+}
+
+.sand-tag:after {
+    border-color: transparent transparent transparent var(--sand);
+}
+
+.sand-tag:hover:after {
+    border-color: transparent transparent transparent var(--light-sand);
+}
+
+.sand-tag:hover:before {
+    border-color: transparent var(--light-sand) transparent transparent;
+}
+
+.sand-tag:hover {
+    background-color: var(--light-sand);
+}
+
+.green-tag {
+    background: var(--green);
+}
+
+.green-tag:before {
+    border-color: transparent var(--green) transparent transparent;
+}
+
+.green-tag:after {
+    border-color: transparent transparent transparent var(--green);
+}
+
+.green-tag:hover:after {
+    border-color: transparent transparent transparent var(--light-green);
+}
+
+.green-tag:hover:before {
+    border-color: transparent var(--light-green) transparent transparent;
+}
+
+.green-tag:hover {
+    background-color: var(--light-green);
+}
+
+.black-tag {
+    background: black;
+}
+
+.black-tag:before {
+    border-color: transparent black transparent transparent;
+}
+
+.black-tag:after {
+    border-color: transparent transparent transparent black;
+}
+
+.black-tag:hover:after {
+    border-color: transparent transparent transparent var(--antrasitt);
+}
+
+.black-tag:hover:before {
+    border-color: transparent var(--antrasitt) transparent transparent;
+}
+
+.black-tag:hover {
+    background-color: var(--antrasitt);
+}
