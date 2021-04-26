@@ -51,33 +51,6 @@ nav ul {
     padding: 0;
 }
 
-.header {
-    background-image: url(/images/index/mobile-heading-index-small.jpg);
-    background-repeat: no-repeat;
-    height: 480px;
-    background-position: 80%;
-    margin-top: -5rem;
-    background-size: cover;
-}
-
-.intro {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    text-align: center;
-    margin-top: 7rem;
-    width: 70%;
-    line-height: 1.5;
-}
-
-h1 {
-    font-size: 2rem;
-    text-transform: uppercase;
-    padding: 0;
-    margin: 0;
-    font-weight: 900;
-}
 
 /* TAGS */
 

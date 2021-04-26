@@ -10,6 +10,7 @@
     <link href="styles/index.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/9b8ac118a8.js" crossorigin="anonymous"></script>
     <title>Iselin Haugen - Explore</title>
 </head>
 <body>
@@ -28,6 +29,8 @@
         </nav>
     </header>
     <main id="main">
+        <!-- main onload="function()" -->
+        <div id="loader"></div>
         <section class="header">
             <div class="intro">
                 <h1>Explore</h1>
@@ -36,9 +39,32 @@
         </section>
 
     <section>
-        <p class="trip">Days until next trip: <span id="time"></span></p>
+        <p class="trip"><span class="first-line">Days until next trip: </span><br>
+            <span id="time"></span></p>
     </section>
 
+    <section>
+        <h2>Latest posts</h2>
+        <div class="wrap">
+        <div class="container">
+          <div class="cards">
+
+            <div class="card-front" for="item-1" id="slider-1">
+            </div>
+
+            <div class="cards-back-right" for="item-2" id="slider-2">
+            </div>
+
+            <div class="cards-back-left" for="item-3" id="slider-3">
+            </div>
+
+            <div class="arrows">
+                <a class="prev" id="carousel-prev">&#10094;</a>
+                <a class="next" id="carousel-next">&#10095;</a>
+            </div>
+          </div>
+        </div>
+    </section>
 
         <div class="tags">
         <p class="tag purple-tag">Asia</p>

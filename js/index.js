@@ -1,7 +1,110 @@
-const time = document.querySelector("#time")
-const trip = document.querySelector(".trip")
+function getApi () {
+    let urlPost = fetch("https://grafs.no/wp-json/wp/v2/posts?per_page=20");
+    let urlTag = fetch("https://grafs.no/wp-json/wp/v2/tags");
 
-const deadline = 'August 31 2021';
+    try {
+
+    Promise.all([urlPost, urlTag])
+    .then(values => Promise.all(values.map(value => value.json())))
+    .then(finalValue => {
+        let urlResponse = finalValue[0];
+        let tagResponse = finalValue[1];
+
+        latestPosts(urlResponse);
+        // createPost(urlResponse, tagResponse);
+    })
+}   catch (error) {
+        console.error(error);
+    }
+};
+
+getApi();
+
+function getTag(urlResponse, tagResponse) {
+
+    for (let i = 0; i < urlResponse.length; i++) {
+        let tagged = urlResponse[i].tags;
+
+        tagged.filter(t => {
+            tagResponse.forEach(e => {
+                if(e.id === t) {
+                    tag.innerHTML += `<p>${e.name}</p>`
+                }
+        })
+    })
+}};
+
+const sliderOne = document.querySelector("#slider-1");
+const sliderTwo = document.querySelector("#slider-2");
+const sliderThree = document.querySelector("#slider-3");
+const next = document.querySelector(".next");
+const prev = document.querySelector(".prev");
+let slideIndex = 1;
+
+
+function latestPosts(urlResponse) {
+    const latest = 3;
+    const galleryPosts = urlResponse.slice(0, latest);
+
+    sliderOne.innerHTML += `<img src="${galleryPosts[0].acf.detail_img}" alt="slider" class="slider-img">`
+    sliderTwo.innerHTML += `<img src="${galleryPosts[1].acf.detail_img}" alt="slider" class="slider-img">`
+    sliderThree.innerHTML += `<img src="${galleryPosts[2].acf.detail_img}" alt="slider" class="slider-img">`
+
+    function previous() {
+        if (slideIndex <= 0) slideIndex = galleryPosts.length;
+        slideIndex--;
+        slideShow();
+    }
+    
+    function nextSlide() {
+        if (slideIndex >= galleryPosts.length - 1) slideIndex = -1;
+        slideIndex++;
+        slideShow();
+    }
+    
+    next.addEventListener("click", nextSlide);
+    prev.addEventListener("click", previous);
+};
+
+function slideShow() {
+
+    if (slideIndex === 1) {
+        sliderOne.className = "";
+        sliderTwo.className = "";
+        sliderThree.className = "";
+
+        sliderOne.classList.add("card-front")
+        sliderTwo.classList.add("cards-back-right");
+        sliderThree.classList.add("cards-back-left");
+    }
+
+    if (slideIndex === 0) {
+        sliderOne.className = "";
+        sliderTwo.className = "";
+        sliderThree.className = "";
+
+        sliderOne.classList.add("cards-back-left");
+        sliderTwo.classList.add("card-front")
+        sliderThree.classList.add("cards-back-right");
+    }
+
+    if (slideIndex === 2) {
+        sliderTwo.className = "";
+        sliderOne.className = "";
+        sliderThree.className = "";
+       
+        sliderOne.classList.add("cards-back-right");
+        sliderTwo.classList.add("cards-back-left");
+        sliderThree.classList.add("card-front")
+    }
+}
+
+
+const time = document.querySelector("#time");
+const trip = document.querySelector(".trip");
+const line = document.querySelector(".first-line");
+
+const deadline = 'August 1 2021';
 
 function getTimeRemaining(endtime){
     const total = Date.parse(endtime) - Date.parse(new Date());
@@ -24,50 +127,15 @@ function getTimeRemaining(endtime){
 
     const timeinterval = setInterval(() => {
       const t = getTimeRemaining(endtime);
-      time.innerHTML =  t.days + `:` +
-                        t.hours + `:` +
-                        t.minutes + `:`+ t.seconds;
+      time.innerHTML =  t.days + ` : ` +
+                        t.hours + ` : ` +
+                        t.minutes + ` : `+ t.seconds;
       if (t.total <= 0) {
         clearInterval(timeinterval);
-        trip.innerText = `We are out traveling`
-        time.innerHTML = `<p>Update coming soon!</p>`
+        line.innerText = `We are out traveling`
+        time.innerText = `update is coming soon!`
       }
     },1000);
   }
   
-  initializeTime('clockdiv', deadline);
-
-
-
-// let countDownDate = new Date("Desember 24, 2021 14:00:00").getTime();
-
-// const x = setInterval(function() {
-
-//   let now = new Date().getTime();
-    
-//   // Find the distance between now and the count down date
-//   let distance = countDownDate - now;
-//   console.log(distance)
-    
-//   // Time calculations for days, hours, minutes and seconds
-//   let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-//   let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-//   let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-//   let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-//   console.log(now)
-//   // Output the result in an element with id="demo"
-//   document.getElementById("time").innerHTML = days + "d " + hours + "h "
-//   + minutes + "m " + seconds + "s ";
-    
-//   // If the count down is over, write some text 
-//   if (distance < 0) {
-//     clearInterval(x);
-//     document.getElementById("time").innerHTML = "EXPIRED";
-//   }
-// }, 1000);
-
-// const now = new Date();
-// const time = now.getTime();
-// console.log(time);
-// const date = new Date('February 16, 2022 15:00:00');
+initializeTime('clockdiv', deadline);
