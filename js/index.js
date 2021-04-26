@@ -11,7 +11,7 @@ function getApi () {
         let tagResponse = finalValue[1];
 
         latestPosts(urlResponse);
-        // createPost(urlResponse, tagResponse);
+        createPost(urlResponse, tagResponse);
     })
 }   catch (error) {
         console.error(error);
@@ -34,6 +34,8 @@ function getTag(urlResponse, tagResponse) {
     })
 }};
 
+// CAROUSEL SLIDE
+
 const sliderOne = document.querySelector("#slider-1");
 const sliderTwo = document.querySelector("#slider-2");
 const sliderThree = document.querySelector("#slider-3");
@@ -43,12 +45,16 @@ let slideIndex = 1;
 
 
 function latestPosts(urlResponse) {
-    const latest = 3;
-    const galleryPosts = urlResponse.slice(0, latest);
+    const galleryPosts = urlResponse.slice(0, 3);
 
-    sliderOne.innerHTML += `<img src="${galleryPosts[0].acf.detail_img}" alt="slider" class="slider-img">`
-    sliderTwo.innerHTML += `<img src="${galleryPosts[1].acf.detail_img}" alt="slider" class="slider-img">`
-    sliderThree.innerHTML += `<img src="${galleryPosts[2].acf.detail_img}" alt="slider" class="slider-img">`
+    // console.log(galleryPosts[0].acf.sub_heading)
+
+    sliderOne.innerHTML += `<img src="${galleryPosts[2].acf.heading_img.url}" alt="slider" class="slider-img">
+                            <p class="gallery-text">${galleryPosts[2].acf.sub_heading}</p>`
+    sliderTwo.innerHTML += `<img src="${galleryPosts[1].acf.heading_img.url}" alt="slider" class="slider-img">
+                            <p class="gallery-text">${galleryPosts[1].acf.sub_heading}</p>`
+    sliderThree.innerHTML += `<img src="${galleryPosts[0].acf.detail_img_wide}" alt="slider" class="slider-img">
+                            <p class="gallery-text">${galleryPosts[0].acf.sub_heading}</p>`
 
     function previous() {
         if (slideIndex <= 0) slideIndex = galleryPosts.length;
@@ -97,8 +103,10 @@ function slideShow() {
         sliderTwo.classList.add("cards-back-left");
         sliderThree.classList.add("card-front")
     }
-}
+};
 
+
+// CLOCK COUNTDOWN
 
 const time = document.querySelector("#time");
 const trip = document.querySelector(".trip");
@@ -139,3 +147,20 @@ function getTimeRemaining(endtime){
   }
   
 initializeTime('clockdiv', deadline);
+
+// POSTS
+
+const posts = document.querySelector(".post-container");
+
+function createPost(urlResponse, tagResponse) {
+    const indexPosts = urlResponse.slice(3, 6);
+    
+    for (let i = 0; i < indexPosts.length; i++) {
+        console.log(indexPosts[i])
+
+        posts.innerHTML += `<section>
+                            <img src="${indexPosts[i].acf.heading_img.url}" alt="slider" class="post-img">
+                            <h3>${indexPosts[i].title.rendered}</h3>
+                            ${indexPosts[i].content.rendered}`
+    }
+}
