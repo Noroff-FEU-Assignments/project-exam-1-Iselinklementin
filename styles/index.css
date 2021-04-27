@@ -169,24 +169,31 @@ h2::after {
     display: flex;
     flex-direction: column;
     margin: auto;
+}
+
+.post-container article {
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
 .post-img {
-    width: 100%;
+    width: 90%;
 }
 
 h3 {
     font-family: Playfair Display;
-    padding-left: 10px;
 }
 
 .headspan {
     font-weight: lighter;
 }
 
+.post-text {
+    padding: 10px 25px;
+}
+
 .content {
-    padding: 10px;
     font-weight: lighter;
     font-size: 0.85rem;
     line-height: 1.5;

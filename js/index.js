@@ -1,6 +1,6 @@
 function getApi () {
     let urlPost = fetch("https://grafs.no/wp-json/wp/v2/posts?per_page=20");
-    let urlTag = fetch("https://grafs.no/wp-json/wp/v2/tags");
+    let urlTag = fetch("https://grafs.no/wp-json/wp/v2/tags?per_page=20");
 
     try {
 
@@ -20,19 +20,19 @@ function getApi () {
 
 getApi();
 
-function getTag(urlResponse, tagResponse) {
+// function getTag(urlResponse, tagResponse) {
 
-    for (let i = 0; i < urlResponse.length; i++) {
-        let tagged = urlResponse[i].tags;
+//     for (let i = 0; i < urlResponse.length; i++) {
+//         let tagged = urlResponse[i].tags;
 
-        tagged.filter(t => {
-            tagResponse.forEach(e => {
-                if(e.id === t) {
-                    tag.innerHTML += `<p>${e.name}</p>`
-                }
-        })
-    })
-}};
+//         tagged.filter(t => {
+//             tagResponse.forEach(e => {
+//                 if(e.id === t) {
+//                     return `<p>${e.name}</p>`
+//                 }
+//         })
+//     })
+// }};
 
 // CAROUSEL SLIDE
 
@@ -59,20 +59,20 @@ function latestPosts(urlResponse) {
     function previous() {
         if (slideIndex <= 0) slideIndex = galleryPosts.length;
         slideIndex--;
-        slideShow();
+        slideShowPrev();
     }
     
     function nextSlide() {
         if (slideIndex >= galleryPosts.length - 1) slideIndex = -1;
         slideIndex++;
-        slideShow();
+        slideShowNext();
     }
     
     next.addEventListener("click", nextSlide);
     prev.addEventListener("click", previous);
 };
 
-function slideShow() {
+function slideShowPrev() {
 
     if (slideIndex === 1) {
         sliderOne.className = "";
@@ -85,6 +85,49 @@ function slideShow() {
     }
 
     if (slideIndex === 0) {
+        sliderTwo.className = "";
+        sliderOne.className = "";
+        sliderThree.className = "";
+       
+        sliderOne.classList.add("cards-back-right");
+        sliderTwo.classList.add("cards-back-left");
+        sliderThree.classList.add("card-front")
+    }
+
+    if (slideIndex === 2) {
+        sliderOne.className = "";
+        sliderTwo.className = "";
+        sliderThree.className = "";
+
+        sliderOne.classList.add("cards-back-left");
+        sliderTwo.classList.add("card-front")
+        sliderThree.classList.add("cards-back-right");
+    }
+};
+
+function slideShowNext() {
+
+    if (slideIndex === 1) {
+        sliderOne.className = "";
+        sliderTwo.className = "";
+        sliderThree.className = "";
+
+        sliderOne.classList.add("card-front")
+        sliderTwo.classList.add("cards-back-right");
+        sliderThree.classList.add("cards-back-left");
+    }
+
+    if (slideIndex === 0) {
+        sliderTwo.className = "";
+        sliderOne.className = "";
+        sliderThree.className = "";
+       
+        sliderOne.classList.add("cards-back-right");
+        sliderTwo.classList.add("cards-back-left");
+        sliderThree.classList.add("card-front")
+    }
+
+    if (slideIndex === 2) {
         sliderOne.className = "";
         sliderTwo.className = "";
         sliderThree.className = "";
@@ -94,15 +137,7 @@ function slideShow() {
         sliderThree.classList.add("cards-back-right");
     }
 
-    if (slideIndex === 2) {
-        sliderTwo.className = "";
-        sliderOne.className = "";
-        sliderThree.className = "";
-       
-        sliderOne.classList.add("cards-back-right");
-        sliderTwo.classList.add("cards-back-left");
-        sliderThree.classList.add("card-front")
-    }
+    console.log(slideIndex)
 };
 
 
@@ -151,16 +186,33 @@ initializeTime('clockdiv', deadline);
 // POSTS
 
 const posts = document.querySelector(".post-container");
+const li = document.createElement("li")
 
 function createPost(urlResponse, tagResponse) {
-    const indexPosts = urlResponse.slice(3, 6);
+    const blogposts = urlResponse.slice(3, 6);
     
-    for (let i = 0; i < indexPosts.length; i++) {
-        console.log(indexPosts[i])
+    for (let i = 0; i < blogposts.length; i++) {
+        console.log(blogposts[i]);
+        let tagged = blogposts[i].tags;
+        let list = [];
 
-        posts.innerHTML += `<section>
-                            <img src="${indexPosts[i].acf.heading_img.url}" alt="slider" class="post-img">
-                            <h3>${indexPosts[i].title.rendered}</h3>
-                            ${indexPosts[i].content.rendered}`
+        tagged.filter(t => {
+            tagResponse.forEach(e => {
+                if(e.id === t) {
+                    list.push(`<li>${e.name}</li>`)
+                }
+            })
+        });
+
+        posts.innerHTML += `<article>
+                            <img src="${blogposts[i].acf.heading_img.url}" alt="" class="post-img">
+                            <div class="post-text">
+                            <h3>${blogposts[i].title.rendered}</h3>
+                            ${blogposts[i].content.rendered}
+                            </div>
+                            <ul>${list.join("")}</ul>
+                            </article>`
+
+
     }
-}
+};
