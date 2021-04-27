@@ -45,9 +45,10 @@ let slideIndex = 1;
 
 
 function latestPosts(urlResponse) {
-    const galleryPosts = urlResponse.slice(0, 3);
 
-    // console.log(galleryPosts[0].acf.sub_heading)
+    // Fetch new posts, 1 - 3 //
+
+    const galleryPosts = urlResponse.slice(0, 3);
 
     sliderOne.innerHTML += `<img src="${galleryPosts[2].acf.heading_img.url}" alt="slider" class="slider-img">
                             <p class="gallery-text">${galleryPosts[2].acf.sub_heading}</p>`
@@ -186,33 +187,75 @@ initializeTime('clockdiv', deadline);
 // POSTS
 
 const posts = document.querySelector(".post-container");
-const li = document.createElement("li")
+
 
 function createPost(urlResponse, tagResponse) {
+
+     // Fetch posts: index 3 - 6 //
+
     const blogposts = urlResponse.slice(3, 6);
     
     for (let i = 0; i < blogposts.length; i++) {
-        console.log(blogposts[i]);
+        // console.log(blogposts[i]);
         let tagged = blogposts[i].tags;
+        let blog = blogposts[i];
         let list = [];
+
+        // Filter post-tags & get name //
 
         tagged.filter(t => {
             tagResponse.forEach(e => {
-                if(e.id === t) {
-                    list.push(`<li>${e.name}</li>`)
+                if (e.id === t && e.name === "Asia" || e.id === t && e.name === "Adventure" || e.id === t && e.name === "Landscapes") {
+                    list.push(`<li class="tag tag:before tag:after purple-tag purple-tag:before purple-tag:after purple-tag:hover:after purple-tag:hover:before purple-tag:hover">${e.name}</li>`)
+                }
+                
+                if (e.id === t && e.name === "Culture" || e.id === t && e.name === "Animals" || e.id === t && e.name === "America") {
+                    list.push(`<li class="tag tag:before tag:after sand-tag sand-tag:before sand-tag:after sand-tag:hover:after sand-tag:hover:before sand-tag:hover">${e.name}</li>`)
+                }
+
+                if (e.id === t && e.name === "Nature" || e.id === t && e.name === "Wildlife") {
+                    list.push(`<li class="tag tag:before tag:after green-tag green-tag:before green-tag:after green-tag:hover:after green-tag:hover:before green-tag:hover">${e.name}</li>`)
+                }
+
+                if (e.id === t && e.name === "Europe" || e.id === t && e.name === "Beliefs" ) {
+                    list.push(`<li class="tag tag:before tag:after blue-tag blue-tag:before blue-tag:after blue-tag:hover:after blue-tag:hover:before blue-tag:hover">${e.name}</li>`)
+                }
+
+                if (e.id === t && e.name === "Oceania" || e.id === t && e.name === "Traditions" || e.id === t && e.name === "Africa") {
+                    list.push(`<li class="tag tag:before tag:after peach-tag peach-tag:before peach-tag:after peach-tag:hover:after peach-tag:hover:before peach-tag:hover">${e.name}</li>`)
                 }
             })
         });
 
-        posts.innerHTML += `<article>
-                            <img src="${blogposts[i].acf.heading_img.url}" alt="" class="post-img">
-                            <div class="post-text">
-                            <h3>${blogposts[i].title.rendered}</h3>
-                            ${blogposts[i].content.rendered}
-                            </div>
-                            <ul>${list.join("")}</ul>
-                            </article>`
 
+        posts.innerHTML += `<article>
+                            <img src="${blog.acf.heading_img.url}" alt="" class="post-img">
+                            <div class="post-text">
+                            <h3>${blog.title.rendered}</h3>
+                            ${blog.content.rendered}
+                            </div>
+                            <ul class="tags">${list.join("")}</ul>
+                            </article>`
 
     }
 };
+
+
+
+// function styleTags(tagResponse, blog) {
+
+//     const li = document.createElement("li");
+
+//     for (let i = 0; i < blog.length; i++) {
+//     let tag = blog[i].tags;
+
+//     tag.filter(t => {
+//         tagResponse.forEach(e => {
+//             if((e.id === t) && (e.name === "Asia")) {
+//                 li.classList.add("tag", "tag:before", "tag:after", "purple-tag", "purple-tag:before", "purple-tag:after","purple-tag:hover:after", "purple-tag:hover:before", "purple-tag:hover");
+//                 li.innerHTML = e.name;
+//                 list.push(li);
+//             }
+//         })
+//     });
+// }};

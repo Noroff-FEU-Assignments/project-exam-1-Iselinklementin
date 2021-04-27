@@ -56,34 +56,48 @@ nav ul {
 
 /* TAGS */
 
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: center;
+    padding: 0;
+    margin: 0 0 3rem 0;
+    padding-bottom: 2rem;
+    border-bottom: black solid 1px;
+    width: 90%;
+}
+
 .tag {
     display: inline-block;
     color: #fff;
     position: relative;
-    padding: 6px 15px;
+    padding: 4px 15px;
     border-radius: 8px;
-    margin: 30px;
+    margin: 13px;
     cursor: pointer;
+    text-align: center;
+    font-size: 0.8rem;
 }
 
 .tag:before {
-    border: 10px solid;
+    border: 8px solid;
     height: 0;
     width: 0;
     position: absolute;
-    left: -18px;
-    top: 6px;
+    left: -15px;
+    top: 4.8px;
     content: "";
     display: inline-block;
 }
 
 .tag:after {
-    border: 10px solid;
+    border: 8px solid;
     height: 0;
     width: 0;
     position: absolute;
-    right: -18px;
-    top: 6px;
+    right: -15px;
+    top: 4.8px;
     content: "";
     display: inline-block;
 }
@@ -184,26 +198,26 @@ nav ul {
     background-color: var(--light-green);
 }
 
-.black-tag {
-    background: black;
+.peach-tag {
+    background: #DD7A63;
 }
 
-.black-tag:before {
-    border-color: transparent black transparent transparent;
+.peach-tag:before {
+    border-color: transparent #DD7A63 transparent transparent;
 }
 
-.black-tag:after {
-    border-color: transparent transparent transparent black;
+.peach-tag:after {
+    border-color: transparent transparent transparent #DD7A63;
 }
 
-.black-tag:hover:after {
-    border-color: transparent transparent transparent var(--antrasitt);
+.peach-tag:hover:after {
+    border-color: transparent transparent transparent #EF8A73;
 }
 
-.black-tag:hover:before {
-    border-color: transparent var(--antrasitt) transparent transparent;
+.peach-tag:hover:before {
+    border-color: transparent #EF8A73 transparent transparent;
 }
 
-.black-tag:hover {
-    background-color: var(--antrasitt);
+.peach-tag:hover {
+    background-color: #EF8A73;
 }

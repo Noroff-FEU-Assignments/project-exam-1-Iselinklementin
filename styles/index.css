@@ -183,6 +183,8 @@ h2::after {
 
 h3 {
     font-family: Playfair Display;
+    font-size: 1.5rem;
+    margin-bottom: 0;
 }
 
 .headspan {
@@ -190,19 +192,11 @@ h3 {
 }
 
 .post-text {
-    padding: 10px 25px;
+    padding: 10px 25px 0px 25px;
 }
 
 .content {
     font-weight: lighter;
     font-size: 0.85rem;
     line-height: 1.5;
-}
-
-.tags {
-    margin-top: 15rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
 }
