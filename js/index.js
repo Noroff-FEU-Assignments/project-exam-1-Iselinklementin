@@ -12,6 +12,7 @@ function getApi () {
 
         latestPosts(urlResponse);
         createPost(urlResponse, tagResponse);
+        console.log(urlResponse)
     })
 }   catch (error) {
         console.error(error);
@@ -201,6 +202,8 @@ function createPost(urlResponse, tagResponse) {
         let blog = blogposts[i];
         let list = [];
 
+        console.log(blog.id)
+
         // Filter post-tags & get name //
 
         tagged.filter(t => {
@@ -228,14 +231,16 @@ function createPost(urlResponse, tagResponse) {
         });
 
 
-        posts.innerHTML += `<article>
+        posts.innerHTML += `<a href="detail.html?id=${blog.id}">
+                            <article>
                             <img src="${blog.acf.heading_img.url}" alt="" class="post-img">
                             <div class="post-text">
                             <h3>${blog.title.rendered}</h3>
                             ${blog.content.rendered}
                             </div>
                             <ul class="tags">${list.join("")}</ul>
-                            </article>`
+                            </article>
+                            </a>`
 
     }
 };

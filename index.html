@@ -9,7 +9,8 @@
     <link href="styles/styles.css" rel="stylesheet" />
     <link href="styles/index.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"> 
     <script src="https://kit.fontawesome.com/9b8ac118a8.js" crossorigin="anonymous"></script>
     <title>Iselin Haugen - Explore</title>
 </head>
@@ -21,10 +22,10 @@
         <nav>
             <ul>
                 <li><a href="/index.html"><img src="/images/icons/logofeet.svg" class="logo" alt="Explore-logo"></a></li>
-                <li><a href="/about.html">About</a></li>
-                <li><a href="/explore.html">Explore</a></li>
-                <li><a href="/contact.html">Contact</a></li>
-                <li>Search</li>
+                <li><a class="nav-el" href="/about.html">About</a></li>
+                <li><a class="nav-el" href="/explore.html">Explore</a></li>
+                <li><a class="nav-el" href="/contact.html">Contact</a></li>
+                <li><img class="search" src="/images/icons/search.svg" alt="search" aria-label="search"></li>
             </ul>
         </nav>
     </header>
@@ -60,8 +61,8 @@
                 </div>
 
                 <div class="arrows">
-                    <a class="prev" id="carousel-prev">&#10094;</a>
-                    <a class="next" id="carousel-next">&#10095;</a>
+                    <a class="prev" id="carousel-prev"><img class="slide-icon prev-icon" src="/images/icons/slide.svg" alt="previous" aria-label="Press previous"></a>
+                    <a class="next" id="carousel-next"><img class="slide-icon" src="/images/icons/slide.svg" alt="next" aria-label="Press next"></a>
                 </div>
 
             </div>
@@ -76,21 +77,27 @@
     </section>
 
 
+<section class="discover">
+    <img class="world" src="/images/index/world.png" alt="World-map">
+    <p>Discover the complete collection of our travels</p>
+    <a role="button" class="button" href="/explore.html">Explore</a>
+</section>
 
-
-
-<!-- 
-        <div class="tags">
-        <p class="tag purple-tag">Asia</p>
-        <p class="tag blue-tag">Europe</p>
-        <p class="tag sand-tag">Culture</p>
-        <p class="tag green-tag">Nature</p>
-        <p class="tag black-tag">Oceania</p>
-        </div> -->
+<section class="some">
+    <a href="#"><img src="/images/icons/facebook.svg" alt="Facebook-logo">Like</a>
+    <a href="#"><img src="/images/icons/instagram.svg" alt="Instagram-logo">Follow</a>
+    <a href="#"><img id="twitter" src="/images/icons/twitter.svg" alt="Twitter-logo">Follow</a>
+    <a href="#"><img id="youtube" src="/images/icons/youtube.svg" alt="YouTube-logo">Subscribe</a>
+</section>
 
     </main>
     <footer>
-
+        <ul>
+            <li><a href="/index.html"><img src="/images/icons/logofeet_white.svg" class="logo" alt="Explore-logo"></a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/explore.html">Explore</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+        </ul>
     </footer>
     <script src="/js/index.js"></script>
 </body>
