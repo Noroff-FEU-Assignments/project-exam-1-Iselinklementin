@@ -246,6 +246,12 @@ function createPost(urlResponse, tagResponse) {
 };
 
 
+// const formatDate = new Date(data.date).toLocaleString("en-GB", {
+//     day: "numeric",
+//     month: "long",
+//     year: "numeric",
+// });
+
 
 // function styleTags(tagResponse, blog) {
 

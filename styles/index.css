@@ -1,5 +1,5 @@
 .header {
-    background-image: url(/images/index/mobile-heading-index-small.jpg);
+    background-image: url(/images/mobile-heading-index-small.jpg);
     background-repeat: no-repeat;
     height: 480px;
     background-position: 80%;
@@ -225,6 +225,10 @@ h3 {
     line-height: 1.5;
 }
 
+.world {
+    width: 160px;
+}
+
 .discover {
     display: flex;
     flex-direction: column;
@@ -243,28 +247,4 @@ h3 {
 
 .discover p {
     width: 60%;
-}
-
-.world {
-    width: 160px;
-}
-
-.button {
-    background-color: var(--blue);
-    color: white;
-    text-transform: uppercase;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-weight: 400;
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
-    letter-spacing: 1px
-}
-
-.button a {
-    text-transform: uppercase;
-}
-
-.button:hover {
-    background-color: var(--light-blue);
 }

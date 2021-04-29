@@ -37,7 +37,7 @@
             <h1></h1>
             <div class="tags"></div>
         </div>
-        <figure>
+        <figure class="header-fig">
         <img class="header-img">
         </figure>
     </section>
@@ -45,45 +45,62 @@
     <!-- INGRESS -->
     <section class="ingress">
         <h2></h2>
+
         <p class="ingress-text"></p>
-        <figure class="map">
-            <img src="" alt="">
-            <figcaption></figcaption>
-        </figure>
+
+        <div class="map-budget">
+            <p class="budget"></p>
+
+            <figure class="map">
+                <img class="map-img" alt="">
+            </figure>
+        </div>
     </section>
 
     <!-- TEXT -->
-    <article class="bodytext-one">
-    </article>
-
-    <!-- IMAGES -->
-    <section class="travel-images">
-        <figure>
-            <img src="" alt="">
-            <figcaption></figcaption>
+    <section class="bodytext">
+        <figure class="fig-detail-img top-figure" id="open-modal">
+            <img class="fig-one detail-img" alt="">
+            <figcaption class="fig-one-caption"></figcaption>
+        </figure>
+        
+        <figure class="fig-detail-img" id="open-modal">
+            <img class="fig-two detail-img" alt="">
+            <figcaption class="fig-two-caption"></figcaption>
         </figure>
 
-        <figure>
-            <img src="" alt="">
-            <figcaption></figcaption>
-        </figure>
+        <div class="fig-container">
+            <figure class="fig-detail-img-2 img-one" id="open-modal">
+                <img class="fig-three detail-img-2" alt="">
+            </figure>
 
-        <figure>
-            <img src="" alt="">
-            <figcaption></figcaption>
-        </figure>
+            <figure class="fig-detail-img-2" id="open-modal">
+                <img class="fig-four detail-img-2" alt="">
+            </figure>
+        </div>
     </section>
 
-    <article class="bodytext-two">
-
-    </article>
-
+    <!-- EXLPORE -->
+    <section class="discover-detail">
+        <p>Discover the complete collection of our travels</p>
+        <a role="button" class="button" href="/explore.html">Explore</a>
+    </section>    
+    
+    <!-- SOSIAL MEDIA -->
     <section class="some">
         <a href="#"><img src="/images/icons/facebook.svg" alt="Facebook-logo">Like</a>
         <a href="#"><img src="/images/icons/instagram.svg" alt="Instagram-logo">Follow</a>
         <a href="#"><img id="twitter" src="/images/icons/twitter.svg" alt="Twitter-logo">Follow</a>
         <a href="#"><img id="youtube" src="/images/icons/youtube.svg" alt="YouTube-logo">Subscribe</a>
     </section>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+        <span class="close">&times;</span>
+        <img class="modal-content img-modal" id="img01">
+        <p class="caption"></p>
+        </div>
+        </div>
         
 </main>
     <footer>
