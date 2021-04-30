@@ -23,13 +23,19 @@
             <ul>
                 <li><a href="/index.html"><img src="/images/icons/logofeet_white.svg" class="logo" alt="Explore-logo"></a></li>
                 <li><a class="nav-el" href="/about.html">About</a></li>
-                <li><a class="nav-el" href="/explore.html">Explore</a></li>
+                <li><a class="nav-el active-site" href="/explore.html">Explore</a></li>
                 <li><a class="nav-el" href="/contact.html">Contact</a></li>
                 <li><img class="search" src="/images/icons/search-white.svg" alt="search" aria-label="search"></li>
             </ul>
         </nav>
 </header>
 <main id="main">
+
+    <ol class="breadcrumbs">
+        <li><a href="index.html">Home</a><i class="fas fa-angle-right"></i></li>
+        <li><a href="explore.html">Explore</a><i class="fas fa-angle-right"></i></li>
+        <li><a href="" aria-current="location" class="location"></a></li>
+      </ol>
 
     <!-- INTRO -->
     <section class="intro">
@@ -38,7 +44,7 @@
             <div class="tags"></div>
         </div>
         <figure class="header-fig">
-        <img class="header-img">
+        <img class="header-img img" alt="">
         </figure>
     </section>
 
@@ -52,7 +58,7 @@
             <p class="budget"></p>
 
             <figure class="map">
-                <img class="map-img" alt="">
+                <img class="map-img img" alt="">
             </figure>
         </div>
     </section>
@@ -60,22 +66,22 @@
     <!-- TEXT -->
     <section class="bodytext">
         <figure class="fig-detail-img top-figure" id="open-modal">
-            <img class="fig-one detail-img" alt="">
+            <img class="fig-one detail-img img" alt="">
             <figcaption class="fig-one-caption"></figcaption>
         </figure>
         
         <figure class="fig-detail-img" id="open-modal">
-            <img class="fig-two detail-img" alt="">
+            <img class="fig-two detail-img img" alt="">
             <figcaption class="fig-two-caption"></figcaption>
         </figure>
 
         <div class="fig-container">
             <figure class="fig-detail-img-2 img-one" id="open-modal">
-                <img class="fig-three detail-img-2" alt="">
+                <img class="fig-three detail-img-2 img" alt="">
             </figure>
 
             <figure class="fig-detail-img-2" id="open-modal">
-                <img class="fig-four detail-img-2" alt="">
+                <img class="fig-four detail-img-2 img" alt="">
             </figure>
         </div>
     </section>
@@ -94,6 +100,7 @@
         <a href="#"><img id="youtube" src="/images/icons/youtube.svg" alt="YouTube-logo">Subscribe</a>
     </section>
 
+    <!-- MODAL -->
     <div id="myModal" class="modal">
         <div class="modal-content">
         <span class="close">&times;</span>
@@ -111,6 +118,7 @@
             <li><a href="/contact.html">Contact</a></li>
         </ul>
     </footer>
+        <!-- <script src="/js/components.js"></script> -->
         <script src="/js/detail.js"></script>
 </body>
 </html>

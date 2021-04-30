@@ -1,7 +1,33 @@
+.breadcrumbs {
+    display: inline-flex;
+    list-style-type: none;
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: white;
+    padding-left: 2rem;
+}
+
+.breadcrumbs a {
+    color: var(--white-color);
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    color: var(--primary-color);
+}
+
+.fas {
+    padding: 0 10px;
+}
+
+.location {
+    font-weight: 600;
+}
+
 .intro {
     background-color: black;
-    margin-top: -5.4rem;
-    height: 750px;
+    margin-top: -9rem;
+    height: 850px;
     margin-bottom: 2rem;
     display: flex;
     flex-direction: column;
@@ -14,7 +40,7 @@
 }
 
 .intro-text {
-    padding-top: 6rem;
+    padding-top: 9rem;
     padding-left: 2rem;
     margin-bottom: 1rem;
 }
@@ -49,6 +75,9 @@ h3 {
 
 .header-img {
     height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: 60%;
 }
 
 .header-fig {

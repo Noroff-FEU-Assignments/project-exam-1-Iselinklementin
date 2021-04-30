@@ -77,6 +77,17 @@ nav ul {
     transform: translateY(1rem);
 }
 
+.active-site:after {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 9px;
+    content: "";
+    border-bottom: 2px solid var(--sand);
+    width: 100%;
+    transform: translateY(1rem);
+}
+
 .search {
     width: 20px;
 }
@@ -96,9 +107,9 @@ nav ul {
     display: inline-block;
     color: #fff;
     position: relative;
-    padding: 4px 15px;
+    padding: 3px 15px;
     border-radius: 8px;
-    margin: 10px;
+    margin: 6px;
     cursor: pointer;
     text-align: center;
     font-size: 0.8rem;
@@ -109,8 +120,8 @@ nav ul {
     height: 0;
     width: 0;
     position: absolute;
-    left: -15px;
-    top: 4.8px;
+    left: -13px;
+    top: 3.4px;
     content: "";
     display: inline-block;
 }
@@ -120,8 +131,8 @@ nav ul {
     height: 0;
     width: 0;
     position: absolute;
-    right: -15px;
-    top: 4.8px;
+    right: -13px;
+    top: 3.4px;
     content: "";
     display: inline-block;
 }
@@ -244,6 +255,30 @@ nav ul {
 
 .peach-tag:hover {
     background-color: #EF8A73;
+}
+
+.black-tag {
+    background: black;
+}
+
+.black-tag:before {
+    border-color: transparent black transparent transparent;
+}
+
+.black-tag:after {
+    border-color: transparent transparent transparent black;
+}
+
+.black-tag:hover:after {
+    border-color: transparent transparent transparent rgb(31, 30, 30);
+}
+
+.black-tag:hover:before {
+    border-color: transparent rgb(31, 30, 30) transparent transparent;
+}
+
+.black-tag:hover {
+    background-color: rgb(31, 30, 30);
 }
 
 /* Explore */

@@ -4,7 +4,7 @@ const id = params.get("id");
 
 function getApiDetail () {
     let urlPost = fetch("https://grafs.no/wp-json/wp/v2/posts/" + id);
-    let urlTag = fetch("https://grafs.no/wp-json/wp/v2/tags/");
+    let urlTag = fetch("https://grafs.no/wp-json/wp/v2/tags?per_page=20");
     let urlMedia = fetch("https://grafs.no/wp-json/wp/v2/media?per_page=100");
 
     try {
@@ -29,20 +29,21 @@ let list = [];
 
 function createIntro(place, tag, media) {
     tagsStyle(place, tag);
-    imageAlt(place, media);
 
     // INTRO 
-
+    const title = document.querySelector("title");
+    const breadcrumbs = document.querySelector(".location");
     const heading = document.querySelector("h1");
     const subheading = document.querySelector("h2");
     const tags = document.querySelector(".tags");
     const headImg = document.querySelector(".header-img");
 
+    title.innerText = place.acf.place;
+    breadcrumbs.innerText = place.acf.place;
     heading.innerHTML += place.acf.sub_heading;
     tags.innerHTML += list;
     tags.insertAdjacentHTML("afterend", place.content.rendered);
-    headImg.src = place.acf.heading_img.sizes.large;
-    headImg.alt = sourceUrl[5].text;
+    headImg.src = place.acf.heading_img.url;
 
     // INGRESS
 
@@ -52,8 +53,7 @@ function createIntro(place, tag, media) {
 
     subheading.innerHTML += place.acf.sub_heading_1;
     para.innerText += place.acf.subtext;
-    map.src = place.acf.country_mapmap.sizes.large;
-    map.alt = sourceUrl[4].text;
+    map.src = place.acf.country_mapmap.url;
     budget.innerHTML += place.acf.budget;
 
     // BODYTEXT
@@ -65,21 +65,29 @@ function createIntro(place, tag, media) {
     const figFour = document.querySelector(".fig-four");
     const captionOne = document.querySelector(".fig-one-caption");
     const captionTwo = document.querySelector(".fig-two-caption");
-    const topFigure = document.querySelector(".top-figure")
+    const topFigure = document.querySelector(".top-figure");
 
     bodytext.insertAdjacentHTML("afterbegin", place.acf.detailed_text);
     topFigure.insertAdjacentHTML("afterend", place.acf.detailed_text_3);
     figOne.src = place.acf.detail_img.url
-    figOne.alt = sourceUrl[3].text;
     figTwo.src = place.acf.detail_img_2.url;
-    figTwo.alt = sourceUrl[2].text;
     figThree.src = place.acf.detail_img_wide.url;
-    figThree.alt = sourceUrl[1].text;
     figFour.src = place.acf.detail_img_small.url;
-    figFour.alt = sourceUrl[0].text;
 
     captionOne.innerHTML += place.acf.imagetext;
-    captionTwo.innerHTML+= place.acf.imagetext;
+    captionTwo.innerHTML += place.acf.imagetext;
+
+    // ADD ALT-TEXT TO IMAGES
+
+    const imgAlt = document.querySelectorAll(".img");
+
+    media.filter(mediaAlt => {
+        imgAlt.forEach(img => {
+            if(mediaAlt.source_url === img.src) {
+                 img.alt = mediaAlt.alt_text;
+            }
+        })
+    })
 };
 
 const modal = document.querySelector(".modal");
@@ -88,80 +96,11 @@ const closeModal = document.querySelector(".close");
 const imgModal = document.querySelector(".img-modal");
 const modalCaption = document.querySelector(".caption");
 
-
-let sourceUrl = [];
-
-function imageAlt(place, media) {
-    media.filter(med => {
-
-        if(place.acf.country_mapmap.id === med.id) {
-            let makeAlt = {
-                "url" : place.acf.country_mapmap.url,
-                "text" : med.alt_text
-            }
-            sourceUrl.push(makeAlt)
-        }
-
-        if(place.acf.detail_img.id === med.id) {
-
-            let makeAlt = {
-                "url" : place.acf.detail_img.url,
-                "text" : med.alt_text
-            }
-            sourceUrl.push(makeAlt)
-        }
-
-        if (place.acf.detail_img_2.id === med.id) {
-
-            let makeAlt = {
-                "url" : place.acf.detail_img_2.url,
-                "text" : med.alt_text
-            }
-            sourceUrl.push(makeAlt)
-        }
-
-        if (place.acf.detail_img_small.id === med.id) {
-
-            let makeAlt = {
-                "url" : place.acf.detail_img_small.url,
-                "text" : med.alt_text
-            }
-            sourceUrl.push(makeAlt)
-        }
-
-        if (place.acf.detail_img_wide.id === med.id) {
-
-            let makeAlt = {
-                "url" : place.acf.detail_img_wide.url,
-                "text" : med.alt_text
-            }
-            sourceUrl.push(makeAlt)
-        }
-
-        if (place.acf.heading_img.id === med.id) {
-
-            let makeAlt = {
-                "url" : place.acf.heading_img.url,
-                "text" : med.alt_text
-            }
-            sourceUrl.push(makeAlt)
-        }
-    })
-};
-
-console.log(sourceUrl)
-
 openModal.forEach(open => {
     open.addEventListener("click", function() {
         modal.style.display = "block";
         imgModal.src = this.firstElementChild.src;
-
-        sourceUrl.forEach(item => {
-            if (item.url === this.firstElementChild.src) {
-                modalCaption.innerText = item.text;
-                // console.log(sourceUrl)
-        }
-        })
+        modalCaption.innerText = this.firstElementChild.alt;
     })
 });
 

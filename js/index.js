@@ -1,18 +1,19 @@
 function getApi () {
     let urlPost = fetch("https://grafs.no/wp-json/wp/v2/posts?per_page=20");
     let urlTag = fetch("https://grafs.no/wp-json/wp/v2/tags?per_page=20");
+    let urlMedia = fetch("https://grafs.no/wp-json/wp/v2/media?per_page=100");
 
     try {
 
-    Promise.all([urlPost, urlTag])
+    Promise.all([urlPost, urlTag, urlMedia])
     .then(values => Promise.all(values.map(value => value.json())))
     .then(finalValue => {
         let urlResponse = finalValue[0];
         let tagResponse = finalValue[1];
+        let media = finalValue[2];
 
-        latestPosts(urlResponse);
+        latestPosts(urlResponse, media);
         createPost(urlResponse, tagResponse);
-        console.log(urlResponse)
     })
 }   catch (error) {
         console.error(error);
@@ -21,42 +22,59 @@ function getApi () {
 
 getApi();
 
-// function getTag(urlResponse, tagResponse) {
+let sourceUrl = [];
 
-//     for (let i = 0; i < urlResponse.length; i++) {
-//         let tagged = urlResponse[i].tags;
+function imageAlt(urlResponse, media) {
+    media.filter(med => {
+    
+        urlResponse.forEach(img => {
+            if(img.acf.heading_img.id === med.id) {
+                let makeAlt = {
+                    "url" : img.acf.heading_img.url,
+                    "text" : med.alt_text
+                }
+                sourceUrl.push(makeAlt)
+            }
+        })
+    })
+};
 
-//         tagged.filter(t => {
-//             tagResponse.forEach(e => {
-//                 if(e.id === t) {
-//                     return `<p>${e.name}</p>`
-//                 }
-//         })
-//     })
-// }};
+// console.log(sourceUrl)
 
 // CAROUSEL SLIDE
 
 const sliderOne = document.querySelector("#slider-1");
 const sliderTwo = document.querySelector("#slider-2");
 const sliderThree = document.querySelector("#slider-3");
+
 const next = document.querySelector(".next");
 const prev = document.querySelector(".prev");
 let slideIndex = 1;
 
 
-function latestPosts(urlResponse) {
+function latestPosts(urlResponse, media) {
 
     // Fetch new posts, 1 - 3 //
 
+    imageAlt(urlResponse, media);
+    // console.log(sliderOne.childNodes[0])
+
     const galleryPosts = urlResponse.slice(0, 3);
 
-    sliderOne.innerHTML += `<img src="${galleryPosts[2].acf.heading_img.url}" alt="slider" class="slider-img">
+    sliderOne.innerHTML += `<img src="${galleryPosts[2].acf.heading_img.url}" alt="${sourceUrl[2].text}" class="slider-img">
                             <p class="gallery-text">${galleryPosts[2].acf.sub_heading}</p>`
-    sliderTwo.innerHTML += `<img src="${galleryPosts[1].acf.heading_img.url}" alt="slider" class="slider-img">
+    sliderOne.href = `detail.html?id=${galleryPosts[2].id}`;
+
+    sliderTwo.innerHTML += `<img src="${galleryPosts[1].acf.heading_img.url}" alt="${sourceUrl[1].text}" class="slider-img">
                             <p class="gallery-text">${galleryPosts[1].acf.sub_heading}</p>`
-    sliderThree.innerHTML += `<img src="${galleryPosts[0].acf.detail_img_wide}" alt="slider" class="slider-img">
+
+    sliderTwo.href = `detail.html?id=${galleryPosts[1].id}`;
+
+
+    sliderThree.innerHTML += `<img src="${galleryPosts[0].acf.heading_img.url}" alt="${sourceUrl[0].text}" class="slider-img">
                             <p class="gallery-text">${galleryPosts[0].acf.sub_heading}</p>`
+
+    sliderThree.href = `detail.html?id=${galleryPosts[0].id}`;
 
     function previous() {
         if (slideIndex <= 0) slideIndex = galleryPosts.length;
@@ -77,71 +95,44 @@ function latestPosts(urlResponse) {
 function slideShowPrev() {
 
     if (slideIndex === 1) {
-        sliderOne.className = "";
-        sliderTwo.className = "";
-        sliderThree.className = "";
-
-        sliderOne.classList.add("card-front")
-        sliderTwo.classList.add("cards-back-right");
-        sliderThree.classList.add("cards-back-left");
+        sliderOne.className = "card-front";
+        sliderTwo.className = "cards-back-right";
+        sliderThree.className = "cards-back-left";
     }
 
     if (slideIndex === 0) {
-        sliderTwo.className = "";
-        sliderOne.className = "";
-        sliderThree.className = "";
-       
-        sliderOne.classList.add("cards-back-right");
-        sliderTwo.classList.add("cards-back-left");
-        sliderThree.classList.add("card-front")
+        sliderOne.className = "cards-back-right";
+        sliderTwo.className = "cards-back-left";
+        sliderThree.className = "card-front";
     }
 
     if (slideIndex === 2) {
-        sliderOne.className = "";
-        sliderTwo.className = "";
-        sliderThree.className = "";
-
-        sliderOne.classList.add("cards-back-left");
-        sliderTwo.classList.add("card-front")
-        sliderThree.classList.add("cards-back-right");
+        sliderOne.className = "cards-back-left";
+        sliderTwo.className = "card-front";
+        sliderThree.className = "cards-back-right";
     }
 };
 
 function slideShowNext() {
 
     if (slideIndex === 1) {
-        sliderOne.className = "";
-        sliderTwo.className = "";
-        sliderThree.className = "";
-
-        sliderOne.classList.add("card-front")
-        sliderTwo.classList.add("cards-back-right");
-        sliderThree.classList.add("cards-back-left");
+        sliderOne.className = "card-front";
+        sliderTwo.className = "cards-back-right";
+        sliderThree.className = "cards-back-left";
     }
 
     if (slideIndex === 0) {
-        sliderTwo.className = "";
-        sliderOne.className = "";
-        sliderThree.className = "";
-       
-        sliderOne.classList.add("cards-back-right");
-        sliderTwo.classList.add("cards-back-left");
-        sliderThree.classList.add("card-front")
+        sliderOne.className = "cards-back-right";
+        sliderTwo.className = "cards-back-left";
+        sliderThree.className = "card-front";
     }
 
     if (slideIndex === 2) {
-        sliderOne.className = "";
-        sliderTwo.className = "";
-        sliderThree.className = "";
-
-        sliderOne.classList.add("cards-back-left");
-        sliderTwo.classList.add("card-front")
-        sliderThree.classList.add("cards-back-right");
+        sliderOne.className = "cards-back-left";
+        sliderTwo.className = "card-front";
+        sliderThree.className = "cards-back-right";
     }
-
-    console.log(slideIndex)
 };
-
 
 // CLOCK COUNTDOWN
 
@@ -193,16 +184,23 @@ const posts = document.querySelector(".post-container");
 function createPost(urlResponse, tagResponse) {
 
      // Fetch posts: index 3 - 6 //
-
     const blogposts = urlResponse.slice(3, 6);
-    
+    let altText = sourceUrl.slice(3, 6);
+
     for (let i = 0; i < blogposts.length; i++) {
-        // console.log(blogposts[i]);
+
         let tagged = blogposts[i].tags;
         let blog = blogposts[i];
         let list = [];
+        let blogImg = blog.acf.heading_img.url;
 
-        console.log(blog.id)
+        function altTextFunc() {
+            for (let i = 0; i < altText.length; i++) {
+                if(altText[i].url === blogImg) {
+                    return altText[i].text;
+                }
+            }
+    };
 
         // Filter post-tags & get name //
 
@@ -228,12 +226,12 @@ function createPost(urlResponse, tagResponse) {
                     list.push(`<li class="tag tag:before tag:after peach-tag peach-tag:before peach-tag:after peach-tag:hover:after peach-tag:hover:before peach-tag:hover">${e.name}</li>`)
                 }
             })
-        });
+    });
 
 
         posts.innerHTML += `<a href="detail.html?id=${blog.id}">
                             <article>
-                            <img src="${blog.acf.heading_img.url}" alt="" class="post-img">
+                            <img src="${blogImg}" alt="${altTextFunc()}" class="post-img">
                             <div class="post-text">
                             <h3>${blog.title.rendered}</h3>
                             ${blog.content.rendered}
