@@ -1,0 +1,22 @@
+.intro {
+    text-align: center;
+    padding: 1rem 2rem;
+}
+
+.intro p {
+    padding-bottom: 2rem;
+}
+
+.tags {
+    justify-content: center;
+}
+
+article {
+    background-color: black;
+    height: 800px;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+
+}

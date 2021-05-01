@@ -12,7 +12,9 @@ function getApi () {
         let tagResponse = finalValue[1];
         let media = finalValue[2];
 
-        console.log(tagResponse)
+        // filterTags(tagResponse, urlResponse);
+        sort(tagResponse, urlResponse)
+        // console.log(tagResponse)
     })
 }   catch (error) {
         console.error(error);
@@ -20,6 +22,33 @@ function getApi () {
 };
 
 getApi();
+
+const tag = document.querySelectorAll(".tag");
+const article = document.querySelector(".test");
+
+function sort(tagResponse, urlResponse) {
+    tag.forEach(btn => {
+        btn.addEventListener("click", function() {
+
+            article.innerHTML = "";
+
+            let inner = this.innerText;
+            tagResponse.filter(n => {
+                if (n.name === inner) {
+                    urlResponse.forEach(result => {
+                        result.tags.forEach(t => {
+                            if(t === n.id) {
+                                article.innerHTML += `<h2>${result.title.rendered}</h2>
+                                                        ${result.content.rendered}`
+                            }
+                        })
+                    })
+                }
+            })
+        })
+    })
+}
+
 
 // Knapper til tags
 // Filtrer tags med rikitg navn til knapper
