@@ -1,6 +1,7 @@
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
+console.log(id)
 
 function getApiDetail () {
     let urlPost = fetch("https://grafs.no/wp-json/wp/v2/posts/" + id);

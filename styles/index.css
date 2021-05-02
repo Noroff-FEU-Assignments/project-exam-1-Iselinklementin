@@ -170,42 +170,6 @@ h2::after {
     transform: translateY(180deg);
 }
 
-.visit,
-.post-container {
-    margin-top: 16rem;
-    width: 100%;
-}
-
-.post-container,
-article {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    align-items: center;
-}
-
-.post-container a {
-    color: black;
-    box-shadow: rgba(0, 0, 0, 0.048) 1px 2px 5px 2px;
-    margin-bottom: 2rem;
-    padding-top: 20px;
-    width: 90%;
-}
-
-.post-container a:hover {
-    scale: 1.005;
-    box-shadow: rgba(0, 0, 0, 0.082) 1px 4px 5px 4px;
-}
-
-.tags {
-    width: 90%;
-    justify-content: center;
-}
-
-.post-img {
-    width: 90%;
-}
-
 h3 {
     font-family: Playfair Display;
     font-size: 1.5rem;

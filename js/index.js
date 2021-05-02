@@ -240,7 +240,7 @@ function createPost(urlResponse, tagResponse) {
                             </article>
                             </a>`
 
-    }
+        }
 };
 
 
