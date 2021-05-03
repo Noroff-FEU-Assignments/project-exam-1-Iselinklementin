@@ -180,7 +180,6 @@ initializeTime('clockdiv', deadline);
 
 const posts = document.querySelector(".post-container");
 
-
 function createPost(urlResponse, tagResponse) {
 
      // Fetch posts: index 3 - 6 //
@@ -188,7 +187,6 @@ function createPost(urlResponse, tagResponse) {
     let altText = sourceUrl.slice(3, 6);
 
     for (let i = 0; i < blogposts.length; i++) {
-
         let tagged = blogposts[i].tags;
         let blog = blogposts[i];
         let list = [];
@@ -200,7 +198,7 @@ function createPost(urlResponse, tagResponse) {
                     return altText[i].text;
                 }
             }
-    };
+        };
 
         // Filter post-tags & get name //
 
@@ -226,8 +224,7 @@ function createPost(urlResponse, tagResponse) {
                     list.push(`<li class="tag peach-tag">${e.name}</li>`)
                 }
             })
-    });
-
+        });
 
         posts.innerHTML += `<a href="detail.html?id=${blog.id}">
                             <article>
@@ -239,7 +236,6 @@ function createPost(urlResponse, tagResponse) {
                             <ul class="tags">${list.join("")}</ul>
                             </article>
                             </a>`
-
         }
 };
 

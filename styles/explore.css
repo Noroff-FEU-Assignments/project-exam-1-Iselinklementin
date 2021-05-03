@@ -5,8 +5,10 @@
     flex-direction: column;
 }
 
-.intro p {
+h1 {
     padding-bottom: 2rem;
+    font-size: 1rem;
+    font-weight: 400;
 }
 
 .intro span {
@@ -63,7 +65,7 @@ button {
     height: 350px;
     width: 100%;
     object-fit: cover;
-    filter: brightness(85%);
+    /* filter: brightness(100%); */
 }
 
 .heading-wrap {
@@ -71,7 +73,7 @@ button {
     position: absolute;
     flex-direction: column;
     z-index: 3;
-    top: 15%;
+    top: 50%;
     left: 0;
     right: 0;
     margin: auto;
@@ -90,9 +92,12 @@ button {
 .figcap {
     color: white;
     position: absolute;
-    font-size: 0.8rem;
-    padding: 140px 15% 0 15%;
+    font-size: 0.7rem;
+    padding: 270px 10% 0 10%;
     font-weight: 300;
+    height: 200px;
+    background: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+    bottom: 0;
 }
 
 .head-post-para {
@@ -101,120 +106,76 @@ button {
     padding: 5px 10px;
     margin: 10px auto;
     font-size: 0.7rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.7px;
+}
+
+.figcap p {
+    position: relative;
+    margin-top: -4.2rem;
 }
 
 /* SPLIT POSTS */
 
 .wrap-two-posts,
-.wrap-two-posts-hidden {
+.wrap-two-posts-hidden,
+.wrap-two-posts-middle {
     display: flex;
     width: 100%;
     padding: 15px;
 }
 
 .wrap-two-posts p:first-of-type,
-.wrap-two-posts-hidden p:first-of-type {
+.wrap-two-posts-hidden p:first-of-type,
+.wrap-two-posts-middle p:first-of-type {
     padding: 1.2rem 1rem 0 1rem;
     line-height: 1.4;
 }
 
 .wrap-two-posts h3,
-.wrap-two-posts-hidden h3 {
+.wrap-two-posts-hidden h3,
+.wrap-two-posts-middle h3 {
     margin-top: 0;
-    padding: 1rem 1rem;
+    padding: 0rem 1rem 1rem 1rem;
 }
 
 .wrap-two-posts img,
-.wrap-two-posts-hidden img {
+.wrap-two-posts-hidden img,
+.wrap-two-posts-middle img {
     width: 100%;
     min-height: 220px;
     object-fit: cover;
 }
 
-.blog-top,
-.blog-small {
+.wrap-two-posts a,
+.wrap-two-posts-hidden a,
+.wrap-two-posts-middle a {
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-top {
     display: flex;
     flex-direction: column;
     padding: 5px;
 }
 
-.wrap-two-posts a {
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-}
-
 .split-content {
     background-color: black;
-    display: flex;
-    flex-direction: column;
     color: white;
     height: 100%;
     font-size: 0.7rem;
     text-align: center;
     margin-top: -10px;
-    flex: 1;
 }
 
 .paragraph {
     color: var(--sand);
 }
 
-/* SMALL POSTS */
-
-.wrap-two-small-posts {
-    display: flex;
-    padding: 15px;
-    position: relative;
-}
-
 figure {
     margin: 0;
     padding: 0;
-}
-
-.wrap-two-small-posts img {
-    width: 100%;
-    height: 140px;
-    object-fit: cover;
-}
-
-.blog-small {
-    position: relative;
-}
-
-.blog-small a {
-    color: white;
-}
-
-/* .blog-small-two a {
-    color: white;
-}
-
-.blog-small-one h3 {
-    border: black solid 1px;
-} */
-
-.blog-small h3 {
-    margin: auto;
-    padding: 5px 10px;
-    font-size: 1.5rem;
-    font-weight: 700;
-    border: white solid 1px;
-    box-shadow: rgba(0, 0, 0, 0.178) 1px 1px 1px 1px;
-}
-
-.text-wrap {
-    display: flex;
-    position: absolute;
-    flex-direction: column;
-    z-index: 3;
-    top: 30%;
-    left: 0;
-    right: 0;
-    margin: auto;
 }
 
 .post-text {
@@ -233,22 +194,30 @@ figure {
 .posts-standard-hidden,
 .wrap-two-posts-hidden {
     display: none;
-    transition: transition 350ms ease-in-out;
+    /* transition: transition 350ms ease-in-out;
+    animation: mymove 1s infinite; */
 }
 
 .show {
     display: flex;
 }
 
-/* animation: mymove 1s infinite;
-}
+/* @keyframes mymove {
+    from {
+        left: 0px;
+    }
 
-@keyframes mymove {
-  from {left: 0px;}
-  to {left: 200px;}
+    to {
+        left: 200px;
+    }
 }
 
 @keyframes mynewmove {
-  from {top: 0px;}
-  to {top: 200px;}
+    from {
+        top: 0px;
+    }
+
+    to {
+        top: 200px;
+    }
 } */

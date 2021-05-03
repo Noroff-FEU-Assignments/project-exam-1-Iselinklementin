@@ -222,13 +222,14 @@ h3 {
     font-size: 30px;
     font-weight: bold;
     transition: 0.3s;
+    cursor: pointer;
 }
 
 .close:hover,
 .close:focus {
     color: #bbb;
     text-decoration: none;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 /* 100% Image Width on Smaller Screens */
