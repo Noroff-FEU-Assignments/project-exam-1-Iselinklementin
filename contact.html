@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content= "Travel guides and information on destinations all over the world." />
+    <meta name="keywords" content="travel, blog, asia, europe, america, oceania, adventure, exotic, wildlife, culture, explore"/>
+    <link href="styles/styles.css" rel="stylesheet" />
+    <link href="styles/contact.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"> 
+    <script src="https://kit.fontawesome.com/9b8ac118a8.js" crossorigin="anonymous"></script>
+    <title>Contact us</title>
+</head>
+<body>
+    <header>
+        <ul class="skip-links">
+            <li><a href="#main">Skip to the main content</a></li>  
+          </ul>
+        <nav>
+            <ul>
+                <li><a href="/index.html"><img src="/images/icons/logofeet.svg" class="logo" alt="Explore-logo"></a></li>
+                <li><a class="nav-el" href="/about.html">About</a></li>
+                <li><a class="nav-el" href="/explore.html">Explore</a></li>
+                <li><a class="nav-el active-site" href="/contact.html">Contact</a></li>
+                <li><img class="search" src="/images/icons/search.svg" alt="search" aria-label="search"></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main">
+
+        <h1>Travel Guides & information and advice on destinations all over the world. These are the travel blogs from <span>Explore</span>.</h1>
+        <section class="success">
+            <div class="message-picture">
+            </div>
+
+            <div class="confirmed">
+                <h2>Perfect!</h2>
+                <p>We will get back to you<br> as soon as we can.</p>
+                <a href="/index.html" class="button home">Home</a>
+                <p class="forget">Did you forget something?</p>
+                <a class="again">Write a new message</a>
+            </div>
+        </section>
+
+        <form>
+            <label class="label">
+                <div class="labelwrap">
+                    Name
+                    <div class="error" id="name-error"><i class=""></i></div>
+                </div>
+                <p>Should be more than 5 characters long<span class="name-value"></span></p>
+                <input type="text" class="fullname form-input">
+            </label>
+
+            <label class="label">
+                <div class="labelwrap">
+                Email
+                    <div class="error" id="email-error"><i class=""></i></div>
+                </div>
+                <p>Must be a valid email address<span class="email-value"></span></p>
+                <input type="email" name="" class="email form-input">
+            </label>
+
+            <label class="label">
+                <div class="labelwrap">
+                Subject
+                    <div class="error" id="subject-error"><i class=""></i></div>
+                </div>
+                <p>Should be more than 15 characters long<span class="subject-value"></span></p>
+                <input type="text" class="subject form-input">
+            </label>
+
+            <label class="label">
+              <div class="labelwrap">
+                Message
+                    <div class="error" id="message-error"><i class=""></i></div>
+            </div>
+                <p>Should be more than 25 characters long<span class="message-value"></span></p>
+                <textarea type="text" class="message form-input"></textarea>
+            </label class="label">
+
+            <div class="button-error">
+                <i class="fas fa-exclamation-triangle"></i>Please fill out required fields
+            </div>
+            <!-- <div class="button-wrap"> -->
+                <a class="button submit" disabled>Submit</a>
+                <!-- <a href="/index.html" class="home">Home</a>
+            </div> -->
+            <!-- <p class="info">You need to fill out the form before submitting</p> -->
+        </form>
+
+        <!-- SOSIAL MEDIA -->
+        <section class="some">
+            <a href="#"><img src="/images/icons/facebook.svg" alt="Facebook-logo">Like</a>
+            <a href="#"><img src="/images/icons/instagram.svg" alt="Instagram-logo">Follow</a>
+            <a href="#"><img id="twitter" src="/images/icons/twitter.svg" alt="Twitter-logo">Follow</a>
+            <a href="#"><img id="youtube" src="/images/icons/youtube.svg" alt="YouTube-logo">Subscribe</a>
+        </section>
+    </main>
+    <footer>
+        <ul>
+            <li><a href="/index.html"><img src="/images/icons/logofeet_white.svg" class="logo" alt="Explore-logo"></a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/explore.html">Explore</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+        </ul>
+    </footer>
+    <script src="/js/contact.js"></script>
+</body>
+</html>

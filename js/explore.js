@@ -113,7 +113,7 @@ function createArticles(urlResponse, tagResponse, media) {
                                         <h3>${post.title.rendered}</h3>
                                         ${post.content.rendered}
                                         </div>
-                                        <ul class="tags">${list.join("")}</ul>
+                                        <ul class="tags" id="explore-tags">${list.join("")}</ul>
                                         </article>
                                         </a>`
         }
@@ -199,7 +199,7 @@ function createArticles(urlResponse, tagResponse, media) {
                                     <h3>${post.title.rendered}</h3>
                                     ${post.content.rendered}
                                     </div>
-                                    <ul class="tags">${list.join("")}</ul>
+                                    <ul class="tags" id="explore-tags">${list.join("")}</ul>
                                     </article>
                                     </a>`
     }
@@ -274,7 +274,7 @@ function sort(tagResponse, urlResponse, media) {
                                                         <h3>${result.title.rendered}</h3>
                                                         ${result.content.rendered}
                                                         </div>
-                                                        <ul class="tags">${list.join("")}</ul>
+                                                        <ul class="tags" id="explore-tags">${list.join("")}</ul>
                                                         </article>
                                                         </a>`
                             }
