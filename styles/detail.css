@@ -128,6 +128,10 @@ h3 {
     padding-right: 25px;
 }
 
+.bodytext h3 {
+    margin-bottom: 0.8rem;
+}
+
 .bodytext figcaption {
     font-style: italic;
     color: rgb(95, 93, 93);
