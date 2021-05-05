@@ -147,6 +147,8 @@ h3 {
     background-color: black;
     width: 100%;
     padding: 2rem 25px 2rem 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .fig-detail-img,
