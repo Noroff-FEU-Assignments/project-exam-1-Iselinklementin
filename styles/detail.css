@@ -27,7 +27,7 @@
 .intro {
     background-color: black;
     margin-top: -9rem;
-    height: 850px;
+    /* height: 850px; */
     margin-bottom: 2rem;
     display: flex;
     flex-direction: column;
@@ -40,7 +40,7 @@
 }
 
 .intro-text {
-    padding-top: 9rem;
+    padding-top: 2rem;
     padding-left: 2rem;
     margin-bottom: 1rem;
 }
@@ -79,6 +79,7 @@ h3 {
     width: 100%;
     object-fit: cover;
     object-position: 60%;
+    padding-top: 9rem;
 }
 
 .header-fig {
