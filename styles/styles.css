@@ -102,12 +102,6 @@ nav ul {
     padding: 10px 20px 0px 20px;
 }
 
-.visit,
-.post-container {
-    margin-top: 16rem;
-    width: 100%;
-}
-
 .post-container,
 article {
     display: flex;
