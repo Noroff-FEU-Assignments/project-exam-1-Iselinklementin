@@ -183,8 +183,8 @@ const posts = document.querySelector(".post-container");
 function createPost(urlResponse, tagResponse) {
 
      // Fetch posts: index 3 - 6 //
-    const blogposts = urlResponse.slice(3, 6);
-    let altText = sourceUrl.slice(3, 6);
+    const blogposts = urlResponse.slice(3, 7);
+    let altText = sourceUrl.slice(3, 7);
 
     for (let i = 0; i < blogposts.length; i++) {
         let tagged = blogposts[i].tags;
@@ -226,7 +226,7 @@ function createPost(urlResponse, tagResponse) {
             })
         });
 
-        posts.innerHTML += `<a href="detail.html?id=${blog.id}">
+        let createHtml  = `<a class="article-wrap" href="detail.html?id=${blog.id}">
                             <article>
                             <img src="${blogImg}" alt="${altTextFunc()}" class="post-img">
                             <div class="post-text">
@@ -236,7 +236,13 @@ function createPost(urlResponse, tagResponse) {
                             <ul class="tags">${list.join("")}</ul>
                             </article>
                             </a>`
+
+        posts.insertAdjacentHTML("afterbegin", createHtml);
         }
+
+        // const lastBlog = urlResponse.slice(6, 7);
+        // let altTextLastBlog = sourceUrl.slice(6, 7);
+        // console.log(lastBlog)
 };
 
 

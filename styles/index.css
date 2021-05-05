@@ -26,6 +26,10 @@ h1 {
     font-weight: 900;
 }
 
+.intro span {
+    font-weight: 600;
+}
+
 .trip {
     color: white;
     text-align: center;
@@ -84,7 +88,6 @@ h2::after {
     margin: auto;
     transition: transform .8s ease;
 }
-
 
 .container {
     width: 100%;
@@ -146,22 +149,10 @@ h2::after {
     font-size: 1.2rem;
 }
 
-/* .arrows {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 240px;
-    padding: 0.5rem;
-    position: absolute;
-} */
-
 .visit {
     margin-top: 23rem;
     width: 100%;
 }
-
-/* post-container ?? */
 
 .arrows {
     display: flex;
@@ -198,10 +189,6 @@ h3 {
     font-weight: lighter;
 }
 
-/* .post-text {
-    padding: 10px 20px 0px 20px;
-} */
-
 .content {
     font-size: 0.85rem;
     line-height: 1.5;
@@ -226,7 +213,180 @@ h3 {
 }
 
 .discover p {
-    width: 70%;
     font-size: 1.2rem;
-    /* font-weight: lighter; */
+}
+
+.desktop-discover {
+    display: none;
+}
+
+@media only screen and (min-width: 490px) {
+
+    .header {
+        background-image: url(/images/mobile-heading-index.jpg);
+        height: 550px;
+    }
+
+    .intro {
+        /* margin-top: 6rem; */
+        width: 350px;
+        /* line-height: 1.2; */
+    }
+
+    .cards-back-left {
+        transform: translatex(-40%) scale(.8);
+        opacity: .5;
+        z-index: 0;
+        top: 10px
+    }
+
+    .cards-back-right {
+        transform: translatex(40%) scale(.8);
+        opacity: .5;
+        z-index: 0;
+        top: 10px;
+    }
+}
+
+@media only screen and (min-width: 650px) {
+    .post-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 1rem;
+        justify-content: space-evenly;
+    }
+
+    .article-wrap {
+        flex: 1;
+        margin: 5px;
+        min-width: 45%;
+        margin: 1rem 1rem 2rem 1rem;
+    }
+
+    .post-img {
+        height: 200px;
+        object-fit: cover;
+    }
+}
+
+@media only screen and (min-width: 850px) {
+
+    .post-container {
+        justify-content: space-between;
+        align-items: stretch;
+    }
+
+    .article-wrap {
+        flex: 1;
+        min-width: 25%;
+        max-width: 30%;
+    }
+
+    .discover {
+        display: none;
+    }
+
+    .desktop-discover {
+        flex: 2;
+        display: flex;
+        flex-direction: row;
+        height: unset;
+        max-width: 65%;
+        margin: 1rem 1rem 2rem 1rem;
+    }
+
+    .discover p {
+        font-weight: 300;
+    }
+
+    .discover .button {
+        width: 8rem;
+    }
+
+    .wrap-one,
+    .wrap-two {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 10px;
+        height: 100%;
+    }
+
+    .wrap-one {
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .wrap-two {
+        margin-right: 0;
+    }
+
+    .discover-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .world {
+        width: 200px;
+    }
+
+    .trip {
+        margin-top: 2rem;
+    }
+
+    .latest h2 {
+        margin-bottom: 3rem;
+        margin-top: 3rem;
+    }
+
+    .visit {
+        margin-top: 23rem;
+    }
+
+    .wrap {
+        width: 900px;
+    }
+
+    .cards-back-left {
+        top: 20px;
+        transform: translatex(-20%) scale(.8);
+    }
+
+    .cards-back-right {
+        top: 20px;
+        transform: translatex(20%) scale(.8);
+    }
+
+    .slider-img {
+        width: 400px;
+        height: 300px;
+    }
+
+    .gallery-text {
+        top: 300px;
+        width: 400px;
+    }
+
+    .arrows {
+        height: 350px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+
+    .header {
+        height: 600px;
+    }
+
+    .intro {
+        /* border: red solid thin; */
+        margin-top: 9rem;
+    }
 }

@@ -31,6 +31,7 @@ const bottomSplit = document.querySelector(".wrap-two-posts-hidden");
 const middleSplit = document.querySelector(".wrap-two-posts-middle");
 const split = document.querySelector(".wrap-two-posts");
 const btnView = document.querySelector("button");
+const filterName = document.querySelector(".filter-name");
 
 function createArticles(urlResponse, tagResponse, media) {
 
@@ -105,7 +106,7 @@ function createArticles(urlResponse, tagResponse, media) {
                 })
             });
 
-            standardPosts.innerHTML += `<a href="detail.html?id=${post.id}">
+            standardPosts.innerHTML += `<a class="article-wrap" href="detail.html?id=${post.id}">
                                         <article>
                                         <img src="${post.acf.heading_img.url}" alt="" class="post-img img">
                                         <div class="post-text">
@@ -191,7 +192,7 @@ function createArticles(urlResponse, tagResponse, media) {
         });
         
 
-        standardPostsBottom.innerHTML += `<a href="detail.html?id=${post.id}">
+        standardPostsBottom.innerHTML += `<a class="article-wrap" href="detail.html?id=${post.id}">
                                     <article>
                                     <img src="${post.acf.heading_img.url}" alt="" class="post-img img">
                                     <div class="post-text">
@@ -266,7 +267,7 @@ function sort(tagResponse, urlResponse, media) {
                                 btnView.style.display = "none";
                                 contain.style.display = "none";
 
-                                postExplore.innerHTML += `<a href="detail.html?id=${result.id}">
+                                postExplore.innerHTML += `<a class="article-wrap" href="detail.html?id=${result.id}">
                                                         <article>
                                                         <img src="${resultImg}" alt="" class="post-img img">
                                                         <div class="post-text">
@@ -276,6 +277,8 @@ function sort(tagResponse, urlResponse, media) {
                                                         <ul class="tags" id="explore-tags">${list.join("")}</ul>
                                                         </article>
                                                         </a>`
+
+                                filterName.innerHTML = `<h2>${inner}</h2>`
                             }
 
                             let imgAlt = document.querySelectorAll(".img");
@@ -295,6 +298,7 @@ function sort(tagResponse, urlResponse, media) {
             if(this.innerText === "All") {
                 contain.style.display = "block";
                 btnView.style.display = "block";
+                filterName.innerHTML = "";
             }
             
         })
