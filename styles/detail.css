@@ -69,9 +69,12 @@ h3 {
 }
 
 .content,
-.ingress-text,
-.bodytext {
+.ingress-text {
     padding-right: 25px;
+    font-weight: 300;
+}
+
+.bodytext {
     font-weight: 300;
 }
 
@@ -117,16 +120,39 @@ h3 {
     width: 100%;
 }
 
-.bodytext {
+.bodytext p,
+.bodytext h3 {
     margin: auto;
     padding-left: 2rem;
     margin-bottom: 2rem;
+    padding-right: 25px;
+}
+
+.bodytext figcaption {
+    font-style: italic;
+    color: rgb(95, 93, 93);
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding-right: 25px;
+    padding-left: 2rem;
+}
+
+.capt-bottom figcaption {
+    color: white;
+    padding: 0;
+}
+
+.image-wrap {
+    background-color: black;
+    width: 100%;
+    padding: 2rem 25px 2rem 2rem;
 }
 
 .fig-detail-img,
 .fig-detail-img-2 {
     width: 100%;
-    margin: 2rem auto;
+    margin: auto;
     cursor: pointer;
     transition: 0.3s;
 }
@@ -137,13 +163,6 @@ h3 {
 
 .imgtext-intro {
     font-weight: bold;
-}
-
-.fig-detail-img figcaption {
-    font-style: italic;
-    color: rgb(95, 93, 93);
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
 }
 
 .fig-container {
