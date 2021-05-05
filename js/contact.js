@@ -79,6 +79,8 @@ function submitForm(event) {
         btn.disabled = false;
         btnError.style.display = "none";
         form.reset();
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
         form.style.display = "none";
         header.style.display = "none";
         fullnameError.firstChild.classList = "";
