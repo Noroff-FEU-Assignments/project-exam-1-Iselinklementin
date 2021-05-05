@@ -335,15 +335,15 @@ article {
     text-transform: uppercase;
     padding: 10px 20px;
     border-radius: 20px;
-    font-weight: 400;
-    font-size: 0.9rem;
+    /* font-weight: 400; */
+    /* font-size: 0.9rem; */
     margin-top: 0.5rem;
     letter-spacing: 1px
 }
 
-.button a {
+/* .button a {
     text-transform: uppercase;
-}
+} */
 
 .button:hover {
     background-color: var(--light-blue);
@@ -413,7 +413,7 @@ article {
     text-align: center;
     color: #ccc;
     padding: 20px 0 10px 0;
-    font-weight: 300;
+    font-weight: 400;
     /* height: 150px; */
 }
 

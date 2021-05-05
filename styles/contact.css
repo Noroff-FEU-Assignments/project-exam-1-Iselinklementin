@@ -18,10 +18,10 @@ form {
 
 .label p {
     display: block;
-    font-weight: 300;
+    /* font-weight: 300; */
     font-style: italic;
-    font-size: 0.8rem;
-    margin: 2px auto 6px auto;
+    font-size: 0.9rem;
+    margin: 4px auto 6px auto;
 }
 
 .label {
@@ -31,6 +31,7 @@ form {
 .labelwrap {
     display: flex;
     justify-content: space-between;
+    font-weight: bold;
 }
 
 .fa-exclamation-triangle {
@@ -83,7 +84,7 @@ form {
 .email-value {
     display: block;
     color: rgb(238, 85, 14);
-    font-weight: 300;
+    /* font-weight: 300; */
 }
 
 .success {
@@ -91,7 +92,7 @@ form {
     flex-direction: column;
     background-color: black;
     color: white;
-    padding-bottom: 1rem;
+    padding-bottom: 2rem;
     margin-bottom: 2rem;
     display: none;
 }
@@ -116,14 +117,14 @@ h2 {
     align-items: center;
     text-align: center;
     font-size: 1rem;
-    font-weight: 300;
+    /* font-weight: 300; */
     margin: auto;
     margin-bottom: 2rem;
 }
 
-.confirmed p {
+/* .confirmed p {
     font-weight: lighter;
-}
+} */
 
 .forget,
 .again {
@@ -144,8 +145,9 @@ h2 {
 }
 
 .button {
-    height: 2.2rem;
-    width: 6rem;
+    height: 2.5rem;
+    width: 8rem;
+    line-height: 1.7;
     text-align: center;
     padding: 8px 6px;
     cursor: pointer;

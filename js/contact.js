@@ -75,7 +75,7 @@ function submitForm(event) {
     event.preventDefault();
 
     if (checkLength(fullname.value, 4) && validateEmail(email.value) && checkLength(subject.value, 14) && checkLength(message.value, 24)) {
-        success.style.display = "block";
+        success.style.display = "flex";
         btn.disabled = false;
         btnError.style.display = "none";
         form.reset();

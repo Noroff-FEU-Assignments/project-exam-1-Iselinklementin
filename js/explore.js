@@ -14,7 +14,6 @@ function getApi () {
 
         createArticles(urlResponse, tagResponse, media);
         sort(tagResponse, urlResponse, media);
-        // createTags(urlResponse, tagResponse);
     })
 }   catch (error) {
         console.error(error);
@@ -305,7 +304,12 @@ function sort(tagResponse, urlResponse, media) {
 function toggleContent() {
     bottomSplit.classList.toggle("show");
     standardPostsBottom.classList.toggle("show");
-    btnView.innerText = "View less"
+    if (btnView.innerHTML === "View more..") {
+        btnView.innerHTML = "View less.."
+    } else {
+        btnView.innerHTML = "View more.."
+    }
+
 }
 
 btnView.addEventListener("click", toggleContent);
