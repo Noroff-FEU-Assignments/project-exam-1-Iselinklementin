@@ -29,10 +29,9 @@ h1 {
 .trip {
     color: white;
     text-align: center;
-    padding: 20px 0px;
+    padding: 30px 0 10px 0;
     text-transform: uppercase;
     margin: auto;
-    font-size: 1.3rem;
 }
 
 .first-line,
@@ -144,6 +143,7 @@ h2::after {
     margin: auto;
     padding: 5px;
     box-shadow: rgba(0, 0, 0, 0.253) 0px 2px 2px 0px;
+    font-size: 1.2rem;
 }
 
 /* .arrows {
