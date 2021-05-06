@@ -34,7 +34,14 @@ body {
 }
 
 .logo {
+    position: absolute;
+    top: -10px;
+    left: 0;
     width: 30px;
+}
+
+.desktop-logo {
+    display: none;
 }
 
 nav,
@@ -45,13 +52,16 @@ nav a {
     text-transform: uppercase;
     font-size: 0.9rem;
     z-index: 100;
+    /* border: red solid thin; */
 }
 
 nav ul {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    padding: 0;
+    padding: 5px;
+    padding-top: 1.2rem;
+    width: 100%;
 }
 
 .nav-el:hover:before {
@@ -456,6 +466,10 @@ article {
 
 /* Footer */
 
+.logo-footer {
+    width: 30px;
+}
+
 footer {
     background-color: black;
     height: 80px;
@@ -470,6 +484,7 @@ footer ul {
     align-items: center;
     padding: 0 20px;
     width: 90%;
+    max-width: 400px;
 }
 
 footer ul a {
@@ -479,4 +494,32 @@ footer ul a {
 
 footer ul a:hover {
     color: var(--sand);
+}
+
+@media only screen and (min-width: 580px) {
+    .logo {
+        top: -10px;
+        left: 30px
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .logo {
+        display: none;
+    }
+
+    .desktop-logo {
+        display: block;
+        width: 150px;
+        position: absolute;
+        left: -120px;
+        top: -5px;
+    }
+
+    nav ul {
+        justify-content: space-between;
+        max-width: 60%;
+        margin: auto;
+        padding-top: 2rem;
+    }
 }

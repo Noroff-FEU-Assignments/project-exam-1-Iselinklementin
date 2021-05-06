@@ -19,6 +19,8 @@ const messageValue = document.querySelector(".message-value");
 const subjectValue = document.querySelector(".subject-value");
 const emailValue = document.querySelector(".email-value");
 
+const desktop = document.querySelector(".desktop");
+
 function checkLength(value, len) {
     if (value.trim().length > len) {
         return true;
@@ -87,6 +89,11 @@ function submitForm(event) {
         emailError.firstChild.classList = "";
         subjectError.firstChild.classList = "";
         messageError.firstChild.classList = "";
+        
+        if(desktop.style.display = "flex") {
+            desktop.style.display = "none";
+        }
+
     } else {
         btn.disabled = true;
         btnError.style.display = "block";
@@ -97,8 +104,5 @@ btn.addEventListener("click", defineError);
 btn.addEventListener("click", submitForm);
 
 newMessage.addEventListener("click", function(event) {
-    event.preventDefault();
-    success.style.display = "none";
-    form.style.display = "flex";
-    header.style.display = "block";
+    reload()   
 })

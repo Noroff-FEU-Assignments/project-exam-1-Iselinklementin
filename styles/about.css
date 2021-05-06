@@ -31,3 +31,35 @@ h2 {
     line-height: 1.5;
     margin: auto 20px 2rem 20px;
 }
+
+@media only screen and (min-width: 580px) {
+    h1 {
+        max-width: 600px;
+        margin: 2rem auto 0 auto;
+        line-height: 2;
+    }
+
+    .presentation {
+        width: 700px;
+        margin: 1rem auto 2.5rem auto;
+    }
+
+    .text-wrap {
+        display: flex;
+        text-align: left;
+        align-items: center;
+        justify-content: space-between;
+        margin: 2rem 0;
+        max-width: 700px;
+        padding: 0 2.3rem;
+    }
+
+    h2 {
+        width: 35%;
+    }
+
+    .text-wrap p {
+        margin: 0;
+        width: 65%;
+    }
+}
