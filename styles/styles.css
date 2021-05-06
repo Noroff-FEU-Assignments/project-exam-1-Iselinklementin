@@ -109,7 +109,6 @@ article {
     align-items: center;
 }
 
-
 .article-wrap {
     color: black;
     background-color: #F4F4F4;
@@ -148,7 +147,6 @@ article {
     cursor: pointer;
     text-align: center;
     font-size: 0.8rem;
-    /* line-height: 1.4; */
 }
 
 .tag:before {
@@ -293,6 +291,30 @@ article {
     background-color: #EF8A73;
 }
 
+.ocean-tag {
+    background-color: #266E73;
+}
+
+.ocean-tag:before {
+    border-color: transparent #266E73 transparent transparent;
+}
+
+.ocean-tag:after {
+    border-color: transparent transparent transparent #266E73;
+}
+
+.ocean-tag:hover:after {
+    border-color: transparent transparent transparent #31858b;
+}
+
+.ocean-tag:hover:before {
+    border-color: transparent #31858b transparent transparent;
+}
+
+.ocean-tag:hover {
+    background-color: #31858b;
+}
+
 .black-tag {
     background: black;
 }
@@ -325,15 +347,9 @@ article {
     text-transform: uppercase;
     padding: 10px 20px;
     border-radius: 20px;
-    /* font-weight: 400; */
-    /* font-size: 0.9rem; */
     margin-top: 0.5rem;
     letter-spacing: 1px
 }
-
-/* .button a {
-    text-transform: uppercase;
-} */
 
 .button:hover {
     background-color: var(--light-blue);
@@ -391,7 +407,6 @@ article {
     width: 92%;
     height: 360px;
     object-fit: cover;
-    /* max-width: 400px; */
     object-position: 50%;
 }
 
@@ -404,7 +419,6 @@ article {
     color: #ccc;
     padding: 20px 0 10px 0;
     font-weight: 400;
-    /* height: 150px; */
 }
 
 .modal-content,
@@ -423,7 +437,6 @@ article {
     }
 }
 
-/* The Close Button */
 .close {
     position: absolute;
     top: 65px;
@@ -439,17 +452,7 @@ article {
 .close:focus {
     color: #bbb;
     text-decoration: none;
-    /* cursor: pointer; */
 }
-
-/* 100% Image Width on Smaller Screens */
-/* @media only screen and (max-width: 700px) {
-    .modal-content {
-        width: 100%;
-    }
-} */
-
-/* ------ */
 
 /* Footer */
 

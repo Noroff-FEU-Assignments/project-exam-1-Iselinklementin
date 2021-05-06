@@ -39,8 +39,6 @@ function imageAlt(urlResponse, media) {
     })
 };
 
-// console.log(sourceUrl)
-
 // CAROUSEL SLIDE
 
 const sliderOne = document.querySelector("#slider-1");
@@ -57,7 +55,6 @@ function latestPosts(urlResponse, media) {
     // Fetch new posts, 1 - 3 //
 
     imageAlt(urlResponse, media);
-    // console.log(sliderOne.childNodes[0])
 
     const galleryPosts = urlResponse.slice(0, 3);
 
@@ -211,16 +208,16 @@ function createPost(urlResponse, tagResponse) {
                 if (e.id === t && e.name === "Culture" || e.id === t && e.name === "Animals" || e.id === t && e.name === "America") {
                     list.push(`<li class="tag sand-tag">${e.name}</li>`)
                 }
-
-                if (e.id === t && e.name === "Nature" || e.id === t && e.name === "Wildlife") {
+        
+                if (e.id === t && e.name === "Nature" || e.id === t && e.name === "Africa") {
                     list.push(`<li class="tag green-tag">${e.name}</li>`)
                 }
-
+        
                 if (e.id === t && e.name === "Europe" || e.id === t && e.name === "Beliefs" ) {
                     list.push(`<li class="tag blue-tag">${e.name}</li>`)
                 }
-
-                if (e.id === t && e.name === "Oceania" || e.id === t && e.name === "Traditions" || e.id === t && e.name === "Africa") {
+        
+                if (e.id === t && e.name === "Oceania" || e.id === t && e.name === "Traditions") {
                     list.push(`<li class="tag peach-tag">${e.name}</li>`)
                 }
             })
@@ -239,34 +236,11 @@ function createPost(urlResponse, tagResponse) {
 
         posts.insertAdjacentHTML("afterbegin", createHtml);
         }
-
-        // const lastBlog = urlResponse.slice(6, 7);
-        // let altTextLastBlog = sourceUrl.slice(6, 7);
-        // console.log(lastBlog)
 };
 
-
+// Comments-section date
 // const formatDate = new Date(data.date).toLocaleString("en-GB", {
 //     day: "numeric",
 //     month: "long",
 //     year: "numeric",
 // });
-
-
-// function styleTags(tagResponse, blog) {
-
-//     const li = document.createElement("li");
-
-//     for (let i = 0; i < blog.length; i++) {
-//     let tag = blog[i].tags;
-
-//     tag.filter(t => {
-//         tagResponse.forEach(e => {
-//             if((e.id === t) && (e.name === "Asia")) {
-//                 li.classList.add("tag", "tag:before", "tag:after", "purple-tag", "purple-tag:before", "purple-tag:after","purple-tag:hover:after", "purple-tag:hover:before", "purple-tag:hover");
-//                 li.innerHTML = e.name;
-//                 list.push(li);
-//             }
-//         })
-//     });
-// }};

@@ -18,7 +18,6 @@ form {
 
 .label p {
     display: block;
-    /* font-weight: 300; */
     font-style: italic;
     font-size: 0.9rem;
     margin: 4px auto 6px auto;
@@ -58,7 +57,6 @@ form {
     background-color: rgba(238, 85, 14, 0.219);
 }
 
-
 .form-input,
 .message {
     display: block;
@@ -84,7 +82,6 @@ form {
 .email-value {
     display: block;
     color: rgb(238, 85, 14);
-    /* font-weight: 300; */
 }
 
 .success {
@@ -117,14 +114,9 @@ h2 {
     align-items: center;
     text-align: center;
     font-size: 1rem;
-    /* font-weight: 300; */
     margin: auto;
     margin-bottom: 2rem;
 }
-
-/* .confirmed p {
-    font-weight: lighter;
-} */
 
 .forget,
 .again {

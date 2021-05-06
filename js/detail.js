@@ -126,7 +126,7 @@ function tagsStyle(place, tag) {
                 list.push(`<li class="tag sand-tag">${e.name}</li>`)
             }
     
-            if (e.id === t && e.name === "Nature" || e.id === t && e.name === "Wildlife") {
+            if (e.id === t && e.name === "Nature" || e.id === t && e.name === "Africa") {
                 list.push(`<li class="tag green-tag">${e.name}</li>`)
             }
     
@@ -134,7 +134,7 @@ function tagsStyle(place, tag) {
                 list.push(`<li class="tag blue-tag">${e.name}</li>`)
             }
     
-            if (e.id === t && e.name === "Oceania" || e.id === t && e.name === "Traditions" || e.id === t && e.name === "Africa") {
+            if (e.id === t && e.name === "Oceania" || e.id === t && e.name === "Traditions") {
                 list.push(`<li class="tag peach-tag">${e.name}</li>`)
             }
         })

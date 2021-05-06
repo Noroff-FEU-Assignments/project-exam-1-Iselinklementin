@@ -43,8 +43,6 @@ function createArticles(urlResponse, tagResponse, media) {
     let heading = result.acf.place;
     let resultImg = result.acf.heading_img.url;
 
-    // btnView.display = "block";
-
     headPost.innerHTML += `<a href="detail.html?id=${result.id}">
                             <div class="heading-wrap">
                             <p class="head-post-para">${introText}</p>
@@ -92,7 +90,7 @@ function createArticles(urlResponse, tagResponse, media) {
                         list.push(`<li class="tag sand-tag">${e.name}</li>`)
                     }
             
-                    if (e.id === t && e.name === "Nature" || e.id === t && e.name === "Wildlife") {
+                    if (e.id === t && e.name === "Nature" || e.id === t && e.name === "Africa") {
                         list.push(`<li class="tag green-tag">${e.name}</li>`)
                     }
             
@@ -100,7 +98,7 @@ function createArticles(urlResponse, tagResponse, media) {
                         list.push(`<li class="tag blue-tag">${e.name}</li>`)
                     }
             
-                    if (e.id === t && e.name === "Oceania" || e.id === t && e.name === "Traditions" || e.id === t && e.name === "Africa") {
+                    if (e.id === t && e.name === "Oceania" || e.id === t && e.name === "Traditions") {
                         list.push(`<li class="tag peach-tag">${e.name}</li>`)
                     }
                 })
@@ -177,7 +175,7 @@ function createArticles(urlResponse, tagResponse, media) {
                     list.push(`<li class="tag sand-tag">${e.name}</li>`)
                 }
         
-                if (e.id === t && e.name === "Nature" || e.id === t && e.name === "Wildlife") {
+                if (e.id === t && e.name === "Nature" || e.id === t && e.name === "Africa") {
                     list.push(`<li class="tag green-tag">${e.name}</li>`)
                 }
         
@@ -185,7 +183,7 @@ function createArticles(urlResponse, tagResponse, media) {
                     list.push(`<li class="tag blue-tag">${e.name}</li>`)
                 }
         
-                if (e.id === t && e.name === "Oceania" || e.id === t && e.name === "Traditions" || e.id === t && e.name === "Africa") {
+                if (e.id === t && e.name === "Oceania" || e.id === t && e.name === "Traditions") {
                     list.push(`<li class="tag peach-tag">${e.name}</li>`)
                 }
             })
@@ -217,8 +215,6 @@ function createArticles(urlResponse, tagResponse, media) {
 
 
 // ${result[0].acf.heading_img.url}
-
-// ${list.join("")}
 // ${altTextFunc()}
 
 const tag = document.querySelectorAll(".tag");
@@ -226,7 +222,8 @@ const tag = document.querySelectorAll(".tag");
 function sort(tagResponse, urlResponse, media) {
     tag.forEach(btn => {
         btn.addEventListener("click", function() {
-
+            const liWrap = document.querySelector(".ul-list")
+            const childList = liWrap.children;
             postExplore.innerHTML = "";
 
             let inner = this.innerText;
@@ -250,7 +247,7 @@ function sort(tagResponse, urlResponse, media) {
                                             list.push(`<li class="tag sand-tag">${e.name}</li>`)
                                         }
                                 
-                                        if (e.id === t && e.name === "Nature" || e.id === t && e.name === "Wildlife") {
+                                        if (e.id === t && e.name === "Nature" || e.id === t && e.name === "Africa") {
                                             list.push(`<li class="tag green-tag">${e.name}</li>`)
                                         }
                                 
@@ -258,14 +255,26 @@ function sort(tagResponse, urlResponse, media) {
                                             list.push(`<li class="tag blue-tag">${e.name}</li>`)
                                         }
                                 
-                                        if (e.id === t && e.name === "Oceania" || e.id === t && e.name === "Traditions" || e.id === t && e.name === "Africa") {
+                                        if (e.id === t && e.name === "Oceania" || e.id === t && e.name === "Traditions") {
                                             list.push(`<li class="tag peach-tag">${e.name}</li>`)
                                         }
                                     })
                                 });
+                                                    
+                                for (let i = 0; i < childList.length; i++) {
+                                    if (childList[i].classList.contains("black-tag")) {
+                                        childList[i].classList.remove("black-tag");
+                                    }
+                                }
+
+                                this.classList.add("black-tag");
 
                                 btnView.style.display = "none";
                                 contain.style.display = "none";
+
+                                const all = document.querySelector(".all-tag");
+                                all.classList.remove("black-tag")
+                                all.classList.add("ocean-tag")
 
                                 postExplore.innerHTML += `<a class="article-wrap" href="detail.html?id=${result.id}">
                                                         <article>
@@ -277,8 +286,6 @@ function sort(tagResponse, urlResponse, media) {
                                                         <ul class="tags" id="explore-tags">${list.join("")}</ul>
                                                         </article>
                                                         </a>`
-
-                                filterName.innerHTML = `<h2>${inner}</h2>`
                             }
 
                             let imgAlt = document.querySelectorAll(".img");
@@ -294,11 +301,16 @@ function sort(tagResponse, urlResponse, media) {
                     })
                 }
             })
-            
             if(this.innerText === "All") {
                 contain.style.display = "block";
                 btnView.style.display = "block";
-                filterName.innerHTML = "";
+
+                const childClasses = Array.from(childList);
+
+                childClasses.forEach(c => {
+                    c.classList.remove("black-tag");
+                    this.classList.add("black-tag");
+                })
             }
             
         })
@@ -346,41 +358,3 @@ btnView.addEventListener("click", toggleContent);
 //         })
 //     });
 // };
-
-// function createTags(urlResponse, tagResponse) {
-//     const ul = document.querySelectorAll(".tagged");
-
-//     urlResponse.forEach(result => {
-//         let tagged = result.tags;
-
-//         tagResponse.filter(e => {
-//             tagged.filter(t => {
-//                 console.log(t)
-//                 if (e.id === t && e.name === "Asia" || e.id === t && e.name === "Adventure" || e.id === t && e.name === "Landscapes") {
-//                     list.push(`<li class="tag purple-tag">${e.name}</li>`)
-//                 }
-            
-//                 if (e.id === t && e.name === "Culture" || e.id === t && e.name === "Animals" || e.id === t && e.name === "America") {
-//                     list.push(`<li class="tag sand-tag">${e.name}</li>`)
-//                 }
-        
-//                 if (e.id === t && e.name === "Nature" || e.id === t && e.name === "Wildlife") {
-//                     list.push(`<li class="tag green-tag">${e.name}</li>`)
-//                 }
-        
-//                 if (e.id === t && e.name === "Europe" || e.id === t && e.name === "Beliefs" ) {
-//                     list.push(`<li class="tag blue-tag">${e.name}</li>`)
-//                 }
-        
-//                 if (e.id === t && e.name === "Oceania" || e.id === t && e.name === "Traditions" || e.id === t && e.name === "Africa") {
-//                     list.push(`<li class="tag peach-tag">${e.name}</li>`)
-//                 }
-//             })
-//         })
-
-//     })
-
-//     ul.forEach(listItem => {
-//         listItem.innerHTML = list.join("");
-//     })
-// }
