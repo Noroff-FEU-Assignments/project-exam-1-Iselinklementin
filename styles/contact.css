@@ -159,7 +159,7 @@ h2 {
     display: none;
 }
 
-@media only screen and (min-width: 870px) {
+@media only screen and (min-width: 700px) {
 
     h1 {
         max-width: 500px;
@@ -209,5 +209,50 @@ h2 {
 
     .bottom {
         margin-top: 3rem;
+    }
+
+    .success {
+        width: 100%;
+    }
+
+    .confirmed {
+        margin-top: 2rem;
+    }
+
+    /* ADD CLASSES ONCLICK */
+
+    .desktop-wrap-success {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        max-width: 1920px;
+    }
+
+    .message-picture-success {
+        background-size: cover;
+        height: 450px;
+    }
+
+    .success-success {
+        flex-direction: row;
+        padding-bottom: 0;
+    }
+
+    .confirmed-success {
+        justify-content: center;
+        min-width: 400px;
+    }
+
+    .success-h2 {
+        font-size: 2rem;
+    }
+
+    .success-ingress {
+        margin-bottom: 2rem;
+        font-size: 1rem;
+    }
+
+    .home-success {
+        margin-bottom: 2rem;
     }
 }

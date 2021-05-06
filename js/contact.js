@@ -73,6 +73,13 @@ function defineError() {
     }
 };
 
+const desktopWrap = document.querySelector(".desktop-wrap");
+const picture = document.querySelector(".message-picture");
+const h2 = document.querySelector(".success-header");
+const ingress = document.querySelector(".success-ing");
+const homeBtn = document.querySelector(".home");
+const confirmed = document.querySelector(".confirmed");
+
 function submitForm(event) {
     event.preventDefault();
 
@@ -90,8 +97,15 @@ function submitForm(event) {
         subjectError.firstChild.classList = "";
         messageError.firstChild.classList = "";
         
-        if(desktop.style.display = "flex") {
+        if(window.screen.width > 699) {
             desktop.style.display = "none";
+            confirmed.classList.add("confirmed-success");
+            h2.classList.add("success-h2");
+            desktopWrap.classList.add("desktop-wrap-success");
+            picture.classList.add("message-picture-success");
+            success.classList.add("success-success");
+            ingress.classList.add("success-ingress");
+            homeBtn.classList.add("home-success");
         }
 
     } else {
