@@ -12,7 +12,14 @@ function getApi () {
         let tagResponse = finalValue[1];
         let media = finalValue[2];
 
-        createArticles(urlResponse, tagResponse, media);
+        // if (window.innerWidth > 700) {
+        //     createPostMobile(urlResponse, tagResponse)
+        // } 
+        
+        // if (window.innerWidth < 700) {
+            createArticles(urlResponse, tagResponse, media);        
+        // }
+
         sort(tagResponse, urlResponse, media);
     })
 }   catch (error) {
@@ -43,6 +50,7 @@ function createArticles(urlResponse, tagResponse, media) {
     let heading = result.acf.place;
     let resultImg = result.acf.heading_img.url;
 
+
     headPost.innerHTML += `<a href="detail.html?id=${result.id}">
                             <div class="heading-wrap">
                             <p class="head-post-para">${introText}</p>
@@ -53,7 +61,7 @@ function createArticles(urlResponse, tagResponse, media) {
                             <figcaption class="figcap">${result.content.rendered}</figcaption>
                             <figure>
                             </a>`
-
+    
     const splitted = urlResponse.slice(1, 3);
 
     for (let i = 0; i < splitted.length; i++) {
@@ -213,15 +221,13 @@ function createArticles(urlResponse, tagResponse, media) {
     })
 };
 
-
-// ${result[0].acf.heading_img.url}
-// ${altTextFunc()}
-
 const tag = document.querySelectorAll(".tag");
 
 function sort(tagResponse, urlResponse, media) {
     tag.forEach(btn => {
         btn.addEventListener("click", function() {
+            let count = 0;
+            
             const liWrap = document.querySelector(".ul-list")
             const childList = liWrap.children;
             postExplore.innerHTML = "";
@@ -286,6 +292,15 @@ function sort(tagResponse, urlResponse, media) {
                                                         <ul class="tags" id="explore-tags">${list.join("")}</ul>
                                                         </article>
                                                         </a>`
+
+                                for (let i = 0; i < 5; i++) {
+                                    count++
+
+                                    if (count === 15 || count === 20) {
+                                        postExplore.lastElementChild.classList.add("wide-post");
+                                    }
+                                }
+                                
                             }
 
                             let imgAlt = document.querySelectorAll(".img");
@@ -357,4 +372,72 @@ btnView.addEventListener("click", toggleContent);
 //             }
 //         })
 //     });
+// };
+
+
+/////
+
+// const headerDesktop = document.querySelector(".desktop-header-wrap");
+// const middleDesktop = document.querySelector(".desktop-middle-wrap");
+// const hiddenDesktop = document.querySelector(".desktop-hidden-wrap");
+
+// function createPostMobile(urlResponse, tagResponse) {
+//     let sourceUrl = [];
+//     // Fetch posts: index 1 - 5 //
+//    const blogposts = urlResponse.slice(0, 5);
+//    let altText = sourceUrl.slice(0, 5);
+
+//    for (let i = 0; i < blogposts.length; i++) {
+//        let tagged = blogposts[i].tags;
+//        let blog = blogposts[i];
+//        let list = [];
+//        let blogImg = blog.acf.heading_img.url;
+
+//        function altTextFunc() {
+//            for (let i = 0; i < altText.length; i++) {
+//                if(altText[i].url === blogImg) {
+//                    return altText[i].text;
+//                }
+//            }
+//        };
+
+//        // Filter post-tags & get name //
+
+//        tagged.filter(t => {
+//            tagResponse.forEach(e => {
+//                if (e.id === t && e.name === "Asia" || e.id === t && e.name === "Adventure" || e.id === t && e.name === "Landscapes") {
+//                    list.push(`<li class="tag purple-tag">${e.name}</li>`)
+//                }
+               
+//                if (e.id === t && e.name === "Culture" || e.id === t && e.name === "Animals" || e.id === t && e.name === "America") {
+//                    list.push(`<li class="tag sand-tag">${e.name}</li>`)
+//                }
+       
+//                if (e.id === t && e.name === "Nature" || e.id === t && e.name === "Africa") {
+//                    list.push(`<li class="tag green-tag">${e.name}</li>`)
+//                }
+       
+//                if (e.id === t && e.name === "Europe" || e.id === t && e.name === "Beliefs" ) {
+//                    list.push(`<li class="tag blue-tag">${e.name}</li>`)
+//                }
+       
+//                if (e.id === t && e.name === "Oceania" || e.id === t && e.name === "Traditions") {
+//                    list.push(`<li class="tag peach-tag">${e.name}</li>`)
+//                }
+//            })
+//        });
+
+//        headerDesktop.innerHTML  += `<a class="article-wrap" href="detail.html?id=${blog.id}">
+//                            <article>
+//                            <img src="${blogImg}" alt="${altTextFunc()}" class="post-img">
+//                            <div class="post-text">
+//                            <h3>${blog.title.rendered}</h3>
+//                            ${blog.content.rendered}
+//                            </div>
+//                            <ul class="tags">${list.join("")}</ul>
+//                            </article>
+//                            </a>`
+
+//         // headerDesktop.insertAdjacentHTML("afterbegin", createHtml);
+//        }
 // };

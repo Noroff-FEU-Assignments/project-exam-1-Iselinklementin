@@ -176,7 +176,7 @@ button {
 .wrap-two-posts-hidden img,
 .wrap-two-posts-middle img {
     width: 100%;
-    min-height: 220px;
+    min-height: 290px;
     object-fit: cover;
 }
 
@@ -185,6 +185,7 @@ button {
 .wrap-two-posts-middle a {
     display: flex;
     flex-direction: column;
+    max-width: 280px;
 }
 
 .blog-top {
@@ -231,3 +232,56 @@ figure {
 .show {
     display: flex;
 }
+
+@media only screen and (min-width: 680px) {
+
+    .intro,
+    .tags-header {
+        width: 550px;
+        margin: auto;
+    }
+
+    .head-post {
+        width: 90%;
+        max-width: 1000px;
+    }
+
+    .wrap-two-posts,
+    .wrap-two-posts-hidden,
+    .wrap-two-posts-middle {
+        width: 90%;
+        max-width: 1000px;
+        margin: auto;
+        justify-content: space-between;
+        padding: 0;
+    }
+
+    .filter-wrap {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 1rem;
+        justify-content: space-evenly;
+        align-items: stretch;
+    }
+
+    .article-wrap {
+        flex: 1;
+        margin: 5px;
+        min-width: 45%;
+        margin: 1rem 1rem 2rem 1rem;
+    }
+
+    .post-img {
+        height: 200px;
+        max-height: 400px;
+        object-fit: cover;
+    }
+
+    .wide-post .post-img {
+        height: 350px;
+    }
+}
+
+
+/* TEST */
