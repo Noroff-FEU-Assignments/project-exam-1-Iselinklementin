@@ -33,18 +33,6 @@ body {
     top: 0;
 }
 
-.logo {
-    position: absolute;
-    /* top: -10px; */
-    top: -65%;
-    left: 0;
-    width: 30px;
-}
-
-.desktop-logo {
-    display: none;
-}
-
 nav,
 nav a {
     position: relative;
@@ -102,6 +90,10 @@ nav ul {
     width: 20px;
 }
 
+.logo {
+    height: 44px;
+}
+
 .scrolled {
     position: fixed;
     top: 0;
@@ -118,11 +110,11 @@ nav ul {
 
 .logo-onscroll {
     width: 20px;
-    top: -1px;
+    top: -20px;
 }
 
 .ul-onscroll {
-    padding-top: 0;
+    margin-top: -1rem;
 }
 
 /* ARTICLES */
@@ -521,15 +513,22 @@ footer ul a:hover {
 }
 
 @media only screen and (min-width: 680px) {
-    .logo {
+    /* .logo {
         display: none;
-    }
+    } */
+
+    /* nav ul {
+        padding-right: 6.2rem;
+    } */
 
     .desktop-logo {
-        display: block;
         width: 120px;
-        position: absolute;
-        left: -100px;
-        top: -1px;
     }
 }
+
+/* 
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .logo {
+        top: -34px;
+    }
+} */

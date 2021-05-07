@@ -3,7 +3,7 @@
     background-repeat: no-repeat;
     height: 480px;
     background-position: 80%;
-    margin-top: -5rem;
+    margin-top: -6.3rem;
     background-size: cover;
 }
 
@@ -377,7 +377,7 @@ h3 {
     }
 }
 
-@media only screen and (min-width: 680px) {
+@media only screen and (min-width: 699px) {
 
     .header {
         height: 600px;
@@ -385,10 +385,9 @@ h3 {
 
     .intro {
         margin-top: 10.2rem;
-        /* border: red solid thin; */
         text-align: left;
         width: 80%;
-        padding-left: 20%;
+        padding-left: 10%;
     }
 
     h1 {
