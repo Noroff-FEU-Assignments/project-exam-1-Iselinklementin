@@ -10,7 +10,7 @@ function handleScroll() {
         logo.classList.add("logo-onscroll");
         navUl.classList.add("ul-onscroll");
 
-        let child = navUl.children[3];
+        let child = navUl.children[2];
 
         if (child.firstChild.classList.contains("details")) {
             nav.classList.add("detail-scrolled");
