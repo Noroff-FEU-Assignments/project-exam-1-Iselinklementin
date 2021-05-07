@@ -117,6 +117,6 @@ function submitForm(event) {
 btn.addEventListener("click", defineError);
 btn.addEventListener("click", submitForm);
 
-newMessage.addEventListener("click", function(event) {
+newMessage.addEventListener("click", function() {
     reload()   
 })

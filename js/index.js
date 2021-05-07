@@ -244,3 +244,30 @@ function createPost(urlResponse, tagResponse) {
 //     month: "long",
 //     year: "numeric",
 // });
+
+
+// let navbar = document.querySelector("nav");
+// // let sticky = navbar.offsetTop;
+// let stick = 210;
+
+
+// function stickNav() {
+//     if (window.pageXOffset = stick) {
+//         navbar.classList.add("sticky");
+//     } else {
+//         navbar.classList.remove("sticky")
+//     }
+// }
+
+// window.onscroll = function() {
+//     stickNav()
+// };
+
+// window.onscroll = function() {
+//     console.log(getYPosition())
+// }
+
+// function getYPosition(){
+//     var top  = window.pageYOffset || document.documentElement.scrollTop
+//     return top;
+//   }

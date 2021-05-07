@@ -377,7 +377,7 @@ h3 {
     }
 }
 
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 680px) {
 
     .header {
         height: 600px;
@@ -388,7 +388,7 @@ h3 {
         /* border: red solid thin; */
         text-align: left;
         width: 80%;
-        padding-left: 30%;
+        padding-left: 20%;
     }
 
     h1 {
@@ -407,5 +407,11 @@ h3 {
 
     .line-three {
         padding-left: 60px;
+    }
+}
+
+@media only screen and (min-width: 750px) {
+    .intro {
+        padding-left: 30%;
     }
 }

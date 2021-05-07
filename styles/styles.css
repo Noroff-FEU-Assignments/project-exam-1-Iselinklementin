@@ -90,7 +90,7 @@ nav ul {
     display: inline-block;
     position: absolute;
     left: 0;
-    top: 9px;
+    top: 4px;
     content: "";
     border-bottom: 2px solid var(--sand);
     width: 100%;
@@ -99,6 +99,29 @@ nav ul {
 
 .search {
     width: 20px;
+}
+
+.scrolled {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.89);
+    transition: ease 0.8s;
+    height: 50px;
+    box-shadow: rgba(0, 0, 0, 0.082) 1px 2px 1px 1px;
+}
+
+.detail-scrolled {
+    background-color: rgba(0, 0, 0, 0.842);
+}
+
+.logo-onscroll {
+    width: 20px;
+    top: -1px;
+}
+
+.ul-onscroll {
+    padding-top: 0;
 }
 
 /* ARTICLES */
@@ -496,30 +519,16 @@ footer ul a:hover {
     color: var(--sand);
 }
 
-@media only screen and (min-width: 580px) {
-    .logo {
-        top: -10px;
-        left: 30px
-    }
-}
-
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 680px) {
     .logo {
         display: none;
     }
 
     .desktop-logo {
         display: block;
-        width: 150px;
+        width: 120px;
         position: absolute;
-        left: -120px;
-        top: -5px;
-    }
-
-    nav ul {
-        justify-content: space-between;
-        max-width: 60%;
-        margin: auto;
-        padding-top: 2rem;
+        left: -100px;
+        top: -1px;
     }
 }
