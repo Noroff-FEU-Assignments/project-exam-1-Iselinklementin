@@ -22,6 +22,7 @@ function getApi () {
 
 getApi();
 
+
 let sourceUrl = [];
 
 function imageAlt(urlResponse, media) {
@@ -178,16 +179,16 @@ initializeTime('clockdiv', deadline);
 const posts = document.querySelector(".post-container");
 
 function createPost(urlResponse, tagResponse) {
-
      // Fetch posts: index 3 - 6 //
     const blogposts = urlResponse.slice(3, 7);
     let altText = sourceUrl.slice(3, 7);
 
     for (let i = 0; i < blogposts.length; i++) {
+     
         let tagged = blogposts[i].tags;
         let blog = blogposts[i];
-        let list = [];
         let blogImg = blog.acf.heading_img.url;
+        let list = [];
 
         function altTextFunc() {
             for (let i = 0; i < altText.length; i++) {
@@ -201,23 +202,25 @@ function createPost(urlResponse, tagResponse) {
 
         tagged.filter(t => {
             tagResponse.forEach(e => {
-                if (e.id === t && e.name === "Asia" || e.id === t && e.name === "Adventure" || e.id === t && e.name === "Landscapes") {
+                let checkID = e.id === t;
+            
+                if (checkID && ["Asia", "Adventure", "Landscapes"].includes(e.name)) {
                     list.push(`<li class="tag purple-tag">${e.name}</li>`)
                 }
                 
-                if (e.id === t && e.name === "Culture" || e.id === t && e.name === "Animals" || e.id === t && e.name === "America") {
-                    list.push(`<li class="tag sand-tag">${e.name}</li>`)
-                }
-        
-                if (e.id === t && e.name === "Nature" || e.id === t && e.name === "Africa") {
+                if (checkID && ["Nature", "Africa"].includes(e.name)) {
                     list.push(`<li class="tag green-tag">${e.name}</li>`)
                 }
         
-                if (e.id === t && e.name === "Europe" || e.id === t && e.name === "Beliefs" ) {
+                if (checkID && ["Culture", "Animals", "America"].includes(e.name)) {
+                    list.push(`<li class="tag sand-tag">${e.name}</li>`)
+                }
+        
+                if (checkID && ["Europe", "Beliefs"].includes(e.name)) {
                     list.push(`<li class="tag blue-tag">${e.name}</li>`)
                 }
         
-                if (e.id === t && e.name === "Oceania" || e.id === t && e.name === "Traditions") {
+                if (checkID && ["Oceania", "Traditions"].includes(e.name)) {
                     list.push(`<li class="tag peach-tag">${e.name}</li>`)
                 }
             })
@@ -235,8 +238,10 @@ function createPost(urlResponse, tagResponse) {
                             </a>`
 
         posts.insertAdjacentHTML("afterbegin", createHtml);
+        console.log(list)
         }
 };
+
 
 // Comments-section date
 // const formatDate = new Date(data.date).toLocaleString("en-GB", {
@@ -246,28 +251,31 @@ function createPost(urlResponse, tagResponse) {
 // });
 
 
-// let navbar = document.querySelector("nav");
-// // let sticky = navbar.offsetTop;
-// let stick = 210;
-
-
-// function stickNav() {
-//     if (window.pageXOffset = stick) {
-//         navbar.classList.add("sticky");
-//     } else {
-//         navbar.classList.remove("sticky")
-//     }
+// function tagStyle(tagResponse, urlResponse) {
+//     urlResponse.filter(t => {
+//         tagResponse.forEach(e => {
+//             // console.log(e)
+//             let checkID = e.id === t.tags;
+        
+//             if (checkID && ["Asia", "Adventure", "Landscapes"].includes(e.name)) {
+//                 list.push(`<li class="tag purple-tag">${e.name}</li>`)
+//             }
+            
+//             if (checkID && ["Nature", "Africa"].includes(e.name)) {
+//                 list.push(`<li class="tag green-tag">${e.name}</li>`)
+//             }
+    
+//             if (checkID && ["Culture", "Animals", "America"].includes(e.name)) {
+//                 list.push(`<li class="tag sand-tag">${e.name}</li>`)
+//             }
+    
+//             if (checkID && ["Europe", "Beliefs"].includes(e.name)) {
+//                 list.push(`<li class="tag blue-tag">${e.name}</li>`)
+//             }
+    
+//             if (checkID && ["Oceania", "Traditions"].includes(e.name)) {
+//                 list.push(`<li class="tag peach-tag">${e.name}</li>`)
+//             }
+//         })
+//     });
 // }
-
-// window.onscroll = function() {
-//     stickNav()
-// };
-
-// window.onscroll = function() {
-//     console.log(getYPosition())
-// }
-
-// function getYPosition(){
-//     var top  = window.pageYOffset || document.documentElement.scrollTop
-//     return top;
-//   }

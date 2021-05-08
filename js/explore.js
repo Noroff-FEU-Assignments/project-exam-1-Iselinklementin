@@ -8,19 +8,13 @@ function getApi () {
     Promise.all([urlPost, urlTag, urlMedia])
     .then(values => Promise.all(values.map(value => value.json())))
     .then(finalValue => {
-        let urlResponse = finalValue[0];
-        let tagResponse = finalValue[1];
+        let place = finalValue[0];
+        let tags = finalValue[1];
         let media = finalValue[2];
 
-        // if (window.innerWidth > 700) {
-        //     createPostMobile(urlResponse, tagResponse)
-        // } 
-        
-        // if (window.innerWidth < 700) {
-            createArticles(urlResponse, tagResponse, media);        
-        // }
+        createPosts(place, tags, media);
+        filterByTag(tags, place, media);
 
-        sort(tagResponse, urlResponse, media);
     })
 }   catch (error) {
         console.error(error);
@@ -29,176 +23,90 @@ function getApi () {
 
 getApi();
 
-const contain = document.getElementById("container");
-const postExplore = document.querySelector(".post-container");
-const headPost = document.querySelector(".head-post");
-const standardPosts = document.querySelector(".posts-standard");
-const standardPostsBottom = document.querySelector(".posts-standard-hidden");
-const bottomSplit = document.querySelector(".wrap-two-posts-hidden");
-const middleSplit = document.querySelector(".wrap-two-posts-middle");
+const topPost = document.querySelector(".head-post");
 const split = document.querySelector(".wrap-two-posts");
+const middleSplit = document.querySelector(".wrap-two-posts-middle");
+const standardPosts = document.querySelector(".posts-standard");
+const showMoreSplit = document.querySelector(".wrap-two-posts-hidden");
+const showMorestandardPosts = document.querySelector(".posts-standard-hidden");
 const btnView = document.querySelector("button");
-const filterName = document.querySelector(".filter-name");
+const contain = document.getElementById("container");
 
-function createArticles(urlResponse, tagResponse, media) {
+console.log(topPost, split, standardPosts)
 
-    let result = urlResponse[0];
-    let text = result.title.rendered;
+function createPosts(place, tags, media) {
+    
+    const introPost = place[0];
+    let text = introPost.title.rendered;
     let textSplit = text.split(1);
     let introText = textSplit[2].replace("; ", "");
-
-    let heading = result.acf.place;
-    let resultImg = result.acf.heading_img.url;
+    let introPostImg = introPost.acf.heading_img.url;
 
 
-    headPost.innerHTML += `<a href="detail.html?id=${result.id}">
+    topPost.innerHTML += `<a href="detail.html?id=${introPost.id}">
                             <div class="heading-wrap">
                             <p class="head-post-para">${introText}</p>
-                            <h3 class="h3-overlay">${heading}</h3>
+                            <h3 class="h3-overlay">${introPost.acf.place}</h3>
                             </div>
                             <figure class="head-post-fig">
-                            <img src="${resultImg}" alt="" class="head-post-img img">
-                            <figcaption class="figcap">${result.content.rendered}</figcaption>
+                            <img src="${introPostImg}" alt="" class="head-post-img img">
+                            <figcaption class="figcap">${introPost.content.rendered}</figcaption>
                             <figure>
                             </a>`
     
-    const splitted = urlResponse.slice(1, 3);
+    const splitPostsTop = place.slice(1, 3);
 
-    for (let i = 0; i < splitted.length; i++) {
-        
-        split.innerHTML += `<article class="blog-top">
-                            <a href="detail.html?id=${splitted[i].id}">
-                            <figure>
-                            <img src="${splitted[i].acf.heading_img.url}" alt="" class="img">
-                            </figure>
-                            <div class="split-content">
-                            ${splitted[i].content.rendered}
-                            <p class="paragraph">Explore</p>
-                            <h3>${splitted[i].acf.place}</h3>
-                            </div>
-                            </a>
-                            </article>`
-    }
+    for (let i = 0; i < splitPostsTop.length; i++) {
+                                
+    split.innerHTML += `<article class="blog-top">
+                        <a href="detail.html?id=${splitPostsTop[i].id}">
+                        <figure>
+                        <img src="${splitPostsTop[i].acf.heading_img.url}" alt="" class="img">
+                        </figure>
+                        <div class="split-content">
+                        ${splitPostsTop[i].content.rendered}
+                        <p class="paragraph">Explore</p>
+                        <h3>${splitPostsTop[i].acf.place}</h3>
+                        </div>
+                        </a>
+                        </article>`
+    }                 
 
-    const standardBlog = urlResponse.slice(3, 6);
+    const standardBlogLayout = place.slice(3, 6);
 
-        for(let i = 0; i < standardBlog.length; i++) {
-    
-            let post = standardBlog[i];
-            let list = [];
+    for(let i = 0; i < standardBlogLayout.length; i++) {
 
-            post.tags.filter(t => {
-                tagResponse.forEach(e => {
-        
-                    if (e.id === t && e.name === "Asia" || e.id === t && e.name === "Adventure" || e.id === t && e.name === "Landscapes") {
-                        list.push(`<li class="tag purple-tag">${e.name}</li>`)
-                    }
-                    
-                    if (e.id === t && e.name === "Culture" || e.id === t && e.name === "Animals" || e.id === t && e.name === "America") {
-                        list.push(`<li class="tag sand-tag">${e.name}</li>`)
-                    }
-            
-                    if (e.id === t && e.name === "Nature" || e.id === t && e.name === "Africa") {
-                        list.push(`<li class="tag green-tag">${e.name}</li>`)
-                    }
-            
-                    if (e.id === t && e.name === "Europe" || e.id === t && e.name === "Beliefs" ) {
-                        list.push(`<li class="tag blue-tag">${e.name}</li>`)
-                    }
-            
-                    if (e.id === t && e.name === "Oceania" || e.id === t && e.name === "Traditions") {
-                        list.push(`<li class="tag peach-tag">${e.name}</li>`)
-                    }
-                })
-            });
-
-            standardPosts.innerHTML += `<a class="article-wrap" href="detail.html?id=${post.id}">
-                                        <article>
-                                        <img src="${post.acf.heading_img.url}" alt="" class="post-img img">
-                                        <div class="post-text">
-                                        <h3>${post.title.rendered}</h3>
-                                        ${post.content.rendered}
-                                        </div>
-                                        <ul class="tags" id="explore-tags">${list.join("")}</ul>
-                                        </article>
-                                        </a>`
-        }
-
-    const sliceMiddle = urlResponse.slice(6, 8);
-
-    for (let i = 0; i < sliceMiddle.length; i++) {
-
-        let middlepost = sliceMiddle[i];
-
-        middleSplit.innerHTML += `<article class="blog-top">
-                            <a href="detail.html?id=${middlepost.id}">
-                            <figure>
-                            <img src="${middlepost.acf.heading_img.url}" alt="" class="img">
-                            </figure>
-                            <div class="split-content">
-                            ${middlepost.content.rendered}
-                            <p class="paragraph">Explore</p>
-                            <h3>${middlepost.acf.place}</h3>
-                            </div>
-                            </a>
-                            </article>`
-
-    }
-
-    const blogBottom = urlResponse.slice(8, 10);
-
-    for(let i = 0; i < blogBottom.length; i++) {
-
-        let blog = blogBottom[i];
-        
-        bottomSplit.innerHTML += `<article class="blog-top">
-                                <a href="detail.html?id=${blog.id}">
-                                <figure>
-                                <img src="${blog.acf.heading_img.url}" alt="" class="img">
-                                </figure>
-                                <div class="split-content">
-                                ${blog.content.rendered}
-                                <p class="paragraph">Explore</p>
-                                <h3>${blog.acf.place}</h3>
-                                </div>
-                                </a>
-                                </article>`
-    }
-
-    const standBlog = urlResponse.slice(10, 12);
-
-    for(let i = 0; i < standBlog.length; i++) {
-        
-        let post = standBlog[i];
+        const post = standardBlogLayout[i];
         let list = [];
 
         post.tags.filter(t => {
-            tagResponse.forEach(e => {
-    
-                if (e.id === t && e.name === "Asia" || e.id === t && e.name === "Adventure" || e.id === t && e.name === "Landscapes") {
+            tags.forEach(e => {
+        
+                let checkID = e.id === t;
+        
+                if (checkID && ["Asia", "Adventure", "Landscapes"].includes(e.name)) {
                     list.push(`<li class="tag purple-tag">${e.name}</li>`)
                 }
                 
-                if (e.id === t && e.name === "Culture" || e.id === t && e.name === "Animals" || e.id === t && e.name === "America") {
-                    list.push(`<li class="tag sand-tag">${e.name}</li>`)
-                }
-        
-                if (e.id === t && e.name === "Nature" || e.id === t && e.name === "Africa") {
+                if (checkID && ["Nature", "Africa"].includes(e.name)) {
                     list.push(`<li class="tag green-tag">${e.name}</li>`)
                 }
         
-                if (e.id === t && e.name === "Europe" || e.id === t && e.name === "Beliefs" ) {
+                if (checkID && ["Culture", "Animals", "America"].includes(e.name)) {
+                    list.push(`<li class="tag sand-tag">${e.name}</li>`)
+                }
+        
+                if (checkID && ["Europe", "Beliefs"].includes(e.name)) {
                     list.push(`<li class="tag blue-tag">${e.name}</li>`)
                 }
         
-                if (e.id === t && e.name === "Oceania" || e.id === t && e.name === "Traditions") {
+                if (checkID && ["Oceania", "Traditions"].includes(e.name)) {
                     list.push(`<li class="tag peach-tag">${e.name}</li>`)
                 }
             })
         });
-        
 
-        standardPostsBottom.innerHTML += `<a class="article-wrap" href="detail.html?id=${post.id}">
+        standardPosts.innerHTML += `<a class="article-wrap" href="detail.html?id=${post.id}">
                                     <article>
                                     <img src="${post.acf.heading_img.url}" alt="" class="post-img img">
                                     <div class="post-text">
@@ -210,234 +118,231 @@ function createArticles(urlResponse, tagResponse, media) {
                                     </a>`
     }
 
-    let imgAlt = document.querySelectorAll(".img");
+    const sliceMiddle = place.slice(6, 8);
 
-    media.filter(mediaAlt => {
-        imgAlt.forEach(img => {
-            if(mediaAlt.source_url === img.src) {
-                 img.alt = mediaAlt.alt_text;
+    for (let i = 0; i < sliceMiddle.length; i++) {
+
+        let splitPostsMiddle = sliceMiddle[i];
+
+        middleSplit.innerHTML += `<article class="blog-top">
+                            <a href="detail.html?id=${splitPostsMiddle.id}">
+                            <figure>
+                            <img src="${splitPostsMiddle.acf.heading_img.url}" alt="" class="img">
+                            </figure>
+                            <div class="split-content">
+                            ${splitPostsMiddle.content.rendered}
+                            <p class="paragraph">Explore</p>
+                            <h3>${splitPostsMiddle.acf.place}</h3>
+                            </div>
+                            </a>
+                            </article>`
+
+    }
+
+    const blogSplitBottom = place.slice(8, 10);
+
+    for(let i = 0; i < blogSplitBottom.length; i++) {
+
+        let bottomSplit = blogSplitBottom[i];
+        
+        showMoreSplit.innerHTML += `<article class="blog-top">
+                                <a href="detail.html?id=${bottomSplit.id}">
+                                <figure>
+                                <img src="${bottomSplit.acf.heading_img.url}" alt="" class="img">
+                                </figure>
+                                <div class="split-content">
+                                ${bottomSplit.content.rendered}
+                                <p class="paragraph">Explore</p>
+                                <h3>${bottomSplit.acf.place}</h3>
+                                </div>
+                                </a>
+                                </article>`
+    }
+
+    const ShowStandardPosts = place.slice(10, 12);
+
+    for(let i = 0; i < ShowStandardPosts.length; i++) {
+        
+        const showMorePosts = ShowStandardPosts[i];
+        let list = [];
+
+        showMorePosts.tags.filter(t => {
+            tags.forEach(e => {
+    
+                let checkID = e.id === t;
+
+                if (checkID && ["Asia", "Adventure", "Landscapes"].includes(e.name)) {
+                    list.push(`<li class="tag purple-tag">${e.name}</li>`)
+                }
+                
+                if (checkID && ["Nature", "Africa"].includes(e.name)) {
+                    list.push(`<li class="tag green-tag">${e.name}</li>`)
+                }
+
+                if (checkID && ["Culture", "Animals", "America"].includes(e.name)) {
+                    list.push(`<li class="tag sand-tag">${e.name}</li>`)
+                }
+
+                if (checkID && ["Europe", "Beliefs"].includes(e.name)) {
+                    list.push(`<li class="tag blue-tag">${e.name}</li>`)
+                }
+
+                if (checkID && ["Oceania", "Traditions"].includes(e.name)) {
+                    list.push(`<li class="tag peach-tag">${e.name}</li>`)
+                }
+            })
+        });
+        
+
+        showMorestandardPosts.innerHTML += `<a class="article-wrap" href="detail.html?id=${showMorePosts.id}">
+                                        <article>
+                                        <img src="${showMorePosts.acf.heading_img.url}" alt="" class="post-img img">
+                                        <div class="post-text">
+                                        <h3>${showMorePosts.title.rendered}</h3>
+                                        ${showMorePosts.content.rendered}
+                                        </div>
+                                        <ul class="tags" id="explore-tags">${list.join("")}</ul>
+                                        </article>
+                                        </a>`
+
+    }
+
+    const images = document.querySelectorAll(".img");
+
+    media.filter(m => {
+        images.forEach(img => {
+            if (m.source_url === img.src) {
+                img.alt = m.alt_text;
             }
         })
     })
 };
 
-const tag = document.querySelectorAll(".tag");
 
-function sort(tagResponse, urlResponse, media) {
+const tag = document.querySelectorAll(".tag");
+const showPostsFiltered = document.querySelector(".post-container");
+
+
+function filterByTag(tags, place, media) {
     tag.forEach(btn => {
         btn.addEventListener("click", function() {
+
+            const listContainer = document.querySelector(".ul-list");
+            const childList = listContainer.children;
+            showPostsFiltered.innerHTML = "";
+
             let count = 0;
-            
-            const liWrap = document.querySelector(".ul-list")
-            const childList = liWrap.children;
-            postExplore.innerHTML = "";
+            let nameOfTag = this.innerText;
 
-            let inner = this.innerText;
-            tagResponse.filter(n => {
-                if (n.name === inner) {
-                    urlResponse.forEach(result => {
-                        result.tags.forEach(t => {
-                            if(t === n.id) {
-                                let resultImg = result.acf.heading_img.url;
-
+            tags.filter(getTag => {
+                if (getTag.name === nameOfTag) {
+                    place.forEach(placeResults => {
+                        placeResults.tags.forEach(tagID => {
+                            if(tagID === getTag.id) {
+                                
+                                let resultImg = placeResults.acf.heading_img.url;
                                 let list = [];
 
-                                result.tags.filter(t => {
-                                    tagResponse.forEach(e => {
-                            
-                                        if (e.id === t && e.name === "Asia" || e.id === t && e.name === "Adventure" || e.id === t && e.name === "Landscapes") {
-                                            list.push(`<li class="tag purple-tag">${e.name}</li>`)
+                                placeResults.tags.filter(placeTagID => {
+                                    tags.forEach(tagsID => {
+
+                                        let checkID = tagsID.id === placeTagID;
+
+                                        if (checkID && ["Asia", "Adventure", "Landscapes"].includes(tagsID.name)) {
+                                            list.push(`<li class="tag purple-tag">${tagsID.name}</li>`)
                                         }
                                         
-                                        if (e.id === t && e.name === "Culture" || e.id === t && e.name === "Animals" || e.id === t && e.name === "America") {
-                                            list.push(`<li class="tag sand-tag">${e.name}</li>`)
+                                        if (checkID && ["Nature", "Africa"].includes(tagsID.name)) {
+                                            list.push(`<li class="tag green-tag">${tagsID.name}</li>`)
                                         }
-                                
-                                        if (e.id === t && e.name === "Nature" || e.id === t && e.name === "Africa") {
-                                            list.push(`<li class="tag green-tag">${e.name}</li>`)
+
+                                        if (checkID && ["Culture", "Animals", "America"].includes(tagsID.name)) {
+                                            list.push(`<li class="tag sand-tag">${tagsID.name}</li>`)
                                         }
-                                
-                                        if (e.id === t && e.name === "Europe" || e.id === t && e.name === "Beliefs" ) {
-                                            list.push(`<li class="tag blue-tag">${e.name}</li>`)
+
+                                        if (checkID && ["Europe", "Beliefs"].includes(tagsID.name)) {
+                                            list.push(`<li class="tag blue-tag">${tagsID.name}</li>`)
                                         }
-                                
-                                        if (e.id === t && e.name === "Oceania" || e.id === t && e.name === "Traditions") {
-                                            list.push(`<li class="tag peach-tag">${e.name}</li>`)
+
+                                        if (checkID && ["Oceania", "Traditions"].includes(tagsID.name)) {
+                                            list.push(`<li class="tag peach-tag">${tagsID.name}</li>`)
                                         }
                                     })
                                 });
-                                                    
+
                                 for (let i = 0; i < childList.length; i++) {
                                     if (childList[i].classList.contains("black-tag")) {
                                         childList[i].classList.remove("black-tag");
                                     }
                                 }
 
-                                this.classList.add("black-tag");
-
-                                btnView.style.display = "none";
-                                contain.style.display = "none";
-
                                 const all = document.querySelector(".all-tag");
                                 all.classList.remove("black-tag")
                                 all.classList.add("ocean-tag")
+                                this.classList.add("black-tag");
+                                btnView.style.display = "none";
+                                contain.style.display = "none";
 
-                                postExplore.innerHTML += `<a class="article-wrap" href="detail.html?id=${result.id}">
-                                                        <article>
-                                                        <img src="${resultImg}" alt="" class="post-img img">
-                                                        <div class="post-text">
-                                                        <h3>${result.title.rendered}</h3>
-                                                        ${result.content.rendered}
-                                                        </div>
-                                                        <ul class="tags" id="explore-tags">${list.join("")}</ul>
-                                                        </article>
-                                                        </a>`
-
+                                showPostsFiltered.innerHTML += `<a class="article-wrap" href="detail.html?id=${placeResults.id}">
+                                                            <article>
+                                                            <img src="${resultImg}" alt="" class="post-img img">
+                                                            <div class="post-text">
+                                                            <h3>${placeResults.title.rendered}</h3>
+                                                            ${placeResults.content.rendered}
+                                                            </div>
+                                                            <ul class="tags" id="explore-tags">${list.join("")}</ul>
+                                                            </article>
+                                                            </a>`
+                                
                                 for (let i = 0; i < 5; i++) {
                                     count++
 
                                     if (count === 15 || count === 20) {
-                                        postExplore.lastElementChild.classList.add("wide-post");
+                                        showPostsFiltered.lastElementChild.classList.add("wide-post");
                                     }
-                                }
-                                
-                            }
+                                };
 
-                            let imgAlt = document.querySelectorAll(".img");
+                            };
 
-                            media.filter(mediaAlt => {
-                                imgAlt.forEach(img => {
-                                    if(mediaAlt.source_url === img.src) {
-                                         img.alt = mediaAlt.alt_text;
+                            const imagesFilter = document.querySelectorAll(".img");
+
+                            media.filter(m => {
+                                imagesFilter.forEach(img => {
+                                    if (m.source_url === img.src) {
+                                        img.alt = m.alt_text;
                                     }
                                 })
-                            })
-                        })
-                    })
-                }
-            })
-            if(this.innerText === "All") {
+                            });
+           
+                        });
+                    });
+                };
+            });
+
+            if (this.innerText === "All") {
                 contain.style.display = "block";
                 btnView.style.display = "block";
 
                 const childClasses = Array.from(childList);
 
-                childClasses.forEach(c => {
-                    c.classList.remove("black-tag");
+                childClasses.forEach(child => {
+                    child.classList.remove("black-tag");
                     this.classList.add("black-tag");
-                })
-            }
-            
+                });
+            };
         })
     })
 };
 
-function toggleContent() {
-    bottomSplit.classList.toggle("show");
-    standardPostsBottom.classList.toggle("show");
+function toggleShowMore() {
+    showMoreSplit.classList.toggle("show");
+    showMorestandardPosts.classList.toggle("show");
+
     if (btnView.innerHTML === "View more..") {
         btnView.innerHTML = "View less.."
     } else {
         btnView.innerHTML = "View more.."
-    }
+    };  
+};
 
-}
-
-btnView.addEventListener("click", toggleContent);
-
-// function tagsStyle(place, tagResponse) {
-//     // let list = [];
-
-//     place.tags.filter(t => {
-//         tagResponse.forEach(e => {
-
-//             if (e.id === t && e.name === "Asia" || e.id === t && e.name === "Adventure" || e.id === t && e.name === "Landscapes") {
-//                 list.push(`<li class="tag purple-tag">${e.name}</li>`)
-//             }
-            
-//             if (e.id === t && e.name === "Culture" || e.id === t && e.name === "Animals" || e.id === t && e.name === "America") {
-//                 list.push(`<li class="tag sand-tag">${e.name}</li>`)
-//             }
-    
-//             if (e.id === t && e.name === "Nature" || e.id === t && e.name === "Wildlife") {
-//                 list.push(`<li class="tag green-tag">${e.name}</li>`)
-//             }
-    
-//             if (e.id === t && e.name === "Europe" || e.id === t && e.name === "Beliefs" ) {
-//                 list.push(`<li class="tag blue-tag">${e.name}</li>`)
-//             }
-    
-//             if (e.id === t && e.name === "Oceania" || e.id === t && e.name === "Traditions" || e.id === t && e.name === "Africa") {
-//                 list.push(`<li class="tag peach-tag">${e.name}</li>`)
-//             }
-//         })
-//     });
-// };
-
-
-/////
-
-// const headerDesktop = document.querySelector(".desktop-header-wrap");
-// const middleDesktop = document.querySelector(".desktop-middle-wrap");
-// const hiddenDesktop = document.querySelector(".desktop-hidden-wrap");
-
-// function createPostMobile(urlResponse, tagResponse) {
-//     let sourceUrl = [];
-//     // Fetch posts: index 1 - 5 //
-//    const blogposts = urlResponse.slice(0, 5);
-//    let altText = sourceUrl.slice(0, 5);
-
-//    for (let i = 0; i < blogposts.length; i++) {
-//        let tagged = blogposts[i].tags;
-//        let blog = blogposts[i];
-//        let list = [];
-//        let blogImg = blog.acf.heading_img.url;
-
-//        function altTextFunc() {
-//            for (let i = 0; i < altText.length; i++) {
-//                if(altText[i].url === blogImg) {
-//                    return altText[i].text;
-//                }
-//            }
-//        };
-
-//        // Filter post-tags & get name //
-
-//        tagged.filter(t => {
-//            tagResponse.forEach(e => {
-//                if (e.id === t && e.name === "Asia" || e.id === t && e.name === "Adventure" || e.id === t && e.name === "Landscapes") {
-//                    list.push(`<li class="tag purple-tag">${e.name}</li>`)
-//                }
-               
-//                if (e.id === t && e.name === "Culture" || e.id === t && e.name === "Animals" || e.id === t && e.name === "America") {
-//                    list.push(`<li class="tag sand-tag">${e.name}</li>`)
-//                }
-       
-//                if (e.id === t && e.name === "Nature" || e.id === t && e.name === "Africa") {
-//                    list.push(`<li class="tag green-tag">${e.name}</li>`)
-//                }
-       
-//                if (e.id === t && e.name === "Europe" || e.id === t && e.name === "Beliefs" ) {
-//                    list.push(`<li class="tag blue-tag">${e.name}</li>`)
-//                }
-       
-//                if (e.id === t && e.name === "Oceania" || e.id === t && e.name === "Traditions") {
-//                    list.push(`<li class="tag peach-tag">${e.name}</li>`)
-//                }
-//            })
-//        });
-
-//        headerDesktop.innerHTML  += `<a class="article-wrap" href="detail.html?id=${blog.id}">
-//                            <article>
-//                            <img src="${blogImg}" alt="${altTextFunc()}" class="post-img">
-//                            <div class="post-text">
-//                            <h3>${blog.title.rendered}</h3>
-//                            ${blog.content.rendered}
-//                            </div>
-//                            <ul class="tags">${list.join("")}</ul>
-//                            </article>
-//                            </a>`
-
-//         // headerDesktop.insertAdjacentHTML("afterbegin", createHtml);
-//        }
-// };
+btnView.addEventListener("click", toggleShowMore);
