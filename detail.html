@@ -21,7 +21,7 @@
           </ul>
         <nav class="nav">
             <ul>
-                <li><a href="/index.html"><img src="/images/icons/logofeet_white.svg" class="logo" alt="Explore-logo"></a></li>
+                <li><a href="/index.html"><img src="/images/icons/logofeet_white.svg" class="logo logo-detail" alt="Explore-logo"></a></li>
                 <li><a class="nav-el" href="/about.html">About</a></li>
                 <li><a class="nav-el active-site details" href="/explore.html">Explore</a></li>
                 <li><a class="nav-el" href="/contact.html">Contact</a></li>
@@ -31,23 +31,29 @@
 </header>
 <main id="main">
 
-          <!-- OBS !! LINKENE FUNKER IKKE -->
-
-    <ol class="breadcrumbs">
+    <ol class="breadcrumbs breadcrumbs-mobile">
         <li><a href="/index.html">Home</a><i class="fas fa-angle-right"></i></li>
         <li><a href="/explore.html">Explore</a><i class="fas fa-angle-right"></i></li>
         <li><a href="" aria-current="location" class="location"></a></li>
-      </ol>
+    </ol>
 
     <!-- INTRO -->
     <section class="intro">
-        <figure class="header-fig">
+
+        <figure class="header-fig"> <!-- PART ONE-->
         <img class="header-img img" alt="">
         </figure>
-        <div class="intro-text">
+
+        <div class="intro-text"> <!-- PART TWO -->
+            <ol class="breadcrumbs breadcrumbs-desktop">
+                <li><a href="/index.html">Home</a><i class="fas fa-angle-right"></i></li>
+                <li><a href="/explore.html">Explore</a><i class="fas fa-angle-right"></i></li>
+                <li><a href="" aria-current="location" class="location"></a></li>
+            </ol>
             <h1></h1>
-            <div class="tags"></div>
+            <div class="tags header-tags"></div>
         </div>
+
     </section>
 
     <!-- INGRESS -->
@@ -57,11 +63,14 @@
         <p class="ingress-text"></p>
 
         <div class="map-budget">
-            <p class="budget"></p>
+
+            <p class="budget mobile-budget"></p>
+            <p class="desktop-budget"></p>
 
             <figure class="map">
                 <img class="map-img img" alt="">
             </figure>
+            
         </div>
     </section>
 
@@ -73,25 +82,55 @@
             <figcaption class="fig-one-caption"></figcaption>
         </figure>
 
+        <div class="text-container">
+        </div>
+
         <div class="image-wrap">
+        <div class="desktop-image-flex">
+
+         <!-- DESKTOP -->
+
+        <figure class="fig-detail-img desktop-top-figure" id="open-modal">
+            <img class="fig-one-desktop detail-img img" alt="">
+            <figcaption class="fig-one-desktop-caption"></figcaption>
+        </figure>
+
+        <!-- END -->
+
         <figure class="fig-detail-img capt-bottom" id="open-modal">
             <img class="fig-two detail-img img" alt="">
             <figcaption class="fig-two-caption"></figcaption>
         </figure>
+        </div>
+
+        <!-- DESKTOP -->
+
+        <figure class="fig-detail-img-2 img-one desktop-wide-figure" id="open-modal">
+            <img class="fig-wide-desktop detail-img-2 img" alt="">
+        </figure>
+
+        <!-- END -->
 
         <div class="fig-container">
-            <figure class="fig-detail-img-2 img-one" id="open-modal">
+
+            <!-- DESKTOP -->
+            <section class="desktop-text">
+            </section>
+            <!-- END -->
+
+            <figure class="fig-detail-img-2 img-one mobile-figure" id="open-modal">
                 <img class="fig-three detail-img-2 img" alt="">
             </figure>
 
             <figure class="fig-detail-img-2" id="open-modal">
-                <img class="fig-four detail-img-2 img" alt="">
+                <img class="fig-four detail-img-2 small-img img" alt="">
             </figure>
         </div>
         </div>
     </section>
 
     <!-- EXLPORE -->
+
     <section class="discover-detail">
         <p>Look at all of our travels, and discover new places to visit</p>
         <a role="button" class="button" href="/explore.html">Explore</a>

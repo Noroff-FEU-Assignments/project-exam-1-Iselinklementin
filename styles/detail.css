@@ -1,10 +1,12 @@
 .breadcrumbs {
+    position: relative;
     display: inline-flex;
     list-style-type: none;
     margin-top: 2rem;
     font-size: 0.85rem;
     color: white;
     padding-left: 2rem;
+    z-index: 10;
 }
 
 .breadcrumbs a {
@@ -13,7 +15,11 @@
 }
 
 .breadcrumbs a:hover {
-    color: var(--primary-color);
+    color: var(--sand);
+}
+
+.breadcrumbs-desktop {
+    display: none;
 }
 
 .fas {
@@ -206,4 +212,198 @@ h3 {
 
 .some {
     margin-top: 2rem;
+}
+
+.desktop-budget,
+.desktop-top-figure,
+.desktop-wide-figure,
+.desktop-text {
+    display: none;
+}
+
+@media only screen and (min-width: 650px) {
+    .intro {
+        flex-direction: row;
+        display: flex;
+        justify-content: space-evenly;
+        min-height: 750px;
+    }
+
+    .breadcrumbs-mobile {
+        display: none;
+    }
+
+    .breadcrumbs-desktop {
+        display: inline-flex;
+        margin-top: 11rem;
+        padding: 0;
+    }
+
+    .header-fig {
+        flex: 2;
+        height: unset;
+    }
+
+    .intro-text {
+        padding: 0;
+        padding-left: 3rem;
+        flex: 1;
+        height: unset;
+    }
+
+    .intro-text p {
+        max-width: 350px;
+        font-size: 1.2rem;
+        line-height: 1.3;
+    }
+
+    h1 {
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+        font-size: 3rem;
+        max-width: 12rem;
+    }
+
+    .header-tags {
+        margin-bottom: 2rem;
+    }
+
+    .ingress {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 700px;
+        margin: auto;
+    }
+
+    .ingress h2 {
+        font-size: 2.5rem;
+    }
+
+    .mobile-budget,
+    .top-figure,
+    .mobile-figure,
+    .text-container {
+        display: none;
+    }
+
+    .desktop-budget {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        font-weight: 300;
+    }
+
+    .desktop-budget span:first-of-type {
+        padding-top: 10px;
+        padding-bottom: 5px;
+    }
+
+    .bodytext h3,
+    .bodytext p,
+    .fig-one-caption,
+    .desktop-image-flex,
+    .fig-container {
+        max-width: 700px;
+        margin: auto;
+    }
+
+    .fig-detail-img {
+        margin: auto;
+    }
+
+    .fig-detail-img-2 {
+        padding: 0;
+    }
+
+    .map-budget {
+        align-items: center;
+        line-height: 1.4;
+    }
+
+    .desktop-top-figure,
+    .capt-bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .capt-bottom {
+        padding-left: 8px;
+    }
+
+    .desktop-top-figure {
+        padding-right: 8px;
+    }
+
+    .desktop-top-figure img,
+    .capt-bottom img {
+        height: 240px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .desktop-image-flex {
+        display: flex;
+    }
+
+    .bodytext figcaption {
+        color: white;
+        padding: 0;
+    }
+
+    .desktop-text {
+        display: initial;
+    }
+
+    .desktop-text h3,
+    h3 {
+        padding: 10px 0 10px 0;
+    }
+
+    .desktop-text p {
+        color: white;
+        padding: 0;
+    }
+
+    .fig-container {
+        height: unset;
+    }
+
+    .desktop-wide-figure {
+        max-width: 700px;
+        display: flex;
+        margin-bottom: 2rem;
+    }
+
+    .detail-img-2 {
+        max-width: 700px;
+        height: 500px;
+    }
+
+    .small-img {
+        padding-left: 50px;
+        height: 100%;
+        max-height: 350px;
+        min-height: 300px;
+    }
+
+    .image-wrap {
+        padding-bottom: 4rem;
+    }
+
+    .modal-content {
+        height: 80%;
+        width: 70%;
+    }
+
+    .img-modal {
+        height: 100%;
+        width: 100%;
+    }
+
+    .close {
+        right: 188px;
+        /* right: 180px; */
+        top: 104px;
+    }
 }

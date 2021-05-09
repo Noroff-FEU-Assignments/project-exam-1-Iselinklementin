@@ -163,9 +163,8 @@ h2 {
 
     h1 {
         max-width: 500px;
-        margin: auto;
         padding-bottom: 2rem;
-        margin-top: 3rem;
+        margin: 2rem auto 0 auto;
     }
 
     form {

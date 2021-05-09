@@ -36,7 +36,7 @@ h2 {
     h1 {
         max-width: 600px;
         margin: 2rem auto 0 auto;
-        line-height: 2;
+        /* line-height: 2; */
     }
 
     .presentation {
@@ -61,5 +61,6 @@ h2 {
     .text-wrap p {
         margin: 0;
         width: 65%;
+        font-size: 1rem;
     }
 }

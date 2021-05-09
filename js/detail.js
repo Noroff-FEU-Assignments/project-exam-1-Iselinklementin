@@ -33,50 +33,85 @@ function createIntro(place, tag, media) {
 
     // INTRO 
     const title = document.querySelector("title");
-    const breadcrumbs = document.querySelector(".location");
+    const breadcrumbs = document.querySelectorAll(".location");
     const heading = document.querySelector("h1");
     const subheading = document.querySelector("h2");
     const tags = document.querySelector(".tags");
     const headImg = document.querySelector(".header-img");
 
     title.innerText = place.acf.place;
-    breadcrumbs.innerText = place.acf.place;
     heading.innerHTML += place.acf.sub_heading;
     tags.innerHTML += list;
     tags.insertAdjacentHTML("afterend", place.content.rendered);
     headImg.src = place.acf.heading_img.url;
+
+    breadcrumbs.forEach(location => {
+        location.innerText = place.acf.place;
+    })
 
     // INGRESS
 
     const para = document.querySelector(".ingress-text");
     const map = document.querySelector(".map-img");
     const budget = document.querySelector(".budget");
+    const budgetDesktop = document.querySelector(".desktop-budget");
 
     subheading.innerHTML += place.acf.sub_heading_1;
     para.innerText += place.acf.subtext;
     map.src = place.acf.country_mapmap.url;
     budget.innerHTML += place.acf.budget;
+    budgetDesktop.innerHTML += place.acf.detailed_text_2;
 
     // BODYTEXT
 
     const bodytext = document.querySelector(".bodytext");
+
     const figOne = document.querySelector(".fig-one");
     const figTwo = document.querySelector(".fig-two");
     const figThree = document.querySelector(".fig-three");
     const figFour = document.querySelector(".fig-four");
+
     const captionOne = document.querySelector(".fig-one-caption");
     const captionTwo = document.querySelector(".fig-two-caption");
     const topFigure = document.querySelector(".top-figure");
+    const textContainer = document.querySelector(".text-container");
 
-    bodytext.insertAdjacentHTML("afterbegin", place.acf.detailed_text);
-    topFigure.insertAdjacentHTML("afterend", place.acf.detailed_text_3);
+    const captionOneDesktop = document.querySelector(".fig-one-desktop-caption");
+    const figOneDesktop = document.querySelector(".fig-one-desktop");
+    const figWideDesktop = document.querySelector(".fig-wide-desktop");
+    const desktopTextBottom = document.querySelector(".desktop-text");
+ 
+
+    figOneDesktop.src = place.acf.detail_img.url
+    captionOneDesktop.innerHTML += place.acf.imagetext;
+    figWideDesktop.src = place.acf.detail_img_wide.url;
+    desktopTextBottom.innerHTML = place.acf.detailed_text_3;
+
     figOne.src = place.acf.detail_img.url
+    captionOne.innerHTML += place.acf.imagetext;
+
     figTwo.src = place.acf.detail_img_2.url;
+    captionTwo.innerHTML += place.acf.imagetext;
+
     figThree.src = place.acf.detail_img_wide.url;
     figFour.src = place.acf.detail_img_small.url;
 
-    captionOne.innerHTML += place.acf.imagetext;
-    captionTwo.innerHTML += place.acf.imagetext;
+    textContainer.innerHTML = place.acf.detailed_text_3;
+    bodytext.insertAdjacentHTML("afterbegin", place.acf.detailed_text);
+
+    // function setWidthDesktop() {
+    //     if (window.innerWidth > 650) { 
+    //     } 
+    // }
+    
+    // function setWidthMobile() {
+    //     if (window.innerWidth < 649) {
+    //     }
+    // }
+    
+    // window.addEventListener("resize", setWidthDesktop)
+    // window.addEventListener("resize", setWidthMobile)
+
 
     // ADD ALT-TEXT TO IMAGES
 
