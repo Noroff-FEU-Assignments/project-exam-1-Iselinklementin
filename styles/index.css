@@ -383,6 +383,11 @@ h3 {
         height: 600px;
     }
 
+    .content {
+        font-size: 1rem;
+        font-weight: 300;
+    }
+
     .intro {
         margin-top: 10.2rem;
         text-align: left;
@@ -409,8 +414,14 @@ h3 {
     }
 }
 
-@media only screen and (min-width: 750px) {
+@media only screen and (min-width: 800px) {
     .intro {
         padding-left: 30%;
+    }
+}
+
+@media only screen and (min-width: 1050px) {
+    .intro p {
+        font-size: 1.3rem;
     }
 }

@@ -27,7 +27,7 @@ function handleScroll() {
 window.addEventListener("scroll", handleScroll);
 
 function setWidthDesktop() {
-    if (window.innerWidth > 699) { 
+    if (document.body.clientWidth > 699) { 
         logo.src = "/images/icons/logofeet_full.svg";
         logoDetailPage.src = "/images/icons/logofeet_full_white.svg";
         logo.classList.add("desktop-logo");
@@ -35,12 +35,23 @@ function setWidthDesktop() {
 }
 
 function setWidthMobile() {
-    if (window.innerWidth < 700) {
+    if (document.body.clientWidth < 700) {
         logo.src = "/images/icons/logofeet.svg";
         logoDetailPage.src = "/images/icons/logofeet_white.svg"
         logo.classList.remove("desktop-logo");
     }
 }
 
-window.addEventListener("resize", setWidthDesktop)
-window.addEventListener("resize", setWidthMobile)
+/**
+ * Show correct logo when scaling the site
+ */
+
+window.addEventListener("resize", setWidthDesktop);
+window.addEventListener("resize", setWidthMobile);
+
+/**
+ * Show correct logo when entering the site
+ */
+
+window.addEventListener("load", setWidthDesktop);
+window.addEventListener("load", setWidthMobile);

@@ -71,6 +71,13 @@ form {
     background-color: #f4f4f48c;
 }
 
+
+input[type="text"],
+input[type="email"],
+textarea[type="text"] {
+    padding: 5px 0 5px 5px;
+}
+
 .message {
     height: 120px;
     font-family: inherit;
@@ -182,7 +189,11 @@ h2 {
     }
 
     .desktop-wrap p {
-        font-size: 0.8rem;
+        font-size: 1rem;
+    }
+
+    label {
+        font-size: 1.2rem;
     }
 
     .desktop {
@@ -229,7 +240,7 @@ h2 {
 
     .message-picture-success {
         background-size: cover;
-        height: 450px;
+        min-height: 600px;
     }
 
     .success-success {
@@ -253,5 +264,10 @@ h2 {
 
     .home-success {
         margin-bottom: 2rem;
+    }
+
+    .again {
+        font-size: 1rem;
+        padding-top: 0.5rem;
     }
 }

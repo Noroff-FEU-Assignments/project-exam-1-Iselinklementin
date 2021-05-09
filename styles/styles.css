@@ -41,7 +41,6 @@ nav a {
     text-transform: uppercase;
     font-size: 0.9rem;
     z-index: 100;
-    /* border: red solid thin; */
 }
 
 nav ul {
@@ -49,7 +48,6 @@ nav ul {
     justify-content: space-evenly;
     align-items: center;
     padding: 5px;
-    /* padding-top: 1.2rem; */
     width: 100%;
 }
 
@@ -160,7 +158,8 @@ article {
     flex-wrap: wrap;
     justify-content: left;
     padding: 0;
-    width: 90%;
+    width: 100%;
+    padding-left: 20px;
     margin-top: 0;
 }
 
@@ -517,6 +516,22 @@ footer ul a:hover {
     .desktop-logo {
         width: 120px;
     }
+
+    nav a {
+        font-size: 1.1rem;
+    }
+
+    .scrolled {
+        height: 55px;
+    }
+
+    .ul-onscroll {
+        margin-top: -0.8rem;
+    }
+
+    /* .tags {
+        padding-left: 10px;
+    } */
 }
 
 /* TEST */
