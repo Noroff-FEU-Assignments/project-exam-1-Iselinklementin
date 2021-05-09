@@ -73,6 +73,10 @@ h3 {
     font-size: 1.3rem;
 }
 
+.tags {
+    padding: 0;
+}
+
 .content,
 .ingress-text {
     padding-right: 25px;
