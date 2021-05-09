@@ -49,6 +49,7 @@ h1 {
 h2 {
     font-family: Playfair Display;
     text-align: center;
+    font-size: 1.8rem;
 }
 
 h2::before,
