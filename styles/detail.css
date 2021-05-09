@@ -406,8 +406,9 @@ h3 {
     }
 
     .close {
-        right: 188px;
-        /* right: 180px; */
-        top: 104px;
+        /* right: 188px;
+        top: 104px; */
+        top: 15%;
+        right: 17%;
     }
 }
