@@ -3,7 +3,7 @@
     display: inline-flex;
     list-style-type: none;
     margin-top: 2rem;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: white;
     padding-left: 2rem;
     z-index: 10;
@@ -144,7 +144,7 @@ h3 {
 .bodytext figcaption {
     font-style: italic;
     color: rgb(95, 93, 93);
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-top: 1rem;
     margin-bottom: 2rem;
     padding-right: 25px;
@@ -265,7 +265,7 @@ h3 {
         margin-top: 3rem;
         margin-bottom: 2rem;
         font-size: 3rem;
-        max-width: 12rem;
+        /* max-width: 12rem; */
     }
 
     .header-tags {
@@ -406,9 +406,24 @@ h3 {
     }
 
     .close {
-        /* right: 188px;
-        top: 104px; */
-        top: 15%;
-        right: 17%;
+        top: 14%;
+        right: 12%;
     }
+
+    /* TEST */
+
+    .tag {
+        /* opacity: 0.8; */
+        /* background-color: white; */
+        color: white;
+        opacity: 0.8;
+    }
+
+    /* .tag:before {
+        border-color: transparent white transparent transparent;
+    }
+
+    .tag:after {
+        border-color: transparent transparent transparent white;
+    } */
 }

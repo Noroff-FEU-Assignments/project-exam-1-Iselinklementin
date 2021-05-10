@@ -37,9 +37,22 @@
                 <li><a class="nav-el" href="/about.html">About</a></li>
                 <li><a class="nav-el" href="/explore.html">Explore</a></li>
                 <li><a class="nav-el" href="/contact.html">Contact</a></li>
-                <li><img class="search" src="/images/icons/search.svg" alt="search" aria-label="search"></li>
+                <li><i class="fas fa-search search-icon"></i></li>
             </ul>
         </nav>
+
+        <div class="searching">
+        <form class="search-wrap">
+            <div class="search-container">
+                <input type="search" id="search" name="search" placeholder="Search.." aria-label="Type your search and press enter.">
+                <button class="search-btn"><i class="fas fa-search search-btn"></i></button>
+                <!-- <div class="close-search">&times;</div> -->
+                <!-- <img class="search" src="/images/icons/search.svg" alt="search" aria-label="search">
+                <span class="close-search">&times;</span> -->
+            </div>
+        </form>
+        </div>
+
     </header>
     <main id="main">
         <!-- main onload="function()" -->
@@ -53,7 +66,7 @@
         </section>
 
     <section>
-        <p class="trip"><span class="first-line">Days until next trip: </span><br>
+        <p class="trip"><span class="first-line">Time until our next trip: </span><br>
             <span id="time"></span></p>
     </section>
 

@@ -142,7 +142,7 @@ button {
     background-color: black;
     padding: 5px 10px;
     margin: 10px auto;
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     font-weight: 600;
     letter-spacing: 0.7px;
 }
@@ -163,6 +163,14 @@ button {
     padding: 15px;
     max-width: 900px;
     margin: auto;
+}
+
+.wrap-two-posts a:hover,
+.wrap-two-posts-hidden a:hover,
+.wrap-two-posts-middle a:hover,
+.wrap-four-posts a:hover {
+    scale: 1.003;
+    box-shadow: rgba(0, 0, 0, 0.082) 1px 4px 5px 4px;
 }
 
 .wrap-two-posts p:first-of-type,
@@ -209,7 +217,7 @@ button {
     background-color: black;
     color: white;
     height: 100%;
-    font-size: 0.7rem;
+    /* font-size: 0.7rem; */
     text-align: center;
     margin-top: -10px;
 }
@@ -224,7 +232,7 @@ figure {
 }
 
 .post-text {
-    font-size: 0.85rem;
+    /* font-size: 0.85rem; */
     line-height: 1.5;
     padding: 10px 20px 0px 30px;
 }
@@ -260,7 +268,7 @@ figure {
     }
 
     .content {
-        font-size: 1rem;
+        /* font-size: 1rem; */
         font-weight: 300;
     }
 
@@ -298,7 +306,7 @@ figure {
         flex-direction: row;
         flex-wrap: wrap;
         padding: 1rem;
-        justify-content: space-evenly;
+        /* justify-content: space-evenly; */
         max-width: 1000px;
         margin: auto;
     }
@@ -328,7 +336,7 @@ figure {
     .dekstop-top-posts,
     .dekstop-bottom-posts,
     .post-container {
-        justify-content: space-between;
+        /* justify-content: space-between; */
         align-items: stretch;
     }
 
@@ -355,6 +363,11 @@ figure {
         margin: 5px;
         margin-top: 40px;
         background-color: black;
+    }
+
+    .desktop-big-post:hover {
+        scale: 1.003;
+        box-shadow: rgba(0, 0, 0, 0.082) 1px 4px 5px 4px;
     }
 
     .big-article {
@@ -393,6 +406,7 @@ figure {
 
     .big-tags {
         margin-top: 2rem;
+        padding: 0;
     }
 
     .dekstop-bottom-posts {

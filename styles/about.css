@@ -27,7 +27,7 @@ h2 {
 }
 
 .presentation p {
-    font-size: 0.8rem;
+    /* font-size: 0.8rem; */
     line-height: 1.5;
     margin: auto 20px 2rem 20px;
 }
