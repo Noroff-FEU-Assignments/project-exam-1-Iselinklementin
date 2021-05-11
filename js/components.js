@@ -6,7 +6,7 @@ const searchWrap = document.querySelector(".search-wrap");
 function handleScroll() {
     const scrolled = window.scrollY;
 
-    if (scrolled > 76) {
+    if (scrolled > 1) {
         nav.classList.add("scrolled");
         logo.classList.add("logo-onscroll");
         navUl.classList.add("ul-onscroll");
