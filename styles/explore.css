@@ -68,7 +68,7 @@ h3 {
     display: block;
 }
 
-button {
+.viewBtn {
     display: block;
     margin: auto;
     border: black thin solid;
@@ -413,9 +413,9 @@ figure {
         display: none;
     }
 
-    .show {
+    /* .show {
         display: flex;
-    }
+    } */
 
     .desktop-tag {
         font-size: 1rem;
@@ -423,5 +423,9 @@ figure {
 
     .post-text {
         padding: 10px 20px 0px 20px;
+    }
+
+    .show {
+        display: flex;
     }
 }

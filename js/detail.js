@@ -99,19 +99,6 @@ function createIntro(place, tag, media) {
     textContainer.innerHTML = place.acf.detailed_text_3;
     bodytext.insertAdjacentHTML("afterbegin", place.acf.detailed_text);
 
-    // function setWidthDesktop() {
-    //     if (window.innerWidth > 650) { 
-    //     } 
-    // }
-    
-    // function setWidthMobile() {
-    //     if (window.innerWidth < 649) {
-    //     }
-    // }
-    
-    // window.addEventListener("resize", setWidthDesktop)
-    // window.addEventListener("resize", setWidthMobile)
-
 
     // ADD ALT-TEXT TO IMAGES
 
@@ -147,6 +134,11 @@ closeModal.onclick = function() {
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
+    }
+
+    if (event.target == searching) {
+        searching.classList.toggle("show-toggle");
+        searchIcon.classList.toggle("fa-times");
     }
 };
 

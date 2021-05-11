@@ -225,6 +225,10 @@ h3 {
     display: none;
 }
 
+.detail-search-icon {
+    color: white;
+}
+
 @media only screen and (min-width: 650px) {
     .intro {
         flex-direction: row;

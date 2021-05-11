@@ -48,7 +48,7 @@ const desktopBottomPosts = document.querySelector(".dekstop-bottom-posts");
  * Filter & Buttons
  */
 
- const btnView = document.querySelector("button");
+ const btnView = document.querySelector(".viewBtn");
  const contain = document.getElementById("container");
 
  function createMobilePosts(place, tags, media) {
@@ -450,6 +450,7 @@ function toggleShowMore() {
     showMoreSplit.classList.toggle("show");
     showMorestandardPosts.classList.toggle("show");
     desktopBottomPosts.classList.toggle("show");
+    console.log(desktopBottomPosts)
 
     if (btnView.innerHTML === "View more..") {
         btnView.innerHTML = "View less.."

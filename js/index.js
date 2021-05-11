@@ -242,36 +242,6 @@ function createPost(urlResponse, tagResponse) {
 };
 
 
-/**
- * Trying to make a searchbar
- */
-
-
-const search = document.querySelector(".search-icon");
-const searchForm = document.querySelector(".search-wrap");
-const closeSearch = document.querySelector(".close-search");
-const searchBtn = document.querySelector(".search-btn");
-const searching = document.querySelector(".searching");
-
-search.addEventListener("click", function() {
-    searching.style.display = "flex";
-    searchBtn.innerHTML = `<span class="go-search">Search</span>`
-})
-
-window.onclick = function(event) {
-
-    if (event.target == searching) {
-        searching.style.display = "none";
-    }
-}
-
-
-// closeSearch.addEventListener("click", function() {
-//     // preventDefault()
-//     searchForm.style.display = "none";
-// })
-
-// console.log(closeSearch)
 // Comments-section date
 // const formatDate = new Date(data.date).toLocaleString("en-GB", {
 //     day: "numeric",

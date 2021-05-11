@@ -9,7 +9,7 @@ h1 span {
     font-weight: 600;
 }
 
-form {
+.contact-form {
     display: flex;
     flex-direction: column;
     width: 75%;
@@ -174,7 +174,7 @@ h2 {
         margin: 2rem auto 0 auto;
     }
 
-    form {
+    .contact-form {
         margin: unset;
         padding-right: 3rem;
     }
