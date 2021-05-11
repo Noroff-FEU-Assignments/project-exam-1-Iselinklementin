@@ -149,6 +149,10 @@ input[type=search] {
     border: black solid 2px;
 }
 
+::-moz-placeholder {
+    opacity: 1;
+}
+
 .fa-search,
 .fa-times {
     font-size: 1rem;
