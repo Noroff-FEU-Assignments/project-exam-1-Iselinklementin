@@ -73,7 +73,7 @@ window.addEventListener("resize", setWidthDesktop);
 window.addEventListener("resize", setWidthMobile);
 
 /**
- * Trying to make a searchbar
+ * OPEN SEARCHBAR
  */
 
  const searching = document.querySelector(".searching");

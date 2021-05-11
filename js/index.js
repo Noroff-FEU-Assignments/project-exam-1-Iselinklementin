@@ -23,6 +23,7 @@ function getApi () {
 getApi();
 
 
+
 let sourceUrl = [];
 
 function imageAlt(urlResponse, media) {
@@ -237,9 +238,23 @@ function createPost(urlResponse, tagResponse) {
                             </a>`
 
         posts.insertAdjacentHTML("afterbegin", createHtml);
-        console.log(list)
+        // console.log(list)
         }
 };
+
+/**
+ * TRYING TO MAKE LOADING
+ */
+
+// const body = document.querySelector("body");
+const loader = document.querySelector(".loader");
+
+window.onload = () => {
+    window.setInterval(function() {
+        loader.style.display = "none";
+    }, 1700)
+}
+
 
 
 // Comments-section date

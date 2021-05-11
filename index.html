@@ -23,10 +23,20 @@
         a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
 </script>
-
     <title>Iselin Haugen - Explore</title>
 </head>
 <body>
+    
+    <div class="loader">
+        <div class="airplane-holder">
+            <i class="fas fa-plane airplane" id="airplane-center"></i>
+        </div>
+        <div class="loading-pulse-wrapper">
+            <div class="pulse"></div>
+        </div>
+        <p class="loading-text">Getting the latest</p>
+    </div>
+
     <header>
         <ul class="skip-links">
             <li><a href="#main">Skip to the main content</a></li>  
@@ -52,8 +62,7 @@
 
     </header>
     <main id="main">
-        <!-- main onload="function()" -->
-        <div id="loader"></div>
+
         <section class="header">
             <div class="intro">
                 <h1>Explore</h1>
@@ -121,7 +130,6 @@
         <a href="#"><img id="twitter" src="/images/icons/twitter.svg" alt="Twitter-logo">Follow</a>
         <a href="#"><img id="youtube" src="/images/icons/youtube.svg" alt="YouTube-logo">Subscribe</a>
     </section>
-
     </main>
     <footer>
         <ul>
