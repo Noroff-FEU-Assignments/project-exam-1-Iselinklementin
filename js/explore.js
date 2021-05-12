@@ -465,13 +465,13 @@ btnView.addEventListener("click", toggleShowMore);
  * Loadingscreen
  */
 
-//  const loader = document.querySelector(".loader");
+ const loader = document.querySelector(".loader");
 
-//  window.onload = () => {
-//      window.setInterval(function() {
-//          loader.style.display = "none";
-//      }, 2000)
-//  }
+ window.onload = () => {
+     window.setInterval(function() {
+         loader.style.display = "none";
+     }, 2000)
+ }
  
 
 
