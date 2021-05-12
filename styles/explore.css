@@ -1,6 +1,6 @@
 #load {
     background: rgb(36, 30, 0);
-    background: linear-gradient(0deg, rgba(36, 30, 0, 1) 19%, rgba(74, 54, 21, 1) 100%);
+    background: linear-gradient(0deg, #0F0B04 19%, #4A3615 100%);
     /* background-color: black; */
 }
 
@@ -179,7 +179,7 @@ h3 {
 .wrap-two-posts-middle,
 .wrap-four-posts {
     display: flex;
-    width: 100%;
+    width: 90%;
     padding: 15px;
     max-width: 900px;
     margin: auto;
@@ -330,6 +330,13 @@ figure {
         max-width: 1000px;
         margin: auto;
         align-items: stretch;
+    }
+
+    .wrap-two-posts,
+    .wrap-two-posts-hidden,
+    .wrap-two-posts-middle,
+    .wrap-four-posts {
+        width: 100%;
     }
 
     .desktop-bottom-posts a {
