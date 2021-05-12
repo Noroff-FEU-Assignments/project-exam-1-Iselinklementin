@@ -186,8 +186,9 @@ function getTimeRemaining(endtime){
                         
       if (t.total <= 0) {
         clearInterval(timeinterval);
-        line.innerText = `We are out traveling`
-        time.innerText = `update is coming soon!`
+        time.style.display = "none";
+
+        line.innerText = `We are out traveling! \n Currently in:`
       }
     },1000);
   }

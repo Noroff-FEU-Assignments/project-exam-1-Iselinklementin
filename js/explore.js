@@ -28,7 +28,6 @@ function getApi () {
     })
 }
 
-
 getApi();
 
 /**
