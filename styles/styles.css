@@ -52,7 +52,7 @@ body {
     /* animation: fly 3.5s ease infinite; */
     animation: fly 2.5s ease-in-out infinite;
     position: absolute;
-    top: 22.5%;
+    top: 23%;
     left: 50%;
     transform: translate(-50%, -50%);
     margin: auto;
@@ -60,7 +60,7 @@ body {
 
 #airplane-center {
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     margin-top: 40px;
     margin-left: -12px;
@@ -109,8 +109,6 @@ body {
         opacity: 0;
     }
 }
-
-
 
 /* LONGER LOADINGTIME
 
