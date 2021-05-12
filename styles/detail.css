@@ -1,3 +1,20 @@
+#load {
+    background: rgb(95, 24, 68);
+    background: linear-gradient(0deg, rgb(83, 21, 59) 25%, rgb(160, 71, 126) 100%);
+}
+
+.loading-text {
+    color: white;
+}
+
+.airplane {
+    color: rgba(255, 255, 255, 0.473);
+}
+
+.pulse {
+    background-color: rgba(255, 255, 255, 0.473);
+}
+
 .breadcrumbs {
     position: relative;
     display: inline-flex;

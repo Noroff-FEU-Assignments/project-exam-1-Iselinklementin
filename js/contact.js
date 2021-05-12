@@ -42,7 +42,6 @@ function defineError() {
     } else {
         fullnameError.firstChild.classList = "fas fa-exclamation-triangle";
         let valueName = 5 - fullname.value.length
-        console.log(fullname.value.length)
         nameValue.innerText = `You need ${valueName} characters more`
     }
 

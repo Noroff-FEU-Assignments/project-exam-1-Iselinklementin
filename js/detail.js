@@ -38,7 +38,10 @@ function createIntro(place, tag, media) {
     const subheading = document.querySelector("h2");
     const tags = document.querySelector(".tags");
     const headImg = document.querySelector(".header-img");
+    // const destination = document.querySelector(".destination");
 
+    
+    // destination.innerText = place.acf.place;
     title.innerText = place.acf.place;
     heading.innerHTML += place.acf.sub_heading;
     tags.innerHTML += list;
@@ -73,7 +76,7 @@ function createIntro(place, tag, media) {
 
     const captionOne = document.querySelector(".fig-one-caption");
     const captionTwo = document.querySelector(".fig-two-caption");
-    const topFigure = document.querySelector(".top-figure");
+    // const topFigure = document.querySelector(".top-figure");
     const textContainer = document.querySelector(".text-container");
 
     const captionOneDesktop = document.querySelector(".fig-one-desktop-caption");
@@ -169,3 +172,16 @@ function tagsStyle(place, tag) {
         })
     });
 };
+
+/**
+ * TRYING TO MAKE LOADING
+ */
+
+ const loader = document.querySelector(".loader");
+
+ window.onload = () => {
+     window.setInterval(function() {
+         loader.style.display = "none";
+     }, 2000)
+ }
+ 

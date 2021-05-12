@@ -42,7 +42,7 @@ const showMorestandardPosts = document.querySelector(".posts-standard-hidden");
 const desktopHeadPosts = document.querySelector(".desktop-head-posts");
 const desktopTopPosts = document.querySelector(".dekstop-top-posts");
 const desktopFourPosts = document.querySelector(".wrap-four-posts");
-const desktopBottomPosts = document.querySelector(".dekstop-bottom-posts");
+const desktopBottomPosts = document.querySelector(".desktop-bottom-posts");
 
 /**
  * Filter & Buttons
@@ -460,6 +460,19 @@ function toggleShowMore() {
 };
 
 btnView.addEventListener("click", toggleShowMore);
+
+/**
+ * Loadingscreen
+ */
+
+ const loader = document.querySelector(".loader");
+
+ window.onload = () => {
+     window.setInterval(function() {
+         loader.style.display = "none";
+     }, 2000)
+ }
+ 
 
 
 // place.forEach(p => {

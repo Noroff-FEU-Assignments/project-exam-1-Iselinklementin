@@ -16,9 +16,6 @@ body {
     width: 100%;
 }
 
-/* body {
-    display: none;
-} */
 
 /* TRYING TO MAKE LOADINGBAR */
 
@@ -28,8 +25,6 @@ body {
     position: absolute;
     z-index: 120;
     text-align: center;
-    background-color: white;
-    /* visibility: hidden; */
 }
 
 .loading-pulse-wrapper {
@@ -55,7 +50,7 @@ body {
     height: 100px;
     width: 100px;
     /* animation: fly 3.5s ease infinite; */
-    animation: fly 2.5s cubic-bezier(.86, 0, .07, 1) infinite;
+    animation: fly 2.5s ease-in-out infinite;
     position: absolute;
     top: 22.5%;
     left: 50%;
@@ -65,14 +60,14 @@ body {
 
 #airplane-center {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     margin-top: 40px;
     margin-left: -12px;
 }
 
 .airplane {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: rgba(72, 132, 155, 0.582);
     /* color: rgba(255, 255, 255, 0.473); */
 }
@@ -84,14 +79,14 @@ body {
     transform: translate(-50%, -50%);
     margin: auto;
     font-weight: 600;
-    color: black;
     font-family: Playfair Display;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
 @keyframes fly {
 
     0% {
+        transform: rotate(0deg);
         margin-left: -160px;
         opacity: 0;
     }
@@ -770,6 +765,12 @@ footer ul a:hover {
 @media only screen and (min-width: 680px) {
     .desktop-logo {
         width: 120px;
+        padding-top: 2px;
+    }
+
+    nav ul {
+        padding-left: 4rem;
+        padding-right: 4rem;
     }
 
     nav a {
@@ -781,6 +782,6 @@ footer ul a:hover {
     }
 
     .search-wrap {
-        padding: 0 17% 0 6rem;
+        padding: 0 19% 0 7rem;
     }
 }

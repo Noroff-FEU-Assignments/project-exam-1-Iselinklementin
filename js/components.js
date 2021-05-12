@@ -30,7 +30,7 @@ function handleScroll() {
 window.addEventListener("scroll", handleScroll);
 
 function setWidthDesktop() {
-    if (document.body.clientWidth > 699) { 
+    if (document.body.clientWidth > 681) { 
         logo.src = "/images/icons/logofeet_full.svg";
 
         let child = navUl.children[2];
@@ -43,7 +43,7 @@ function setWidthDesktop() {
 }
 
 function setWidthMobile() {
-    if (document.body.clientWidth < 700) {
+    if (document.body.clientWidth < 680) {
         logo.src = "/images/icons/logofeet.svg";
 
         let child = navUl.children[2];

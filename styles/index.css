@@ -1,3 +1,7 @@
+#load {
+    background-color: white;
+}
+
 .header {
     background-image: url(/images/mobile-heading-index-small.jpg);
     background-repeat: no-repeat;
@@ -265,6 +269,7 @@ h3 {
         flex-wrap: wrap;
         padding: 1rem;
         justify-content: space-evenly;
+        max-width: 1000px;
     }
 
     .article-wrap {

@@ -1,3 +1,24 @@
+#load {
+    background: rgb(36, 30, 0);
+    background: linear-gradient(0deg, rgba(36, 30, 0, 1) 19%, rgba(74, 54, 21, 1) 100%);
+    /* background-color: black; */
+}
+
+.loading-text {
+    color: white;
+}
+
+.airplane {
+    color: rgba(255, 255, 255, 0.473);
+}
+
+.pulse {
+    background-color: rgba(255, 255, 255, 0.473);
+}
+
+
+/* -------- */
+
 .intro {
     text-align: center;
     padding: 2rem 2rem 0 2rem;
@@ -70,7 +91,6 @@ h3 {
 
 .viewBtn {
     display: block;
-    margin: auto;
     border: black thin solid;
     padding: 8px 15px;
     font-family: inherit;
@@ -78,7 +98,7 @@ h3 {
     background-color: transparent;
     text-transform: uppercase;
     cursor: pointer;
-    margin-bottom: 3rem;
+    margin: 2rem auto;
 }
 
 /* HEAD POST */
@@ -300,7 +320,7 @@ figure {
     }
 
     .dekstop-top-posts,
-    .dekstop-bottom-posts,
+    .desktop-bottom-posts,
     .post-container {
         display: flex;
         flex-direction: row;
@@ -309,6 +329,11 @@ figure {
         /* justify-content: space-evenly; */
         max-width: 1000px;
         margin: auto;
+        align-items: stretch;
+    }
+
+    .desktop-bottom-posts a {
+        margin-top: 0;
     }
 
     .wrap-four-posts {
@@ -331,13 +356,6 @@ figure {
 
     .wide-post .post-text {
         padding: 10px 44px 0px 44px;
-    }
-
-    .dekstop-top-posts,
-    .dekstop-bottom-posts,
-    .post-container {
-        /* justify-content: space-between; */
-        align-items: stretch;
     }
 
     .article-wrap {
@@ -409,7 +427,7 @@ figure {
         padding: 0;
     }
 
-    .dekstop-bottom-posts {
+    .desktop-bottom-posts {
         display: none;
     }
 

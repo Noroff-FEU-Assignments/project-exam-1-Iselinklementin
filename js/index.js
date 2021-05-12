@@ -246,7 +246,6 @@ function createPost(urlResponse, tagResponse) {
  * TRYING TO MAKE LOADING
  */
 
-// const body = document.querySelector("body");
 const loader = document.querySelector(".loader");
 
 window.onload = () => {
