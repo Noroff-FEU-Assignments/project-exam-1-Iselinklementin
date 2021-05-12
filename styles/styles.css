@@ -16,6 +16,38 @@ body {
     width: 100%;
 }
 
+.error-message {
+    /* border: red solid thin; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* width: 100%; */
+    height: 300px;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.lost-site {
+    width: 70%;
+    /* height: 100%; */
+    padding: 0;
+    margin: 0;
+}
+
+.lost {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.sorry {
+    font-family: Playfair Display;
+    font-size: 2rem;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
 
 /* TRYING TO MAKE LOADINGBAR */
 
@@ -785,6 +817,10 @@ footer ul a:hover {
 
     #airplane-center {
         top: 70%;
+    }
+
+    .lost-site {
+        width: 30%;
     }
 }
 

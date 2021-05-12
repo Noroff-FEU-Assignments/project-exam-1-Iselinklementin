@@ -3,8 +3,17 @@ function getApi () {
     let urlTag = fetch("https://grafs.no/wp-json/wp/v2/tags?per_page=20");
     let urlMedia = fetch("https://grafs.no/wp-json/wp/v2/media?per_page=100");
 
-    try {
-
+    // Promise.all([
+    //     urlPost.catch(error => {
+    //         return error
+    //     }),
+    //     urlTag.catch(error => {
+    //         return error
+    //     }),
+    //     urlMedia.catch(error => {
+    //         return error
+    //     })
+    // ])
     Promise.all([urlPost, urlTag, urlMedia])
     .then(values => Promise.all(values.map(value => value.json())))
     .then(finalValue => {
@@ -15,14 +24,22 @@ function getApi () {
         latestPosts(urlResponse, media);
         createPost(urlResponse, tagResponse);
     })
-}   catch (error) {
-        console.error(error);
-    }
-};
+    .catch((error) => {
+        const latest = document.querySelector(".latest");
+        const visit = document.querySelector(".visit");
+        latest.innerHTML = `<div class="error-message">
+                                <figure class="lost-site">
+                                    <img class="lost" src="/images/airplane-lost.jpg" alt="Airplane illustration - getting lost">
+                                </figure>
+                                <p class="sorry">So sorry!</p>
+                                <p>Looks like we got lost!</p>
+                            </div>`
+        visit.style.display = "none";
+        trip.style.display = "none";
+    })
+}
 
 getApi();
-
-
 
 let sourceUrl = [];
 
@@ -162,8 +179,11 @@ function getTimeRemaining(endtime){
 
     const timeinterval = setInterval(() => {
       const t = getTimeRemaining(endtime);
-      time.innerHTML =  `<span class="time-number">${t.days} days </span> <span class="time-number">${t.hours} hours </span> <span class="time-number">${t.minutes} min</span><span class="time-number">${t.seconds} sec</span>`
-
+      time.innerHTML =  `<p class="time-number"><span>${t.days}</span> days</p>
+                         <p class="time-number"><span>${t.hours}</span> hours</p> 
+                         <p class="time-number"><span>${t.minutes}</span> min</p>
+                         <p class="time-number"><span>${t.seconds}</span> sec</p>`
+                        
       if (t.total <= 0) {
         clearInterval(timeinterval);
         line.innerText = `We are out traveling`
@@ -251,10 +271,8 @@ const loader = document.querySelector(".loader");
 window.onload = () => {
     window.setInterval(function() {
         loader.style.display = "none";
-    }, 1700)
+    }, 2000)
 }
-
-
 
 // Comments-section date
 // const formatDate = new Date(data.date).toLocaleString("en-GB", {

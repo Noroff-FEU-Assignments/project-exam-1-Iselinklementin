@@ -101,3 +101,13 @@ window.addEventListener("resize", setWidthMobile);
          navUl.children[3].classList.toggle("hide-li");
      }
  };
+
+ /**
+  * ERROR
+  */
+
+//  function showError(div) {
+//     div.innerHtml = `<div class="js-error">
+//                         <h1>So sorry!</h1>
+//                         <p>Something went wrong.</p>`
+//  }

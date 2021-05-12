@@ -8,8 +8,6 @@ function getApiDetail () {
     let urlTag = fetch("https://grafs.no/wp-json/wp/v2/tags?per_page=20");
     let urlMedia = fetch("https://grafs.no/wp-json/wp/v2/media?per_page=100");
 
-    try {
-
     Promise.all([urlPost, urlTag, urlMedia])
     .then(values => Promise.all(values.map(value => value.json())))
     .then(finalValue => {
@@ -19,9 +17,18 @@ function getApiDetail () {
 
         createIntro(place, tag, media);
     })
-}   catch (error) {
-        console.error(error);
-    }
+    .catch((error) => {
+        const main = document.querySelector("main");
+        nav.style.backgroundColor = "black";
+        const body = document.querySelector("body");
+        main.innerHTML = `<div class="error-message">
+                            <figure class="lost-site">
+                                <img class="lost" src="/images/airplane-lost.jpg" alt="Airplane illustration - getting lost">
+                            </figure>
+                            <p class="sorry">So sorry!</p>
+                            <p>Looks like we got lost!</p>
+                        </div>`
+})
 };
 
 getApiDetail();
