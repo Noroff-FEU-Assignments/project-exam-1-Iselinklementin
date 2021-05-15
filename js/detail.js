@@ -185,10 +185,14 @@ function tagsStyle(place, tag) {
  */
 
  const loader = document.querySelector(".loader");
+ const main = document.querySelector("main");
+
+main.style.display = "none";
 
  window.onload = () => {
      window.setInterval(function() {
          loader.style.display = "none";
+         main.style.display = "block";
      }, 2000)
  }
  

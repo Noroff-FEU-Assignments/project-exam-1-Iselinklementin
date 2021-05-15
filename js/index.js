@@ -1,19 +1,10 @@
+const visit = document.querySelector(".visit");
+
 function getApi () {
     let urlPost = fetch("https://grafs.no/wp-json/wp/v2/posts?per_page=20");
     let urlTag = fetch("https://grafs.no/wp-json/wp/v2/tags?per_page=20");
     let urlMedia = fetch("https://grafs.no/wp-json/wp/v2/media?per_page=100");
 
-    // Promise.all([
-    //     urlPost.catch(error => {
-    //         return error
-    //     }),
-    //     urlTag.catch(error => {
-    //         return error
-    //     }),
-    //     urlMedia.catch(error => {
-    //         return error
-    //     })
-    // ])
     Promise.all([urlPost, urlTag, urlMedia])
     .then(values => Promise.all(values.map(value => value.json())))
     .then(finalValue => {
@@ -26,7 +17,7 @@ function getApi () {
     })
     .catch((error) => {
         const latest = document.querySelector(".latest");
-        const visit = document.querySelector(".visit");
+        
         latest.innerHTML = `<div class="error-message">
                                 <figure class="lost-site">
                                     <img class="lost" src="/images/airplane-lost.jpg" alt="Airplane illustration - getting lost">
@@ -259,7 +250,6 @@ function createPost(urlResponse, tagResponse) {
                             </a>`
 
         posts.insertAdjacentHTML("afterbegin", createHtml);
-        // console.log(list)
         }
 };
 
@@ -268,10 +258,14 @@ function createPost(urlResponse, tagResponse) {
  */
 
 const loader = document.querySelector(".loader");
+const main = document.querySelector("main");
+
+main.style.display = "none";
 
 window.onload = () => {
     window.setInterval(function() {
         loader.style.display = "none";
+        main.style.display = "block";
     }, 2000)
 }
 

@@ -472,10 +472,12 @@ btnView.addEventListener("click", toggleShowMore);
  */
 
  const loader = document.querySelector(".loader");
+ main.style.display = "none";
 
  window.onload = () => {
      window.setInterval(function() {
          loader.style.display = "none";
+         main.style.display = "block";
      }, 2000)
  }
  
