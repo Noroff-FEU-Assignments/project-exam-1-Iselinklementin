@@ -101,7 +101,7 @@ function createIntro(place, tag, media) {
     captionOne.innerHTML += place.acf.imagetext;
 
     figTwo.src = place.acf.detail_img_2.url;
-    captionTwo.innerHTML += place.acf.imagetext;
+    captionTwo.innerHTML += place.acf.imagetext_2;
 
     figThree.src = place.acf.detail_img_wide.url;
     figFour.src = place.acf.detail_img_small.url;
