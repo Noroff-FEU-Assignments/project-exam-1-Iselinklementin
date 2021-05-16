@@ -68,47 +68,48 @@
             </div>
         </section>
 
-        <form class="contact-form">
-            <label class="label">
+        <form class="contact-form" action="https://grafs.no/wp-json/contact-form-7/v1/contact-forms/92/feedback" method="post">
+            <label class="label" for="your-name">
                 <div class="labelwrap">
                     Name
                     <div class="error" id="name-error"><i class=""></i></div>
                 </div>
                 <p>Should be more than 5 characters long<span class="name-value"></span></p>
-                <input type="text" class="fullname form-input">
+                <input type="text" class="fullname form-input" name="your-name">
             </label>
 
-            <label class="label">
+            <label class="label" for="your-email">
                 <div class="labelwrap">
                 Email
                     <div class="error" id="email-error"><i class=""></i></div>
                 </div>
                 <p>Must be a valid email address<span class="email-value"></span></p>
-                <input type="email" name="" class="email form-input">
+                <input type="email" name="your-email" class="email form-input">
             </label>
 
-            <label class="label">
+            <label class="label" for="your-subject">
                 <div class="labelwrap">
                 Subject
                     <div class="error" id="subject-error"><i class=""></i></div>
                 </div>
                 <p>Should be more than 15 characters long<span class="subject-value"></span></p>
-                <input type="text" class="subject form-input">
+                <input type="text" name="your-subject" class="subject form-input">
             </label>
 
-            <label class="label">
+            <label class="label" for="your-message">
               <div class="labelwrap">
                 Message
                     <div class="error" id="message-error"><i class=""></i></div>
             </div>
                 <p>Should be more than 25 characters long<span class="message-value"></span></p>
-                <textarea type="text" class="message form-input"></textarea>
+                <textarea type="text" class="message form-input" name="your-message"></textarea>
             </label class="label">
 
             <div class="button-error">
                 <i class="fas fa-exclamation-triangle"></i>Please fill out required fields
             </div>
-                <a class="button submit" disabled>Submit</a>
+                <button class="button submit" disabled>Submit</button>
+                <!-- disabled -->
         </form>
 
         <section class="desktop">

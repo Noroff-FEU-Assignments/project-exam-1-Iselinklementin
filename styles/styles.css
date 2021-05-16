@@ -634,7 +634,7 @@ article {
 /* MODAL */
 
 #open-modal:hover {
-    cursor: nesw-resize;
+    cursor: zoom-in;
 }
 
 .modal {
