@@ -51,11 +51,13 @@
             </ul>
 
             <div class="searching">
-                <form class="search-wrap">
+                <form class="search-wrap" role="search">
                     <div class="search-container">
-                        <input type="search" id="search" name="search" placeholder="Search.." aria-label="Type your search and press enter.">
-                        <button class="search-btn go-search">&rarr;</button>
+                        <input type="search" id="search" name="search" placeholder="Search travels" aria-label="Type your search and press enter." autocomplete="off">
+                        <button class="search-btn go-search" type="button">&rarr;</button>
                     </div>
+                    <ul class="search-dropdown">
+                    </ul>
                 </form>
             </div>
         </nav>

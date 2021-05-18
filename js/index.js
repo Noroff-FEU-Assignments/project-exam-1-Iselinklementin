@@ -27,6 +27,7 @@ function getApi () {
                             </div>`
         visit.style.display = "none";
         trip.style.display = "none";
+        console.log(error)
     })
 }
 
@@ -68,17 +69,17 @@ function latestPosts(urlResponse, media) {
 
     const galleryPosts = urlResponse.slice(0, 3);
 
-    sliderOne.innerHTML += `<img src="${galleryPosts[2].acf.heading_img.url}" alt="${sourceUrl[2].text}" class="slider-img">
+    sliderOne.innerHTML += `<img src="${galleryPosts[2].acf.heading_img.url}" alt="${sourceUrl[4].text}" class="slider-img">
                             <p class="gallery-text">${galleryPosts[2].acf.sub_heading}</p>`
     sliderOne.href = `detail.html?id=${galleryPosts[2].id}`;
 
-    sliderTwo.innerHTML += `<img src="${galleryPosts[1].acf.heading_img.url}" alt="${sourceUrl[1].text}" class="slider-img">
+    sliderTwo.innerHTML += `<img src="${galleryPosts[1].acf.heading_img.url}" alt="${sourceUrl[10].text}" class="slider-img">
                             <p class="gallery-text">${galleryPosts[1].acf.sub_heading}</p>`
 
     sliderTwo.href = `detail.html?id=${galleryPosts[1].id}`;
 
 
-    sliderThree.innerHTML += `<img src="${galleryPosts[0].acf.heading_img.url}" alt="${sourceUrl[0].text}" class="slider-img">
+    sliderThree.innerHTML += `<img src="${galleryPosts[0].acf.heading_img.url}" alt="${sourceUrl[11].text}" class="slider-img">
                             <p class="gallery-text">${galleryPosts[0].acf.sub_heading}</p>`
 
     sliderThree.href = `detail.html?id=${galleryPosts[0].id}`;
@@ -193,7 +194,6 @@ const posts = document.querySelector(".post-container");
 function createPost(urlResponse, tagResponse) {
      // Fetch posts: index 3 - 6 //
     const blogposts = urlResponse.slice(3, 7);
-    let altText = sourceUrl.slice(3, 7);
 
     for (let i = 0; i < blogposts.length; i++) {
      
@@ -203,9 +203,9 @@ function createPost(urlResponse, tagResponse) {
         let list = [];
 
         function altTextFunc() {
-            for (let i = 0; i < altText.length; i++) {
-                if(altText[i].url === blogImg) {
-                    return altText[i].text;
+            for (let i = 0; i < sourceUrl.length; i++) {
+                if(sourceUrl[i].url === blogImg) {
+                    return sourceUrl[i].text;
                 }
             }
         };

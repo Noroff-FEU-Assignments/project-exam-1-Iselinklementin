@@ -79,7 +79,8 @@ window.addEventListener("resize", setWidthMobile);
  const searching = document.querySelector(".searching");
  const liSearchItem = document.querySelector(".list-search");
  const searchIcon = document.querySelector(".search-icon");
- 
+ const searchInput = document.querySelector("#search");
+//  const searchContainer = document.querySelector(".search-container");
  
  function openSearchBar() {
      searching.classList.toggle("show-toggle");
@@ -87,6 +88,8 @@ window.addEventListener("resize", setWidthMobile);
      navUl.children[1].classList.toggle("hide-li");
      navUl.children[2].classList.toggle("hide-li");
      navUl.children[3].classList.toggle("hide-li");
+     searchInput.value = "";
+     searchDropdown.classList.remove("active-search");
  };
  
  liSearchItem.addEventListener("click", openSearchBar);
@@ -99,15 +102,113 @@ window.addEventListener("resize", setWidthMobile);
          navUl.children[1].classList.toggle("hide-li");
          navUl.children[2].classList.toggle("hide-li");
          navUl.children[3].classList.toggle("hide-li");
+         searchInput.value = "";
+         searchDropdown.classList.remove("active-search");
      }
  };
 
- /**
-  * ERROR
-  */
+const searchDropdown = document.querySelector(".search-dropdown");
+let travels = []
 
-//  function showError(div) {
-//     div.innerHtml = `<div class="js-error">
-//                         <h1>So sorry!</h1>
-//                         <p>Something went wrong.</p>`
-//  }
+const loadTravels = async () => {
+    try {
+        const res = await fetch("https://grafs.no/wp-json/wp/v2/posts?per_page=20");
+        travels = await res.json();
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+loadTravels();
+
+function showSuggestions(list) {
+    let listData;
+
+    if (!list.length) {
+        userValue = searchInput.value;
+        listData = `<li class="search-li"> ${userValue} </li>`
+    } else {
+        listData = list.join("");
+    }
+    
+    searchDropdown.innerHTML = listData;
+}
+
+searchInput.addEventListener("keyup", (event) => {
+    const searchString = event.target.value.toLowerCase();
+    let filteredTravels = [];
+    let id = [];
+
+    if (searchString) {
+        filteredTravels = travels.filter(travel => {
+            return travel.acf.place.toLowerCase().startsWith(searchString);
+        });
+
+        filteredTravels = filteredTravels.map((destination) => {
+            return `<li class="search-li">${destination.acf.place}</li>`;
+        });
+
+        searchDropdown.classList.add("active-search");
+
+        showSuggestions(filteredTravels);
+
+        let allList = document.querySelectorAll(".search-li");
+        const searchBtn = document.querySelector(".search-btn");
+        // const searchForm = document.querySelector(".search-wrap");
+        
+        for (let i = 0; i < allList.length; i++) {
+            allList[i].addEventListener("click", (event) => {
+
+                let selectedText = event.target.textContent;
+                searchInput.value = selectedText;
+                searchDropdown.classList.remove("active-search");
+                searchInput.focus();
+
+                id = travels.filter((place) => {
+                    if(searchInput.value === place.acf.place) {
+                        return place.id;
+                }
+
+                searchInput.addEventListener("keypress", (event) => {
+                    if (event.keyCode === 13) {
+                        event.preventDefault();
+                        location.href = `detail.html?id=${id[0].id}`
+                    }
+                })
+            })
+            })
+        };
+
+    searchBtn.onclick = () => {
+        location.href = `detail.html?id=${id[0].id}`
+    }
+    } else {
+        searchDropdown.classList.remove("active-search");
+    }}
+);
+
+
+
+
+// function select(element) {
+//     let selectedText = element.textContent;
+//     console.log(selectedText)
+// }
+
+// function showSuggestions(list) {
+//     let listData;
+
+//     if (!list.length) {
+
+//     } else {
+//         listData = list.join("");
+//     }
+// }
+
+
+/* USIKKER PÅ OM JEG KAN BRUKE DENNE: */
+
+// const readOnly = document.querySelector("[readonly]");
+// readOnly.addEventListener("focus", function() {
+//     this.removeAttribute("readonly")
+// })
