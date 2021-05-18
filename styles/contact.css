@@ -45,7 +45,7 @@ h1 span {
     padding-right: 10px;
 }
 
-.button-error {
+/* .button-error {
     display: none;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -55,7 +55,7 @@ h1 span {
     border: rgb(238, 85, 14) 2px solid;
     padding: 10px;
     background-color: rgba(238, 85, 14, 0.219);
-}
+} */
 
 .form-input,
 .message {
@@ -70,7 +70,6 @@ h1 span {
     font-size: 1rem;
     background-color: #f4f4f48c;
 }
-
 
 input[type="text"],
 input[type="email"],
