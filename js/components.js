@@ -126,7 +126,8 @@ function showSuggestions(list) {
 
     if (!list.length) {
         userValue = searchInput.value;
-        listData = `<li class="search-li"> ${userValue} </li>`
+        listData = `<li class="search-li">${userValue}</li>
+                    <li class="search-li not-found">Sorry, maybe try something else..</li>`
     } else {
         listData = list.join("");
     }
@@ -145,6 +146,7 @@ searchInput.addEventListener("keyup", (event) => {
         });
 
         filteredTravels = filteredTravels.map((destination) => {
+            id = destination.id;
             return `<li class="search-li">${destination.acf.place}</li>`;
         });
 
@@ -159,30 +161,49 @@ searchInput.addEventListener("keyup", (event) => {
         for (let i = 0; i < allList.length; i++) {
             allList[i].addEventListener("click", (event) => {
 
-                let selectedText = event.target.textContent;
-                searchInput.value = selectedText;
-                searchDropdown.classList.remove("active-search");
-                searchInput.focus();
-
-                id = travels.filter((place) => {
-                    if(searchInput.value === place.acf.place) {
-                        return place.id;
-                }
-
-                searchInput.addEventListener("keypress", (event) => {
-                    if (event.keyCode === 13) {
-                        event.preventDefault();
-                        location.href = `detail.html?id=${id[0].id}`
+                if (allList[i].classList.contains("not-found")) {
+                    event.target.onclick = () => {
+                        event.preventDefault()
+                        searchInput.value = "";
                     }
-                })
+                } else {
+                    searchInput.classList.add("selected")
+                    // event.target.classList.add("selected");
+                    let selectedText = event.target.textContent;
+                    searchInput.value = selectedText;
+                    searchInput.focus();
+                }
+                // searchDropdown.classList.remove("active-search");
             })
-            })
+        // let keyCode = event.keyCode || event.which;
+        
+        if (id == 0) {
+            searchBtn.disabled = true;
+            searchBtn.style.cursor = "unset";
+
+            window.addEventListener("keydown", (e) => {
+                if (e.keyCode === 13) {
+                    e.preventDefault();
+                    return false;
+            } 
+            });
+        } else {
+            searchBtn.disabled = false;
+
+            searchBtn.onclick = () => {
+                location.href = `detail.html?id=${id}`
+            };
+
+            searchInput.addEventListener("keyup", (event) => {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    location.href = `detail.html?id=${id}`
+                }
+            });
+        }
         };
 
-    searchBtn.onclick = () => {
-        location.href = `detail.html?id=${id[0].id}`
-    }
-    } else {
+} else {
         searchDropdown.classList.remove("active-search");
     }}
 );
