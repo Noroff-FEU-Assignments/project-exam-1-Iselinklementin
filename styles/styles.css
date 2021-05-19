@@ -66,10 +66,8 @@ body {
 .pulse {
     height: 50px;
     width: 50px;
-    /* background-color: rgba(255, 255, 255, 0.473); */
     background-color: var(--blue);
     border-radius: 50%;
-    /* animation: pulse 1.7s infinite; */
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
 }
@@ -78,7 +76,6 @@ body {
     display: flex;
     height: 100px;
     width: 100px;
-    /* animation: fly 3.5s ease infinite; */
     animation: fly 2.5s ease-in-out infinite;
     position: absolute;
     top: 23%;
@@ -98,7 +95,6 @@ body {
 .airplane {
     font-size: 1.2rem;
     color: rgba(72, 132, 155, 0.582);
-    /* color: rgba(255, 255, 255, 0.473); */
 }
 
 .loading-text {
@@ -311,32 +307,22 @@ input[type="search"]::-webkit-search-results-decoration {
     display: flex;
     position: absolute;
     right: 0;
-    /* bottom: 0; */
     left: 0;
     padding: 0 20.8% 0 1rem;
     flex-direction: column;
-    /* top: 4rem; */
     top: 1.6rem;
     opacity: 0;
 }
 
 .search-li {
     padding: 10px 12px;
-    /* position: absolute; */
     background-color: #f6f5f5;
     width: 100%;
     cursor: default;
-    /* border-radius: 3px; */
     text-transform: capitalize;
     display: block;
     border-bottom: rgba(0, 0, 0, 0.158) thin solid;
-    /* top: 2.8rem; */
-    /* margin-top: -2.4rem; */
 }
-
-/* .search-dropdown li:first-of-type {
-    margin-top: 4.8rem;
-} */
 
 .search-li:hover {
     background-color: #efefef;
@@ -436,7 +422,6 @@ article {
     padding: 3px 15px;
     border-radius: 8px;
     margin: 6px;
-    /* cursor: pointer; */
     text-align: center;
     font-size: 0.8rem;
     opacity: 0.8;
@@ -745,8 +730,8 @@ article {
 
 .close {
     position: absolute;
-    right: 8%;
-    top: 9%;
+    right: 6%;
+    top: 8%;
     color: #f1f1f1;
     font-size: 35px;
     transition: 0.3s;

@@ -3,32 +3,32 @@ const params = new URLSearchParams(queryString);
 const id = params.get("id");
 // console.log(id)
 
-function getApiDetail () {
+function getApiDetail() {
     let urlPost = fetch("https://grafs.no/wp-json/wp/v2/posts/" + id);
     let urlTag = fetch("https://grafs.no/wp-json/wp/v2/tags?per_page=20");
     let urlMedia = fetch("https://grafs.no/wp-json/wp/v2/media?per_page=100");
 
     Promise.all([urlPost, urlTag, urlMedia])
-    .then(values => Promise.all(values.map(value => value.json())))
-    .then(finalValue => {
-        let place = finalValue[0];
-        let tag = finalValue[1];
-        let media = finalValue[2];
+        .then(values => Promise.all(values.map(value => value.json())))
+        .then(finalValue => {
+            let place = finalValue[0];
+            let tag = finalValue[1];
+            let media = finalValue[2];
 
-        createIntro(place, tag, media);
-    })
-    .catch((error) => {
-        const main = document.querySelector("main");
-        nav.style.backgroundColor = "black";
-        const body = document.querySelector("body");
-        main.innerHTML = `<div class="error-message">
+            createIntro(place, tag, media);
+        })
+        .catch((error) => {
+            const main = document.querySelector("main");
+            nav.style.backgroundColor = "black";
+            const body = document.querySelector("body");
+            main.innerHTML = `<div class="error-message">
                             <figure class="lost-site">
                                 <img class="lost" src="/images/airplane-lost.jpg" alt="Airplane illustration - getting lost">
                             </figure>
                             <p class="sorry">So sorry!</p>
                             <p>Looks like we got lost!</p>
                         </div>`
-})
+        })
 };
 
 getApiDetail();
@@ -45,10 +45,7 @@ function createIntro(place, tag, media) {
     const subheading = document.querySelector("h2");
     const tags = document.querySelector(".tags");
     const headImg = document.querySelector(".header-img");
-    // const destination = document.querySelector(".destination");
 
-    
-    // destination.innerText = place.acf.place;
     title.innerText = `Explore - ${place.acf.place}`;
     heading.innerHTML += place.acf.sub_heading;
     tags.innerHTML += list;
@@ -89,7 +86,7 @@ function createIntro(place, tag, media) {
     const figOneDesktop = document.querySelector(".fig-one-desktop");
     const figWideDesktop = document.querySelector(".fig-wide-desktop");
     const desktopTextBottom = document.querySelector(".desktop-text");
- 
+
 
     figOneDesktop.src = place.acf.detail_img.url
     captionOneDesktop.innerHTML += place.acf.imagetext;
@@ -115,8 +112,8 @@ function createIntro(place, tag, media) {
 
     media.filter(mediaAlt => {
         imgAlt.forEach(img => {
-            if(mediaAlt.source_url === img.src) {
-                 img.alt = mediaAlt.alt_text;
+            if (mediaAlt.source_url === img.src) {
+                img.alt = mediaAlt.alt_text;
             }
         })
     })
@@ -129,18 +126,18 @@ const imgModal = document.querySelector(".img-modal");
 const modalCaption = document.querySelector(".caption");
 
 openModal.forEach(open => {
-    open.addEventListener("click", function() {
+    open.addEventListener("click", function () {
         modal.style.display = "block";
         imgModal.src = this.firstElementChild.src;
         modalCaption.innerText = this.firstElementChild.alt;
     })
 });
 
-closeModal.onclick = function() {
+closeModal.onclick = function () {
     modal.style.display = "none";
 };
 
-window.onclick = function(event) {
+window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
@@ -155,23 +152,23 @@ function tagsStyle(place, tag) {
     place.tags.filter(t => {
         tag.forEach(e => {
             let checkID = e.id === t;
-            
+
             if (checkID && ["Asia", "Adventure", "Landscapes"].includes(e.name)) {
                 list.push(`<li class="tag purple-tag">${e.name}</li>`)
             }
-            
+
             if (checkID && ["Nature", "Africa"].includes(e.name)) {
                 list.push(`<li class="tag green-tag">${e.name}</li>`)
             }
-    
+
             if (checkID && ["Culture", "Animals", "America"].includes(e.name)) {
                 list.push(`<li class="tag sand-tag">${e.name}</li>`)
             }
-    
+
             if (checkID && ["Europe", "Beliefs"].includes(e.name)) {
                 list.push(`<li class="tag blue-tag">${e.name}</li>`)
             }
-    
+
             if (checkID && ["Oceania", "Traditions"].includes(e.name)) {
                 list.push(`<li class="tag peach-tag">${e.name}</li>`)
             }
@@ -183,15 +180,14 @@ function tagsStyle(place, tag) {
  * TRYING TO MAKE LOADING
  */
 
- const loader = document.querySelector(".loader");
- const main = document.querySelector("main");
+const loader = document.querySelector(".loader");
+const main = document.querySelector("main");
 
 main.style.display = "none";
 
- window.onload = () => {
-     window.setInterval(function() {
-         loader.style.display = "none";
-         main.style.display = "block";
-     }, 2000)
- }
- 
+window.onload = () => {
+    window.setInterval(function () {
+        loader.style.display = "none";
+        main.style.display = "block";
+    }, 2000)
+};

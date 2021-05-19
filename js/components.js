@@ -3,6 +3,11 @@ const logo = document.querySelector(".logo");
 const navUl = document.querySelector("nav > ul");
 const searchWrap = document.querySelector(".search-wrap");
 
+/**
+ * Navbar get sticky
+ * Add & remove classes if scrolled
+ */
+
 function handleScroll() {
     const scrolled = window.scrollY;
 
@@ -29,18 +34,21 @@ function handleScroll() {
 
 window.addEventListener("scroll", handleScroll);
 
+/**
+ * Show correct logo based on screensize
+ */
+
 function setWidthDesktop() {
-    if (document.body.clientWidth > 681) { 
+    if (document.body.clientWidth > 681) {
         logo.src = "/images/icons/logofeet_full.svg";
 
         let child = navUl.children[2];
         if (child.classList.contains("current")) {
             logo.src = "/images/icons/logofeet_full_white.svg";
         }
-
         logo.classList.add("desktop-logo");
-    } 
-}
+    }
+};
 
 function setWidthMobile() {
     if (document.body.clientWidth < 680) {
@@ -54,16 +62,15 @@ function setWidthMobile() {
 
         logo.classList.remove("desktop-logo");
     }
-}
-
+};
 
 /**
- * Show correct logo when entering the site
+ * Show correct logo when loading site
  */
 
- window.addEventListener("load", setWidthDesktop);
- window.addEventListener("load", setWidthMobile);
- 
+window.addEventListener("load", setWidthDesktop);
+window.addEventListener("load", setWidthMobile);
+
 
 /**
  * Show correct logo when scaling the site
@@ -73,41 +80,40 @@ window.addEventListener("resize", setWidthDesktop);
 window.addEventListener("resize", setWidthMobile);
 
 /**
- * OPEN SEARCHBAR
+ * Open searchbar in nav:
  */
 
- const searching = document.querySelector(".searching");
- const liSearchItem = document.querySelector(".list-search");
- const searchIcon = document.querySelector(".search-icon");
- const searchInput = document.querySelector("#search");
- const searchDropdown = document.querySelector(".search-dropdown");
- const searchBtn = document.querySelector(".search-btn");
-//  const searchContainer = document.querySelector(".search-container");
- 
- function openSearchBar() {
-     searching.classList.toggle("show-toggle");
-     searchIcon.classList.toggle("fa-times");
-     navUl.children[1].classList.toggle("hide-li");
-     navUl.children[2].classList.toggle("hide-li");
-     navUl.children[3].classList.toggle("hide-li");
-     searchInput.value = "";
-     searchDropdown.classList.remove("active-search");
- };
- 
- liSearchItem.addEventListener("click", openSearchBar);
- 
- window.onclick = function(event) {
- 
-     if (event.target == searching) {
-         searching.classList.toggle("show-toggle");
-         searchIcon.classList.toggle("fa-times");
-         navUl.children[1].classList.toggle("hide-li");
-         navUl.children[2].classList.toggle("hide-li");
-         navUl.children[3].classList.toggle("hide-li");
-         searchInput.value = "";
-         searchDropdown.classList.remove("active-search");
-     }
- };
+const searching = document.querySelector(".searching");
+const liSearchItem = document.querySelector(".list-search");
+const searchIcon = document.querySelector(".search-icon");
+const searchInput = document.querySelector("#search");
+const searchDropdown = document.querySelector(".search-dropdown");
+const searchBtn = document.querySelector(".search-btn");
+
+function openSearchBar() {
+    searching.classList.toggle("show-toggle");
+    searchIcon.classList.toggle("fa-times");
+    navUl.children[1].classList.toggle("hide-li");
+    navUl.children[2].classList.toggle("hide-li");
+    navUl.children[3].classList.toggle("hide-li");
+    searchInput.value = "";
+    searchDropdown.classList.remove("active-search");
+};
+
+liSearchItem.addEventListener("click", openSearchBar);
+
+window.onclick = function (event) {
+
+    if (event.target == searching) {
+        searching.classList.toggle("show-toggle");
+        searchIcon.classList.toggle("fa-times");
+        navUl.children[1].classList.toggle("hide-li");
+        navUl.children[2].classList.toggle("hide-li");
+        navUl.children[3].classList.toggle("hide-li");
+        searchInput.value = "";
+        searchDropdown.classList.remove("active-search");
+    }
+};
 
 let travels = []
 
@@ -140,7 +146,7 @@ function showSuggestions(list) {
     } else {
         listData = list.join("");
     }
-    
+
     searchDropdown.innerHTML = listData;
 };
 
@@ -154,7 +160,7 @@ searchInput.addEventListener("keyup", (event) => {
     let filteredTravels = [];
     // let id = [];
 
-    if(!searchBtn.disabled) {
+    if (!searchBtn.disabled) {
         window.addEventListener("keydown", (e) => {
             if (e.keyCode === 13) {
                 e.preventDefault();
@@ -179,10 +185,10 @@ searchInput.addEventListener("keyup", (event) => {
         let allList = document.querySelectorAll(".search-li");
 
         /**
-        * Loop list-items and add eventlistener
-        * This controls search-field text and if the button is disabled or not
-        **/
-        
+         * Loop list-items and add eventlistener
+         * This controls search-field text and if the button is disabled or not
+         **/
+
         for (let i = 0; i < allList.length; i++) {
             allList[i].addEventListener("click", (event) => {
 
@@ -202,82 +208,82 @@ searchInput.addEventListener("keyup", (event) => {
                         searchBtn.disabled = false;
                     }
                 }
-        })
-    };
-    
-    /**
-    * Check if input-value is valid
-    * if not - disable button & enter-key
-    **/
-
-    searchInput.addEventListener("keyup", () => {
-
-        if (searchInput.value.length < 3) {
-
-            searchBtn.disabled = true;
-
-            window.addEventListener("keydown", (e) => {
-                if (searchBtn.disabled && e.keyCode === 13) {
-                    e.preventDefault();
-                    return false;
-                }
-            });
+            })
         };
-        
-        if (searchInput.value.length > 3) {
-            if (!filteredTravels) {
-                searchBtn.disabled = false;
-            }
-        }
-    });
 
-    /**
-    * If suggestion list is clicked
-    * give ID to button and enter-key
-    **/
+        /**
+         * Check if input-value is valid
+         * if not - disable button & enter-key
+         **/
 
-    searchDropdown.addEventListener("click", () => {
-        travels.filter(site => {
+        searchInput.addEventListener("keyup", () => {
 
-           if (site.acf.place.toLowerCase() === searchInput.value.toLowerCase()) {
-            searchBtn.onclick = () => {
-                location.href = `detail.html?id=${site.id}`
-            }
-        
-            window.addEventListener("keydown", (e) => {
-                if (!searchBtn.disabled && e.keyCode === 13) {
-                    e.preventDefault();
-                    location.href = `detail.html?id=${site.id}`
-                }
-            });
-           }
-        })
-    });
+            if (searchInput.value.length < 3) {
 
-    /**
-    * If suggestion is written in manually
-    * give ID to button and enter-key
-    **/
+                searchBtn.disabled = true;
 
-    if (searchDropdown.firstChild.innerText.toLowerCase() === searchInput.value.toLowerCase()) {
-        travels.filter(site => {
-            
-            if(site.acf.place.toLowerCase() === searchInput.value.toLowerCase()) {
-                searchBtn.disabled = false;
-                searchBtn.onclick = () => {
-                    location.href = `detail.html?id=${site.id}`
-                }
-        
                 window.addEventListener("keydown", (e) => {
-                    if (!searchBtn.disabled && e.keyCode === 13) {
+                    if (searchBtn.disabled && e.keyCode === 13) {
                         e.preventDefault();
-                        location.href = `detail.html?id=${site.id}`
+                        return false;
                     }
                 });
+            };
+
+            if (searchInput.value.length > 3) {
+                if (!filteredTravels) {
+                    searchBtn.disabled = false;
+                }
             }
-        })
-    }
-} else {
+        });
+
+        /**
+         * If suggestion list is clicked
+         * give ID to button and enter-key
+         **/
+
+        searchDropdown.addEventListener("click", () => {
+            travels.filter(site => {
+
+                if (site.acf.place.toLowerCase() === searchInput.value.toLowerCase()) {
+                    searchBtn.onclick = () => {
+                        location.href = `detail.html?id=${site.id}`
+                    }
+
+                    window.addEventListener("keydown", (e) => {
+                        if (!searchBtn.disabled && e.keyCode === 13) {
+                            e.preventDefault();
+                            location.href = `detail.html?id=${site.id}`
+                        }
+                    });
+                }
+            })
+        });
+
+        /**
+         * If suggestion is written in manually
+         * give ID to button and enter-key
+         **/
+
+        if (searchDropdown.firstChild.innerText.toLowerCase() === searchInput.value.toLowerCase()) {
+            travels.filter(site => {
+
+                if (site.acf.place.toLowerCase() === searchInput.value.toLowerCase()) {
+                    searchBtn.disabled = false;
+                    searchBtn.onclick = () => {
+                        location.href = `detail.html?id=${site.id}`
+                    }
+
+                    window.addEventListener("keydown", (e) => {
+                        if (!searchBtn.disabled && e.keyCode === 13) {
+                            e.preventDefault();
+                            location.href = `detail.html?id=${site.id}`
+                        }
+                    });
+                }
+            })
+        }
+    } else {
         searchDropdown.classList.remove("active-search");
-    }}
-);
+    }
+});

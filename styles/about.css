@@ -2,7 +2,9 @@ h1 {
     font-size: 1rem;
     font-weight: 400;
     text-align: center;
-    padding: 2rem 2rem 0 2rem;
+    padding: 1rem 2rem;
+    max-width: 400px;
+    margin: auto;
 }
 
 span {
@@ -27,16 +29,15 @@ h2 {
 }
 
 .presentation p {
-    /* font-size: 0.8rem; */
     line-height: 1.5;
     margin: auto 20px 2rem 20px;
 }
 
 @media only screen and (min-width: 580px) {
     h1 {
-        max-width: 600px;
-        margin: 2rem auto 0 auto;
-        /* line-height: 2; */
+        max-width: 500px;
+        margin: 1rem auto 0 auto;
+        font-size: 1.3rem;
     }
 
     .presentation {

@@ -2,7 +2,9 @@ h1 {
     font-size: 1rem;
     font-weight: 400;
     text-align: center;
-    padding: 2rem 2rem 0 2rem;
+    padding: 1rem 2rem;
+    max-width: 400px;
+    margin: auto;
 }
 
 h1 span {
@@ -44,18 +46,6 @@ h1 span {
     font-size: 1rem;
     padding-right: 10px;
 }
-
-/* .button-error {
-    display: none;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    text-align: center;
-    font-style: italic;
-    font-size: 0.9rem;
-    border: rgb(238, 85, 14) 2px solid;
-    padding: 10px;
-    background-color: rgba(238, 85, 14, 0.219);
-} */
 
 .form-input,
 .message {
@@ -149,6 +139,9 @@ h2 {
     text-align: center;
     padding: 8px 6px;
     cursor: pointer;
+    border: none;
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
 }
 
 .home {
@@ -169,8 +162,8 @@ h2 {
 
     h1 {
         max-width: 500px;
-        padding-bottom: 2rem;
-        margin: 2rem auto 0 auto;
+        margin: 1rem auto;
+        font-size: 1.3rem;
     }
 
     .contact-form {

@@ -1,34 +1,34 @@
 const visit = document.querySelector(".visit");
 
-function getApi () {
+function getApi() {
     let urlPost = fetch("https://grafs.no/wp-json/wp/v2/posts?per_page=20");
     let urlTag = fetch("https://grafs.no/wp-json/wp/v2/tags?per_page=20");
     let urlMedia = fetch("https://grafs.no/wp-json/wp/v2/media?per_page=100");
 
     Promise.all([urlPost, urlTag, urlMedia])
-    .then(values => Promise.all(values.map(value => value.json())))
-    .then(finalValue => {
-        let urlResponse = finalValue[0];
-        let tagResponse = finalValue[1];
-        let media = finalValue[2];
+        .then(values => Promise.all(values.map(value => value.json())))
+        .then(finalValue => {
+            let urlResponse = finalValue[0];
+            let tagResponse = finalValue[1];
+            let media = finalValue[2];
 
-        latestPosts(urlResponse, media);
-        createPost(urlResponse, tagResponse);
-    })
-    .catch((error) => {
-        const latest = document.querySelector(".latest");
-        
-        latest.innerHTML = `<div class="error-message">
+            latestPosts(urlResponse, media);
+            createPost(urlResponse, tagResponse);
+        })
+        .catch((error) => {
+            const latest = document.querySelector(".latest");
+
+            latest.innerHTML = `<div class="error-message">
                                 <figure class="lost-site">
                                     <img class="lost" src="/images/airplane-lost.jpg" alt="Airplane illustration - getting lost">
                                 </figure>
                                 <p class="sorry">So sorry!</p>
                                 <p>Looks like we got lost!</p>
                             </div>`
-        visit.style.display = "none";
-        trip.style.display = "none";
-        console.log(error)
-    })
+            visit.style.display = "none";
+            trip.style.display = "none";
+            console.log(error)
+        })
 }
 
 getApi();
@@ -37,12 +37,12 @@ let sourceUrl = [];
 
 function imageAlt(urlResponse, media) {
     media.filter(med => {
-    
+
         urlResponse.forEach(img => {
-            if(img.acf.heading_img.id === med.id) {
+            if (img.acf.heading_img.id === med.id) {
                 let makeAlt = {
-                    "url" : img.acf.heading_img.url,
-                    "text" : med.alt_text
+                    "url": img.acf.heading_img.url,
+                    "text": med.alt_text
                 }
                 sourceUrl.push(makeAlt)
             }
@@ -89,13 +89,13 @@ function latestPosts(urlResponse, media) {
         slideIndex--;
         slideShowPrev();
     }
-    
+
     function nextSlide() {
         if (slideIndex >= galleryPosts.length - 1) slideIndex = -1;
         slideIndex++;
         slideShowNext();
     }
-    
+
     next.addEventListener("click", nextSlide);
     prev.addEventListener("click", previous);
 };
@@ -150,13 +150,13 @@ const line = document.querySelector(".first-line");
 
 const deadline = 'August 1 2021';
 
-function getTimeRemaining(endtime){
+function getTimeRemaining(endtime) {
     const total = Date.parse(endtime) - Date.parse(new Date());
-    const seconds = Math.floor( (total/1000) % 60 );
-    const minutes = Math.floor( (total/1000/60) % 60 );
-    const hours = Math.floor( (total/(1000*60*60)) % 24 );
-    const days = Math.floor( total/(1000*60*60*24) );
-  
+    const seconds = Math.floor((total / 1000) % 60);
+    const minutes = Math.floor((total / 1000 / 60) % 60);
+    const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+    const days = Math.floor(total / (1000 * 60 * 60 * 24));
+
     return {
         total,
         days,
@@ -164,27 +164,27 @@ function getTimeRemaining(endtime){
         minutes,
         seconds
     };
-  }
-  getTimeRemaining(deadline);
+}
+getTimeRemaining(deadline);
 
-  function initializeTime(id, endtime) {
+function initializeTime(id, endtime) {
 
     const timeinterval = setInterval(() => {
-      const t = getTimeRemaining(endtime);
-      time.innerHTML =  `<p class="time-number"><span>${t.days}</span> days</p>
+        const t = getTimeRemaining(endtime);
+        time.innerHTML = `<p class="time-number"><span>${t.days}</span> days</p>
                          <p class="time-number"><span>${t.hours}</span> hours</p> 
                          <p class="time-number"><span>${t.minutes}</span> min</p>
                          <p class="time-number"><span>${t.seconds}</span> sec</p>`
-                        
-      if (t.total <= 0) {
-        clearInterval(timeinterval);
-        time.style.display = "none";
 
-        line.innerText = `We are out traveling! \n Currently in:`
-      }
-    },1000);
-  }
-  
+        if (t.total <= 0) {
+            clearInterval(timeinterval);
+            time.style.display = "none";
+
+            line.innerText = `We are out traveling! \n Currently in:`
+        }
+    }, 1000);
+}
+
 initializeTime('clockdiv', deadline);
 
 // POSTS
@@ -192,11 +192,11 @@ initializeTime('clockdiv', deadline);
 const posts = document.querySelector(".post-container");
 
 function createPost(urlResponse, tagResponse) {
-     // Fetch posts: index 3 - 6 //
+    // Fetch posts: index 3 - 6 //
     const blogposts = urlResponse.slice(3, 7);
 
     for (let i = 0; i < blogposts.length; i++) {
-     
+
         let tagged = blogposts[i].tags;
         let blog = blogposts[i];
         let blogImg = blog.acf.heading_img.url;
@@ -204,7 +204,7 @@ function createPost(urlResponse, tagResponse) {
 
         function altTextFunc() {
             for (let i = 0; i < sourceUrl.length; i++) {
-                if(sourceUrl[i].url === blogImg) {
+                if (sourceUrl[i].url === blogImg) {
                     return sourceUrl[i].text;
                 }
             }
@@ -215,30 +215,30 @@ function createPost(urlResponse, tagResponse) {
         tagged.filter(t => {
             tagResponse.forEach(e => {
                 let checkID = e.id === t;
-            
+
                 if (checkID && ["Asia", "Adventure", "Landscapes"].includes(e.name)) {
                     list.push(`<li class="tag purple-tag">${e.name}</li>`)
                 }
-                
+
                 if (checkID && ["Nature", "Africa"].includes(e.name)) {
                     list.push(`<li class="tag green-tag">${e.name}</li>`)
                 }
-        
+
                 if (checkID && ["Culture", "Animals", "America"].includes(e.name)) {
                     list.push(`<li class="tag sand-tag">${e.name}</li>`)
                 }
-        
+
                 if (checkID && ["Europe", "Beliefs"].includes(e.name)) {
                     list.push(`<li class="tag blue-tag">${e.name}</li>`)
                 }
-        
+
                 if (checkID && ["Oceania", "Traditions"].includes(e.name)) {
                     list.push(`<li class="tag peach-tag">${e.name}</li>`)
                 }
             })
         });
 
-        let createHtml  = `<a class="article-wrap" href="detail.html?id=${blog.id}">
+        let createHtml = `<a class="article-wrap" href="detail.html?id=${blog.id}">
                             <article>
                             <img src="${blogImg}" alt="${altTextFunc()}" class="post-img">
                             <div class="post-text">
@@ -250,7 +250,7 @@ function createPost(urlResponse, tagResponse) {
                             </a>`
 
         posts.insertAdjacentHTML("afterbegin", createHtml);
-        }
+    }
 };
 
 /**
@@ -263,45 +263,8 @@ const main = document.querySelector("main");
 main.style.display = "none";
 
 window.onload = () => {
-    window.setInterval(function() {
+    window.setInterval(function () {
         loader.style.display = "none";
         main.style.display = "block";
     }, 2000)
-}
-
-// Comments-section date
-// const formatDate = new Date(data.date).toLocaleString("en-GB", {
-//     day: "numeric",
-//     month: "long",
-//     year: "numeric",
-// });
-
-
-// function tagStyle(tagResponse, urlResponse) {
-//     urlResponse.filter(t => {
-//         tagResponse.forEach(e => {
-//             // console.log(e)
-//             let checkID = e.id === t.tags;
-        
-//             if (checkID && ["Asia", "Adventure", "Landscapes"].includes(e.name)) {
-//                 list.push(`<li class="tag purple-tag">${e.name}</li>`)
-//             }
-            
-//             if (checkID && ["Nature", "Africa"].includes(e.name)) {
-//                 list.push(`<li class="tag green-tag">${e.name}</li>`)
-//             }
-    
-//             if (checkID && ["Culture", "Animals", "America"].includes(e.name)) {
-//                 list.push(`<li class="tag sand-tag">${e.name}</li>`)
-//             }
-    
-//             if (checkID && ["Europe", "Beliefs"].includes(e.name)) {
-//                 list.push(`<li class="tag blue-tag">${e.name}</li>`)
-//             }
-    
-//             if (checkID && ["Oceania", "Traditions"].includes(e.name)) {
-//                 list.push(`<li class="tag peach-tag">${e.name}</li>`)
-//             }
-//         })
-//     });
-// }
+};
