@@ -348,25 +348,6 @@ input[type="search"]::-webkit-search-results-decoration {
     font-weight: 400;
 }
 
-/* .selected {
-    background-color: rgb(132, 177, 196);
-}
-
-.selected:hover,
-.selected:focus {
-    background-color: rgb(132, 177, 196);
-} */
-
-/* .travel-id {
-    display: none;
-} */
-
-/* 
-.search-li a {
-    text-transform: capitalize;
-    display: block;
-} */
-
 .active-search {
     opacity: 1;
     pointer-events: auto;
@@ -810,6 +791,14 @@ footer ul a:hover {
     color: var(--sand);
 }
 
+@media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance:none) {
+        .search-dropdown {
+            padding: 0 27.2% 0 1rem;
+        }
+    }
+}
+
 @media only screen and (min-width: 640px) {
     .search-btn {
         right: 22%;
@@ -817,6 +806,15 @@ footer ul a:hover {
 }
 
 @media only screen and (min-width: 680px) {
+
+    @media not all and (min-resolution:.001dpcm) {
+        @supports (-webkit-appearance:none) {
+            .search-dropdown {
+                padding: 0 40% 0 7rem;
+            }
+        }
+    }
+
     .desktop-logo {
         width: 120px;
         padding-top: 2px;
@@ -839,9 +837,9 @@ footer ul a:hover {
         padding: 0 19% 0 7rem;
     }
 
-    /* .search-dropdown {
-        width: 62%;
-    } */
+    .search-dropdown {
+        padding: 0 23% 0 7rem;
+    }
 
     #airplane-center {
         top: 70%;
@@ -855,5 +853,17 @@ footer ul a:hover {
 @media only screen and (min-width: 1000px) {
     #airplane-center {
         top: 80%;
+    }
+
+    @media not all and (min-resolution:.001dpcm) {
+        @supports (-webkit-appearance:none) {
+            .search-dropdown {
+                padding: 0 34.5% 0 7rem;
+            }
+        }
+    }
+
+    .search-dropdown {
+        padding: 0 23.2% 0 7rem;
     }
 }
