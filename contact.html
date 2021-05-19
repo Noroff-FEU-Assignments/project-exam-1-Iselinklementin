@@ -42,10 +42,12 @@
                 </ul>
 
                 <div class="searching">
-                    <form class="search-wrap">
+                    <form class="search-wrap" role="search">
                         <div class="search-container">
-                            <input type="search" id="search" name="search" placeholder="Search.." aria-label="Type your search and press enter.">
-                            <button class="search-btn go-search">&rarr;</button>
+                            <input type="search" id="search" name="search" placeholder="Search destinations" aria-label="Type your search and press enter." autocomplete="off">
+                            <button class="search-btn go-search" type="button" disabled><i class="fas fa-search"></i></button>
+                            <ul class="search-dropdown">
+                            </ul>
                         </div>
                     </form>
                 </div>
