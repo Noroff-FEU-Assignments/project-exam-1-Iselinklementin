@@ -49,7 +49,7 @@ function createIntro(place, tag, media) {
 
     
     // destination.innerText = place.acf.place;
-    title.innerText = place.acf.place;
+    title.innerText = `Explore ${place.acf.place}`;
     heading.innerHTML += place.acf.sub_heading;
     tags.innerHTML += list;
     tags.insertAdjacentHTML("afterend", place.content.rendered);
@@ -83,7 +83,6 @@ function createIntro(place, tag, media) {
 
     const captionOne = document.querySelector(".fig-one-caption");
     const captionTwo = document.querySelector(".fig-two-caption");
-    // const topFigure = document.querySelector(".top-figure");
     const textContainer = document.querySelector(".text-container");
 
     const captionOneDesktop = document.querySelector(".fig-one-desktop-caption");
