@@ -49,7 +49,7 @@ function createIntro(place, tag, media) {
 
     
     // destination.innerText = place.acf.place;
-    title.innerText = `Explore ${place.acf.place}`;
+    title.innerText = `Explore - ${place.acf.place}`;
     heading.innerHTML += place.acf.sub_heading;
     tags.innerHTML += list;
     tags.insertAdjacentHTML("afterend", place.content.rendered);
