@@ -80,6 +80,8 @@ window.addEventListener("resize", setWidthMobile);
  const liSearchItem = document.querySelector(".list-search");
  const searchIcon = document.querySelector(".search-icon");
  const searchInput = document.querySelector("#search");
+ const searchDropdown = document.querySelector(".search-dropdown");
+ const searchBtn = document.querySelector(".search-btn");
 //  const searchContainer = document.querySelector(".search-container");
  
  function openSearchBar() {
@@ -107,8 +109,11 @@ window.addEventListener("resize", setWidthMobile);
      }
  };
 
-const searchDropdown = document.querySelector(".search-dropdown");
 let travels = []
+
+/**
+ * FETCH DESTINATION-LIST
+ */
 
 const loadTravels = async () => {
     try {
@@ -120,6 +125,10 @@ const loadTravels = async () => {
 }
 
 loadTravels();
+
+/**
+ * SHOW SEARCH SUGGESTIONS
+ */
 
 function showSuggestions(list) {
     let listData;
@@ -133,12 +142,26 @@ function showSuggestions(list) {
     }
     
     searchDropdown.innerHTML = listData;
-}
+};
+
+/**
+ * FILTER NAMES VS SEARCHSTRING
+ */
+
 
 searchInput.addEventListener("keyup", (event) => {
     const searchString = event.target.value.toLowerCase();
     let filteredTravels = [];
-    let id = [];
+    // let id = [];
+
+    if(!searchBtn.disabled) {
+        window.addEventListener("keydown", (e) => {
+            if (e.keyCode === 13) {
+                e.preventDefault();
+                return false;
+            }
+        });
+    };
 
     if (searchString) {
         filteredTravels = travels.filter(travel => {
@@ -146,17 +169,19 @@ searchInput.addEventListener("keyup", (event) => {
         });
 
         filteredTravels = filteredTravels.map((destination) => {
-            id = destination.id;
+            // id = `${destination.id}`;
             return `<li class="search-li">${destination.acf.place}</li>`;
         });
 
         searchDropdown.classList.add("active-search");
-
         showSuggestions(filteredTravels);
 
         let allList = document.querySelectorAll(".search-li");
-        const searchBtn = document.querySelector(".search-btn");
-        // const searchForm = document.querySelector(".search-wrap");
+
+        /**
+        * Loop list-items and add eventlistener
+        * This controls search-field text and if the button is disabled or not
+        **/
         
         for (let i = 0; i < allList.length; i++) {
             allList[i].addEventListener("click", (event) => {
@@ -167,69 +192,92 @@ searchInput.addEventListener("keyup", (event) => {
                         searchInput.value = "";
                     }
                 } else {
-                    searchInput.classList.add("selected")
-                    // event.target.classList.add("selected");
                     let selectedText = event.target.textContent;
                     searchInput.value = selectedText;
                     searchInput.focus();
+
+                    if (filteredTravels == 0) {
+                        searchBtn.disabled = true;
+                    } else {
+                        searchBtn.disabled = false;
+                    }
                 }
-                // searchDropdown.classList.remove("active-search");
-            })
-        // let keyCode = event.keyCode || event.which;
-        
-        if (id == 0) {
+        })
+    };
+    
+    /**
+    * Check if input-value is valid
+    * if not - disable button & enter-key
+    **/
+
+    searchInput.addEventListener("keyup", () => {
+
+        if (searchInput.value.length < 3) {
+
             searchBtn.disabled = true;
-            searchBtn.style.cursor = "unset";
 
             window.addEventListener("keydown", (e) => {
-                if (e.keyCode === 13) {
+                if (searchBtn.disabled && e.keyCode === 13) {
                     e.preventDefault();
                     return false;
-            } 
-            });
-        } else {
-            searchBtn.disabled = false;
-
-            searchBtn.onclick = () => {
-                location.href = `detail.html?id=${id}`
-            };
-
-            searchInput.addEventListener("keyup", (event) => {
-                if (event.keyCode === 13) {
-                    event.preventDefault();
-                    location.href = `detail.html?id=${id}`
                 }
             });
-        }
         };
+        
+        if (searchInput.value.length > 3) {
+            if (!filteredTravels) {
+                searchBtn.disabled = false;
+            }
+        }
+    });
 
+    /**
+    * If suggestion list is clicked
+    * give ID to button and enter-key
+    **/
+
+    searchDropdown.addEventListener("click", () => {
+        travels.filter(site => {
+
+           if (site.acf.place.toLowerCase() === searchInput.value.toLowerCase()) {
+            searchBtn.onclick = () => {
+                location.href = `detail.html?id=${site.id}`
+            }
+        
+            window.addEventListener("keydown", (e) => {
+                if (!searchBtn.disabled && e.keyCode === 13) {
+                    e.preventDefault();
+                    location.href = `detail.html?id=${site.id}`
+                }
+            });
+           }
+        })
+    });
+
+    /**
+    * If suggestion is written in manually
+    * give ID to button and enter-key
+    **/
+
+    if (searchDropdown.firstChild.innerText.toLowerCase() === searchInput.value.toLowerCase()) {
+        travels.filter(site => {
+            
+            if(site.acf.place.toLowerCase() === searchInput.value.toLowerCase()) {
+                searchBtn.disabled = false;
+                searchBtn.onclick = () => {
+                    location.href = `detail.html?id=${site.id}`
+                }
+        
+                window.addEventListener("keydown", (e) => {
+                    if (!searchBtn.disabled && e.keyCode === 13) {
+                        e.preventDefault();
+                        location.href = `detail.html?id=${site.id}`
+                    }
+                });
+            }
+        })
+    }
 } else {
         searchDropdown.classList.remove("active-search");
     }}
 );
-
-
-
-
-// function select(element) {
-//     let selectedText = element.textContent;
-//     console.log(selectedText)
-// }
-
-// function showSuggestions(list) {
-//     let listData;
-
-//     if (!list.length) {
-
-//     } else {
-//         listData = list.join("");
-//     }
-// }
-
-
-/* USIKKER PÅ OM JEG KAN BRUKE DENNE: */
-
-// const readOnly = document.querySelector("[readonly]");
-// readOnly.addEventListener("focus", function() {
-//     this.removeAttribute("readonly")
-// })

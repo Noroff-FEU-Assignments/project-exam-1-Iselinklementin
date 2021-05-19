@@ -153,14 +153,11 @@ for (let i = 0; i < formInputs.length; i++) {
     });
 };
 
-            // btnError.style.display = "none";
-
 formElement.addEventListener("submit", formSubmission);
 
 
 newMessage.addEventListener("click", function() {
     reload()
-    // formElement.reset();
 })
 
 // function defineError() {
