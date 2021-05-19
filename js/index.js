@@ -33,6 +33,10 @@ function getApi() {
 
 getApi();
 
+/**
+ * Give images correct alt-text from API
+ */
+
 let sourceUrl = [];
 
 function imageAlt(urlResponse, media) {
@@ -50,6 +54,54 @@ function imageAlt(urlResponse, media) {
     })
 };
 
+
+/**
+ * Clock countdown / Next trip:
+ * Countdown to August 1 2021
+ */
+
+const time = document.querySelector("#time");
+const trip = document.querySelector(".trip");
+const line = document.querySelector(".first-line");
+
+const deadline = 'August 1 2021';
+
+function getTimeRemaining(endtime) {
+    const total = Date.parse(endtime) - Date.parse(new Date());
+    const seconds = Math.floor((total / 1000) % 60);
+    const minutes = Math.floor((total / 1000 / 60) % 60);
+    const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+    const days = Math.floor(total / (1000 * 60 * 60 * 24));
+
+    return {
+        total,
+        days,
+        hours,
+        minutes,
+        seconds
+    };
+}
+getTimeRemaining(deadline);
+
+function initializeTime(id, endtime) {
+
+    const timeinterval = setInterval(() => {
+        const t = getTimeRemaining(endtime);
+        time.innerHTML = `<p class="time-number"><span>${t.days}</span> days</p>
+                          <p class="time-number"><span>${t.hours}</span> hours</p> 
+                          <p class="time-number"><span>${t.minutes}</span> min</p>
+                          <p class="time-number"><span>${t.seconds}</span> sec</p>`
+
+        if (t.total <= 0) {
+            clearInterval(timeinterval);
+            time.style.display = "none";
+            line.innerText = `We are out traveling! \n Currently in:`
+        }
+    }, 1000);
+};
+
+initializeTime('clockdiv', deadline);
+
 // CAROUSEL SLIDE
 
 const sliderOne = document.querySelector("#slider-1");
@@ -63,7 +115,10 @@ let slideIndex = 1;
 
 function latestPosts(urlResponse, media) {
 
-    // Fetch new posts, 1 - 3 //
+    /**
+     * Fetch new posts to slider/carousel
+     * Slice to get the 3 latest
+     */
 
     imageAlt(urlResponse, media);
 
@@ -84,6 +139,11 @@ function latestPosts(urlResponse, media) {
 
     sliderThree.href = `detail.html?id=${galleryPosts[0].id}`;
 
+    /**
+     * Buttons to carousel/slider
+     * Activate buttons
+     */
+
     function previous() {
         if (slideIndex <= 0) slideIndex = galleryPosts.length;
         slideIndex--;
@@ -99,6 +159,10 @@ function latestPosts(urlResponse, media) {
     next.addEventListener("click", nextSlide);
     prev.addEventListener("click", previous);
 };
+
+/**
+ * Give the 3 slider-posts correct classes when using prev/next-buttons
+ */
 
 function slideShowPrev() {
 
@@ -142,57 +206,18 @@ function slideShowNext() {
     }
 };
 
-// CLOCK COUNTDOWN
-
-const time = document.querySelector("#time");
-const trip = document.querySelector(".trip");
-const line = document.querySelector(".first-line");
-
-const deadline = 'August 1 2021';
-
-function getTimeRemaining(endtime) {
-    const total = Date.parse(endtime) - Date.parse(new Date());
-    const seconds = Math.floor((total / 1000) % 60);
-    const minutes = Math.floor((total / 1000 / 60) % 60);
-    const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
-    const days = Math.floor(total / (1000 * 60 * 60 * 24));
-
-    return {
-        total,
-        days,
-        hours,
-        minutes,
-        seconds
-    };
-}
-getTimeRemaining(deadline);
-
-function initializeTime(id, endtime) {
-
-    const timeinterval = setInterval(() => {
-        const t = getTimeRemaining(endtime);
-        time.innerHTML = `<p class="time-number"><span>${t.days}</span> days</p>
-                         <p class="time-number"><span>${t.hours}</span> hours</p> 
-                         <p class="time-number"><span>${t.minutes}</span> min</p>
-                         <p class="time-number"><span>${t.seconds}</span> sec</p>`
-
-        if (t.total <= 0) {
-            clearInterval(timeinterval);
-            time.style.display = "none";
-
-            line.innerText = `We are out traveling! \n Currently in:`
-        }
-    }, 1000);
-}
-
-initializeTime('clockdiv', deadline);
-
-// POSTS
+/**
+ * Flexbox blogposts
+ */
 
 const posts = document.querySelector(".post-container");
 
 function createPost(urlResponse, tagResponse) {
-    // Fetch posts: index 3 - 6 //
+
+    /**
+     * Slice and get the next 3 posts (index 3 - 6)
+     */
+
     const blogposts = urlResponse.slice(3, 7);
 
     for (let i = 0; i < blogposts.length; i++) {
@@ -210,7 +235,12 @@ function createPost(urlResponse, tagResponse) {
             }
         };
 
-        // Filter post-tags & get name //
+        /**
+         * Filter tags & give them styling/classes:
+         * Get id from blogpost-API
+         * Compare id on posts to tags-id (from tagResponse)
+         * Show name of the id in list & give style
+         */
 
         tagged.filter(t => {
             tagResponse.forEach(e => {
@@ -254,7 +284,7 @@ function createPost(urlResponse, tagResponse) {
 };
 
 /**
- * TRYING TO MAKE LOADING
+ * Loadingscreen
  */
 
 const loader = document.querySelector(".loader");

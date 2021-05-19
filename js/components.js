@@ -154,11 +154,9 @@ function showSuggestions(list) {
  * FILTER NAMES VS SEARCHSTRING
  */
 
-
 searchInput.addEventListener("keyup", (event) => {
     const searchString = event.target.value.toLowerCase();
     let filteredTravels = [];
-    // let id = [];
 
     if (!searchBtn.disabled) {
         window.addEventListener("keydown", (e) => {
@@ -175,7 +173,6 @@ searchInput.addEventListener("keyup", (event) => {
         });
 
         filteredTravels = filteredTravels.map((destination) => {
-            // id = `${destination.id}`;
             return `<li class="search-li">${destination.acf.place}</li>`;
         });
 

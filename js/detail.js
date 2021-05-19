@@ -177,7 +177,7 @@ function tagsStyle(place, tag) {
 };
 
 /**
- * TRYING TO MAKE LOADING
+ * Loadingscreen
  */
 
 const loader = document.querySelector(".loader");

@@ -1,3 +1,7 @@
+/**
+ * Modal on pictures
+ */
+
 const modal = document.querySelector(".modal");
 const openModal = document.querySelectorAll("#open-modal");
 const closeModal = document.querySelector(".close");
