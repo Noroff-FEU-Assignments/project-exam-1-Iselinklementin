@@ -23,3 +23,22 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 };
+
+openModal.forEach(fig => {
+    fig.innerHTML = `<div class="container">
+                        <div class="spinner"></div>
+                    </div>`
+})
+
+window.onload = () => {
+    window.setInterval(function () {
+        const sofie = document.querySelector(".sofie");
+        const johan = document.querySelector(".johan");
+
+        sofie.innerHTML = `<img src="/images/blog-girl.jpg"
+                        alt="Picture of Sofie Lofiensen. She got long, blond hair and a camera in her hands.">`
+
+        johan.innerHTML = `<img src="/images/blog-guy.jpg"
+                        alt="Picture of Johan Lofiensen. He got dark, short hair and are standing in a field.">`
+    }, 1000)
+};
