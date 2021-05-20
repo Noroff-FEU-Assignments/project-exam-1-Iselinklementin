@@ -379,7 +379,8 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .post-container,
-article {
+article,
+.article-wrap a {
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -392,6 +393,11 @@ article {
     margin-bottom: 2rem;
     padding-top: 20px;
     width: 90%;
+}
+
+.article-wrap a {
+    color: black;
+    margin: unset;
 }
 
 .article-wrap:hover {
@@ -417,14 +423,14 @@ article {
 
 .tag {
     display: inline-block;
-    color: #fff;
+    color: white;
     position: relative;
     padding: 3px 15px;
     border-radius: 8px;
     margin: 6px;
     text-align: center;
     font-size: 0.8rem;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .tag:before {
@@ -551,27 +557,27 @@ article {
 }
 
 .peach-tag {
-    background: #DD7A63;
+    background: var(--peach);
 }
 
 .peach-tag:before {
-    border-color: transparent #DD7A63 transparent transparent;
+    border-color: transparent var(--peach) transparent transparent;
 }
 
 .peach-tag:after {
-    border-color: transparent transparent transparent #DD7A63;
+    border-color: transparent transparent transparent var(--peach);
 }
 
 .filter-peach-tag:hover:after {
-    border-color: transparent transparent transparent #EF8A73;
+    border-color: transparent transparent transparent var(--light-peach);
 }
 
 .filter-peach-tag:hover:before {
-    border-color: transparent #EF8A73 transparent transparent;
+    border-color: transparent var(--light-peach) transparent transparent;
 }
 
 .filter-peach-tag:hover {
-    background-color: #EF8A73;
+    background-color: var(--light-peach);
 }
 
 .ocean-tag {

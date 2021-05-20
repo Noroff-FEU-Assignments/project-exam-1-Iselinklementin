@@ -266,16 +266,17 @@ function createPost(urlResponse, tagResponse) {
             })
         });
 
-        let createHtml = `<a class="article-wrap" href="detail.html?id=${blog.id}">
-                            <article>
+        let createHtml = `<article class="article-wrap">
+                            <a href="detail.html?id=${blog.id}">
                             <img src="${blogImg}" alt="${altTextFunc()}" class="post-img">
                             <div class="post-text">
                             <h3>${blog.title.rendered}</h3>
                             ${blog.content.rendered}
                             </div>
                             <ul class="tags">${list.join("")}</ul>
+                            </a>
                             </article>
-                            </a>`
+                            `
 
         posts.insertAdjacentHTML("afterbegin", createHtml);
     }

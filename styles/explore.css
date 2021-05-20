@@ -437,6 +437,11 @@ figure {
         font-size: 1rem;
     }
 
+    .desktop-tag::before,
+    .desktop-tag::after {
+        top: 6px;
+    }
+
     .post-text {
         padding: 10px 20px 0px 20px;
     }

@@ -102,7 +102,7 @@ function createMobilePosts(place, tags, media) {
             let introPostImg = placeResult.acf.heading_img.url;
 
 
-            topPost.innerHTML += `<a href="detail.html?id=${placeResult.id}" alt="Link to post about ${placeResult.acf.place}" aria-label="Go to post about ${placeResult.acf.place}">
+            topPost.innerHTML += `<a href="detail.html?id=${placeResult.id}">
                                     <div class="heading-wrap">
                                     <p class="head-post-para">${introText}</p>
                                     <h2 class="h2-overlay">${placeResult.acf.place}</h2>
@@ -118,7 +118,7 @@ function createMobilePosts(place, tags, media) {
         if (count > 1 && count <= 3) {
 
             split.innerHTML += `<article class="blog-top">
-                                <a href="detail.html?id=${placeResult.id}" alt="Link to post about ${placeResult.acf.place}" aria-label="Go to post about ${placeResult.acf.place}">
+                                <a href="detail.html?id=${placeResult.id}">
                                 <figure>
                                 <img src="${placeResult.acf.heading_img.url}" alt="" class="img">
                                 </figure>
@@ -132,16 +132,17 @@ function createMobilePosts(place, tags, media) {
         }
 
         if (count >= 4 && count <= 6) {
-            standardPosts.innerHTML += `<a class="article-wrap" href="detail.html?id=${placeResult.id}">
-                                        <article>
+            standardPosts.innerHTML += `<article class="article-wrap">
+                                        <a href="detail.html?id=${placeResult.id}">
                                         <img src="${placeResult.acf.heading_img.url}" alt="" class="post-img img">
                                         <div class="post-text">
                                         <h2>${placeResult.title.rendered}</h2>
                                         ${placeResult.content.rendered}
                                         </div>
                                         <ul class="tags" id="explore-tags">${list.join("")}</ul>
+                                        </a>
                                         </article>
-                                        </a>`
+                                        `
         }
 
         if (count >= 7 && count <= 8) {
@@ -177,16 +178,17 @@ function createMobilePosts(place, tags, media) {
         }
 
         if (count >= 11 && count <= 12) {
-            showMorestandardPosts.innerHTML += `<a class="article-wrap" href="detail.html?id=${placeResult.id}">
-                                                <article>
+            showMorestandardPosts.innerHTML += `<article class="article-wrap">
+                                                <a href="detail.html?id=${placeResult.id}">
                                                 <img src="${placeResult.acf.heading_img.url}" alt="" class="post-img img">
                                                 <div class="post-text">
                                                 <h2>${placeResult.title.rendered}</h2>
                                                 ${placeResult.content.rendered}
                                                 </div>
                                                 <ul class="tags" id="explore-tags">${list.join("")}</ul>
+                                                </a>
                                                 </article>
-                                                </a>`
+                                                `
         }
 
         const images = document.querySelectorAll(".img");
@@ -250,16 +252,16 @@ function createDesktopPosts(tags, media, place) {
 
         if (count < 5) {
 
-            desktopTopPosts.innerHTML += `<a class="article-wrap" href="detail.html?id=${placed.id}">
-                                            <article>
+            desktopTopPosts.innerHTML += `<article class="article-wrap">
+                                            <a href="detail.html?id=${placed.id}">
                                             <img src="${placed.acf.heading_img.url}" alt="" class="post-img img">
                                             <div class="post-text">
                                             <h2>${placed.title.rendered}</h2>
                                             ${placed.content.rendered}
                                             </div>
                                             <ul class="tags" id="explore-tags">${list.join("")}</ul>
-                                            </article>
-                                            </a>`
+                                            </a>
+                                            </article>`
         }
 
         /**
@@ -267,8 +269,8 @@ function createDesktopPosts(tags, media, place) {
          */
 
         if (count >= 5 && count < 6) {
-            desktopTopPosts.innerHTML += `<a class="desktop-big-post" href="detail.html?id=${placed.id}">
-                                            <article class="big-article">
+            desktopTopPosts.innerHTML += `  <article class="desktop-big-post">
+                                            <a class="big-article" href="detail.html?id=${placed.id}">
                                             <figure class="big-post-figure">
                                             <img src="${placed.acf.heading_img.url}" alt="" class="post-img img big-img">
                                             </figure>
@@ -278,8 +280,9 @@ function createDesktopPosts(tags, media, place) {
                                             <ul class="tags big-tags" id="explore-tags">${list.join("")}</ul>
                                             ${placed.content.rendered}
                                             </div>
+                                            </a>
                                             </article>
-                                            </a>`
+                                            `
         }
 
         /**
@@ -288,8 +291,8 @@ function createDesktopPosts(tags, media, place) {
 
 
         if (count >= 6 && count <= 9) {
-            desktopFourPosts.innerHTML += `<a class="blog-top" href="detail.html?id=${placed.id}">
-                                            <article>
+            desktopFourPosts.innerHTML += `<article>
+                                            <a class="blog-top" href="detail.html?id=${placed.id}">
                                             <figure>
                                             <img src="${placed.acf.heading_img.url}" alt="" class="post-img img">
                                             </figure>
@@ -298,8 +301,9 @@ function createDesktopPosts(tags, media, place) {
                                             <p class="paragraph">Explore</p>
                                             <h2>${placed.acf.place}</h2>
                                             </div>
+                                            </a>
                                             </article>
-                                            </a>`
+                                            `
 
         }
 
@@ -308,16 +312,17 @@ function createDesktopPosts(tags, media, place) {
          */
 
         if (count > 9) {
-            desktopBottomPosts.innerHTML += `<a class="article-wrap" href="detail.html?id=${placed.id}">
-                                            <article>
+            desktopBottomPosts.innerHTML += `<article class="article-wrap">
+                                            <a href="detail.html?id=${placed.id}">
                                             <img src="${placed.acf.heading_img.url}" alt="" class="post-img img">
                                             <div class="post-text">
                                             <h2>${placed.title.rendered}</h2>
                                             ${placed.content.rendered}
                                             </div>
                                             <ul class="tags" id="explore-tags">${list.join("")}</ul>
+                                            </a>
                                             </article>
-                                            </a>`
+                                            `
         }
 
         const images = document.querySelectorAll(".img");
@@ -400,16 +405,17 @@ function filterByTag(tags, place, media) {
                                 btnView.style.display = "none";
                                 contain.style.display = "none";
 
-                                showPostsFiltered.innerHTML += `<a class="article-wrap filter-desktop-article" href="detail.html?id=${placeResults.id}">
-                                                             <article>
+                                showPostsFiltered.innerHTML += `<article class="article-wrap filter-desktop-article">
+                                                             <a href="detail.html?id=${placeResults.id}">
                                                              <img src="${resultImg}" alt="" class="post-img img filter-desktop-img">
                                                              <div class="post-text">
                                                              <h2>${placeResults.title.rendered}</h2>
                                                              ${placeResults.content.rendered}
                                                              </div>
                                                              <ul class="tags" id="explore-tags">${list.join("")}</ul>
+                                                             </a>
                                                              </article>
-                                                             </a>`
+                                                             `
 
                                 for (let i = 0; i < 5; i++) {
                                     count++
