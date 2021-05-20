@@ -263,4 +263,12 @@ h2 {
         font-size: 1rem;
         padding-top: 0.5rem;
     }
+
+    @media not all and (min-resolution:.001dpcm) {
+        @supports (-webkit-appearance:none) {
+            strong {
+                padding-top: 1rem;
+            }
+        }
+    }
 }
