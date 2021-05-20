@@ -105,7 +105,7 @@ function createMobilePosts(place, tags, media) {
             topPost.innerHTML += `<a href="detail.html?id=${placeResult.id}" alt="Link to post about ${placeResult.acf.place}" aria-label="Go to post about ${placeResult.acf.place}">
                                     <div class="heading-wrap">
                                     <p class="head-post-para">${introText}</p>
-                                    <h3 class="h3-overlay">${placeResult.acf.place}</h3>
+                                    <h2 class="h2-overlay">${placeResult.acf.place}</h2>
                                     </div>
                                     <figure class="head-post-fig">
                                     <img src="${introPostImg}" alt="" class="head-post-img img">
@@ -125,7 +125,7 @@ function createMobilePosts(place, tags, media) {
                                 <div class="split-content">
                                 ${placeResult.content.rendered}
                                 <p class="paragraph">Explore</p>
-                                <h3>${placeResult.acf.place}</h3>
+                                <h2>${placeResult.acf.place}</h2>
                                 </div>
                                 </a>
                                 </article>`
@@ -136,7 +136,7 @@ function createMobilePosts(place, tags, media) {
                                         <article>
                                         <img src="${placeResult.acf.heading_img.url}" alt="" class="post-img img">
                                         <div class="post-text">
-                                        <h3>${placeResult.title.rendered}</h3>
+                                        <h2>${placeResult.title.rendered}</h2>
                                         ${placeResult.content.rendered}
                                         </div>
                                         <ul class="tags" id="explore-tags">${list.join("")}</ul>
@@ -154,7 +154,7 @@ function createMobilePosts(place, tags, media) {
                                         <div class="split-content">
                                         ${placeResult.content.rendered}
                                         <p class="paragraph">Explore</p>
-                                        <h3>${placeResult.acf.place}</h3>
+                                        <h2>${placeResult.acf.place}</h2>
                                         </div>
                                         </a>
                                         </article>`
@@ -170,7 +170,7 @@ function createMobilePosts(place, tags, media) {
                                         <div class="split-content">
                                         ${placeResult.content.rendered}
                                         <p class="paragraph">Explore</p>
-                                        <h3>${placeResult.acf.place}</h3>
+                                        <h2>${placeResult.acf.place}</h2>
                                         </div>
                                         </a>
                                         </article>`
@@ -181,7 +181,7 @@ function createMobilePosts(place, tags, media) {
                                                 <article>
                                                 <img src="${placeResult.acf.heading_img.url}" alt="" class="post-img img">
                                                 <div class="post-text">
-                                                <h3>${placeResult.title.rendered}</h3>
+                                                <h2>${placeResult.title.rendered}</h2>
                                                 ${placeResult.content.rendered}
                                                 </div>
                                                 <ul class="tags" id="explore-tags">${list.join("")}</ul>
@@ -254,7 +254,7 @@ function createDesktopPosts(tags, media, place) {
                                             <article>
                                             <img src="${placed.acf.heading_img.url}" alt="" class="post-img img">
                                             <div class="post-text">
-                                            <h3>${placed.title.rendered}</h3>
+                                            <h2>${placed.title.rendered}</h2>
                                             ${placed.content.rendered}
                                             </div>
                                             <ul class="tags" id="explore-tags">${list.join("")}</ul>
@@ -274,7 +274,7 @@ function createDesktopPosts(tags, media, place) {
                                             </figure>
 
                                             <div class="post-text big-post-text">
-                                            <h3>${placed.acf.sub_heading}</h3>
+                                            <h2>${placed.acf.sub_heading}</h2>
                                             <ul class="tags big-tags" id="explore-tags">${list.join("")}</ul>
                                             ${placed.content.rendered}
                                             </div>
@@ -296,7 +296,7 @@ function createDesktopPosts(tags, media, place) {
                                             <div class="split-content">
                                             ${placed.content.rendered}
                                             <p class="paragraph">Explore</p>
-                                            <h3>${placed.acf.place}</h3>
+                                            <h2>${placed.acf.place}</h2>
                                             </div>
                                             </article>
                                             </a>`
@@ -312,7 +312,7 @@ function createDesktopPosts(tags, media, place) {
                                             <article>
                                             <img src="${placed.acf.heading_img.url}" alt="" class="post-img img">
                                             <div class="post-text">
-                                            <h3>${placed.title.rendered}</h3>
+                                            <h2>${placed.title.rendered}</h2>
                                             ${placed.content.rendered}
                                             </div>
                                             <ul class="tags" id="explore-tags">${list.join("")}</ul>
@@ -404,7 +404,7 @@ function filterByTag(tags, place, media) {
                                                              <article>
                                                              <img src="${resultImg}" alt="" class="post-img img filter-desktop-img">
                                                              <div class="post-text">
-                                                             <h3>${placeResults.title.rendered}</h3>
+                                                             <h2>${placeResults.title.rendered}</h2>
                                                              ${placeResults.content.rendered}
                                                              </div>
                                                              <ul class="tags" id="explore-tags">${list.join("")}</ul>

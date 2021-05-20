@@ -836,9 +836,6 @@ footer ul a:hover {
 }
 
 @media only screen and (min-width: 1000px) {
-    #airplane-center {
-        top: 80%;
-    }
 
     @media not all and (min-resolution:.001dpcm) {
         @supports (-webkit-appearance:none) {
@@ -846,6 +843,10 @@ footer ul a:hover {
                 padding: 0 34.5% 0 7rem;
             }
         }
+    }
+
+    #airplane-center {
+        top: 80%;
     }
 
     .search-dropdown {
