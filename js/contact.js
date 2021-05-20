@@ -71,7 +71,7 @@ const formSubmission = (event) => {
             subjectError.firstChild.classList = "";
             messageError.firstChild.classList = "";
 
-            if (window.screen.width > 699) {
+            if (window.screen.width > 599) {
                 desktop.style.display = "none";
                 confirmed.classList.add("confirmed-success");
                 h2.classList.add("success-h2");
@@ -100,12 +100,12 @@ for (let i = 0; i < formInputs.length; i++) {
 
         if (document.activeElement.classList.contains("fullname")) {
             event.target.addEventListener("blur", function () {
-                if (checkLength(fullname.value, 5)) {
+                if (checkLength(fullname.value, 4)) {
                     nameValue.innerText = "";
                     fullnameError.firstChild.classList = "fas fa-check-circle";
                 } else {
                     fullnameError.firstChild.classList = "fas fa-exclamation-triangle";
-                    let valueName = 6 - fullname.value.length
+                    let valueName = 5 - fullname.value.length
                     nameValue.innerText = `You need ${valueName} characters more`
                 }
             })
@@ -126,12 +126,12 @@ for (let i = 0; i < formInputs.length; i++) {
 
         if (document.activeElement.classList.contains("subject")) {
             event.target.addEventListener("blur", function () {
-                if (checkLength(subject.value, 15)) {
+                if (checkLength(subject.value, 14)) {
                     subjectError.firstChild.classList = "fas fa-check-circle";
                     subjectValue.innerText = "";
                 } else {
                     subjectError.firstChild.classList = "fas fa-exclamation-triangle";
-                    let valueSubject = 16 - subject.value.length
+                    let valueSubject = 15 - subject.value.length
                     subjectValue.innerText = `You need ${valueSubject} characters more`
                 }
             })
@@ -139,19 +139,19 @@ for (let i = 0; i < formInputs.length; i++) {
 
         if (document.activeElement.classList.contains("message")) {
             event.target.addEventListener("blur", function () {
-                if (checkLength(message.value, 25)) {
+                if (checkLength(message.value, 24)) {
                     messageError.firstChild.classList = "fas fa-check-circle";
                     messageValue.innerText = "";
                 } else {
                     messageError.firstChild.classList = "fas fa-exclamation-triangle";
-                    let valueMessage = 26 - message.value.length
+                    let valueMessage = 25 - message.value.length
                     messageValue.innerText = `You need ${valueMessage} characters more`
                 }
             })
         };
 
         formElement.addEventListener("keyup", function () {
-            if (checkLength(fullname.value, 5) && validateEmail(email.value) && checkLength(subject.value, 15) && checkLength(message.value, 25)) {
+            if (checkLength(fullname.value, 4) && validateEmail(email.value) && checkLength(subject.value, 14) && checkLength(message.value, 24)) {
                 btn.disabled = false;
             }
         })
