@@ -57,6 +57,10 @@ const desktopBottomPosts = document.querySelector(".desktop-bottom-posts");
 const btnView = document.querySelector(".viewBtn");
 const contain = document.getElementById("container");
 
+/**
+ * MOBILE LAYOUT
+ */
+
 function createMobilePosts(place, tags, media) {
 
     let count = 0;

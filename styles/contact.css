@@ -9,6 +9,7 @@ h1 {
 
 h1 span {
     font-weight: 600;
+    display: block;
 }
 
 .contact-form {
