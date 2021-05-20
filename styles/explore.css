@@ -27,21 +27,6 @@ h1 {
     font-weight: 400;
 }
 
-/* 
-h2 {
-    font-family: "Playfair Display";
-}
-
-h2::before,
-h2::after {
-    display: inline-block;
-    content: "";
-    border-top: 2px solid black;
-    width: 4rem;
-    margin: 0 1rem;
-    transform: translateY(-0.5rem);
-} */
-
 .intro span {
     font-weight: 600;
 }
