@@ -39,7 +39,7 @@ body {
 }
 
 .sorry {
-    font-family: Playfair Display;
+    font-family: "Playfair Display";
     font-size: 2rem;
     padding-bottom: 0;
     margin-bottom: 0;
@@ -631,7 +631,8 @@ article {
     padding: 10px 20px;
     border-radius: 20px;
     margin-top: 0.5rem;
-    letter-spacing: 1px
+    letter-spacing: 1px;
+    font-weight: 500;
 }
 
 .button:hover {

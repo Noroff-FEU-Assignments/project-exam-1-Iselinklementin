@@ -54,7 +54,6 @@ function imageAlt(urlResponse, media) {
     })
 };
 
-
 /**
  * Clock countdown / Next trip:
  * Countdown to August 1 2021
@@ -111,7 +110,6 @@ const sliderThree = document.querySelector("#slider-3");
 const next = document.querySelector(".next");
 const prev = document.querySelector(".prev");
 let slideIndex = 1;
-
 
 function latestPosts(urlResponse, media) {
 

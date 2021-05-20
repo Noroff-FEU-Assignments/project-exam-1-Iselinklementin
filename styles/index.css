@@ -72,11 +72,11 @@ h1 {
 
 .destination {
     margin: 0.5rem 0;
-    font-family: Playfair Display;
+    font-family: "Playfair Display";
 }
 
 h2 {
-    font-family: Playfair Display;
+    font-family: "Playfair Display";
     text-align: center;
     font-size: 1.8rem;
 }
@@ -165,7 +165,7 @@ h2::after {
 .gallery-text {
     background-color: black;
     color: white;
-    font-family: Playfair Display;
+    font-family: "Playfair Display";
     font-weight: bold;
     width: 270px;
     line-height: 2;
@@ -210,7 +210,7 @@ h2::after {
 }
 
 h3 {
-    font-family: Playfair Display;
+    font-family: "Playfair Display";
     font-size: 1.5rem;
     margin-bottom: 0;
 }
