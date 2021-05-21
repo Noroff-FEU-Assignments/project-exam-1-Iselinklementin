@@ -162,7 +162,7 @@ h2 {
 .wrap-two-posts-middle,
 .wrap-four-posts {
     display: flex;
-    width: 90%;
+    /* width: 90%; */
     padding: 15px;
     max-width: 900px;
     margin: auto;
@@ -264,6 +264,13 @@ figure {
     .figcap {
         padding: 270px 20% 0 20%;
     }
+
+    /* .wrap-two-posts,
+    .wrap-two-posts-hidden,
+    .wrap-two-posts-middle,
+    .wrap-four-posts {
+        width: 100%;
+    } */
 }
 
 @media only screen and (min-width: 750px) {
@@ -315,15 +322,12 @@ figure {
         align-items: stretch;
     }
 
-    .wrap-two-posts,
-    .wrap-two-posts-hidden,
-    .wrap-two-posts-middle,
-    .wrap-four-posts {
-        width: 100%;
-    }
-
     .desktop-bottom-posts a {
         margin-top: 0;
+    }
+
+    .desktop-bottom-posts {
+        margin-top: -2rem;
     }
 
     .wrap-four-posts {
