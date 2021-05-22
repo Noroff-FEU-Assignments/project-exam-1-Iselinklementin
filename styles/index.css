@@ -70,13 +70,18 @@ h1 {
     font-weight: 800;
 }
 
-.destination {
-    margin: 0.5rem 0;
+.destination,
+h2,
+h3,
+.gallery-text {
     font-family: "Playfair Display";
 }
 
+.destination {
+    margin: 0.5rem 0;
+}
+
 h2 {
-    font-family: "Playfair Display";
     text-align: center;
     font-size: 1.8rem;
 }
@@ -89,6 +94,11 @@ h2::after {
     width: 4rem;
     margin: 0 1rem;
     transform: translateY(-0.5rem);
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0;
 }
 
 .latest {
@@ -165,7 +175,6 @@ h2::after {
 .gallery-text {
     background-color: black;
     color: white;
-    font-family: "Playfair Display";
     font-weight: bold;
     width: 270px;
     line-height: 2;
@@ -207,12 +216,6 @@ h2::after {
 .prev-icon {
     -webkit-transform: rotatey(180deg);
     transform: translateY(180deg);
-}
-
-h3 {
-    font-family: "Playfair Display";
-    font-size: 1.5rem;
-    margin-bottom: 0;
 }
 
 .content {
