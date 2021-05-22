@@ -17,16 +17,8 @@ function getApiDetail() {
             createIntro(place, tag, media);
         })
         .catch((error) => {
-            const main = document.querySelector("main");
             nav.style.backgroundColor = "black";
-            const body = document.querySelector("body");
-            main.innerHTML = `<div class="error-message">
-                            <figure class="lost-site">
-                                <img class="lost" src="/images/airplane-lost.jpg" alt="Airplane illustration - getting lost">
-                            </figure>
-                            <p class="sorry">So sorry!</p>
-                            <p>Looks like we got lost!</p>
-                        </div>`
+            displayError();
         })
 };
 

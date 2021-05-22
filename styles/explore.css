@@ -264,13 +264,6 @@ figure {
     .figcap {
         padding: 270px 20% 0 20%;
     }
-
-    /* .wrap-two-posts,
-    .wrap-two-posts-hidden,
-    .wrap-two-posts-middle,
-    .wrap-four-posts {
-        width: 100%;
-    } */
 }
 
 @media only screen and (min-width: 750px) {

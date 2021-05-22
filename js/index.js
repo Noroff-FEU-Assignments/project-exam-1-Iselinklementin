@@ -27,7 +27,6 @@ function getApi() {
                             </div>`
             visit.style.display = "none";
             trip.style.display = "none";
-            console.log(error)
         })
 }
 

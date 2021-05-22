@@ -216,7 +216,6 @@ searchInput.addEventListener("keyup", (event) => {
         searchInput.addEventListener("keyup", () => {
 
             if (searchInput.value.length < 3) {
-
                 searchBtn.disabled = true;
 
                 window.addEventListener("keydown", (e) => {
@@ -284,3 +283,18 @@ searchInput.addEventListener("keyup", (event) => {
         searchDropdown.classList.remove("active-search");
     }
 });
+
+/**
+ * Errormessage used on detail and explore page
+ **/
+
+function displayError() {
+    const main = document.querySelector("main");
+    main.innerHTML = `<div class="error-message">
+                    <figure class="lost-site">
+                        <img class="lost" src="/images/airplane-lost.jpg" alt="Airplane illustration - getting lost">
+                    </figure>
+                    <p class="sorry">So sorry!</p>
+                    <p>Looks like we got lost!</p>
+                </div>`
+};

@@ -1,32 +1,54 @@
+const formElement = document.querySelector(".contact-form");
+const btn = document.querySelector(".submit");
+
+/**
+ * Inputs
+ */
+
 const fullname = document.querySelector(".fullname");
 const email = document.querySelector(".email");
 const subject = document.querySelector(".subject");
 const message = document.querySelector(".message");
-const success = document.querySelector(".success");
-const btn = document.querySelector(".submit");
-const header = document.querySelector("h1");
-const newMessage = document.querySelector(".again");
+const formInputs = document.querySelectorAll(".form-input");
+
+/**
+ * Errors
+ */
 
 const fullnameError = document.querySelector("#name-error");
 const emailError = document.querySelector("#email-error");
 const subjectError = document.querySelector("#subject-error");
 const messageError = document.querySelector("#message-error");
 
+/**
+ * Give values when missing characters
+ */
+
 const nameValue = document.querySelector(".name-value");
 const messageValue = document.querySelector(".message-value");
 const subjectValue = document.querySelector(".subject-value");
 const emailValue = document.querySelector(".email-value");
 
-const desktopWrap = document.querySelector(".wrapper");
+/**
+ * When contact form is submitted
+ * Give feedback
+ */
+
+const wrapper = document.querySelector(".wrapper");
+const success = document.querySelector(".success");
 const picture = document.querySelector(".message-picture");
+const confirmed = document.querySelector(".confirmed");
+const desktop = document.querySelector(".desktop");
 const h2 = document.querySelector(".success-header");
 const ingress = document.querySelector(".success-ing");
 const homeBtn = document.querySelector(".home");
-const confirmed = document.querySelector(".confirmed");
+const header = document.querySelector("h1");
+const newMessage = document.querySelector(".again");
 
-const desktop = document.querySelector(".desktop");
-
-const formInputs = document.querySelectorAll(".form-input");
+/**
+ * Checking length of input value
+ * Validate email
+ */
 
 function checkLength(value, len) {
     if (value.trim().length > len) {
@@ -42,50 +64,9 @@ function validateEmail(email) {
     return patternMatches;
 };
 
-const formElement = document.querySelector(".contact-form");
-
-const formSubmission = (event) => {
-    event.preventDefault();
-
-    const formElement = event.target,
-        {
-            action,
-            method
-        } = formElement,
-        body = new FormData(formElement);
-
-    fetch(action, {
-            method,
-            body
-        })
-        .then((response) => response.json())
-        .then((response) => {
-            formElement.reset();
-            success.style.display = "flex";
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-            formElement.style.display = "none";
-            header.style.display = "none";
-            fullnameError.firstChild.classList = "";
-            emailError.firstChild.classList = "";
-            subjectError.firstChild.classList = "";
-            messageError.firstChild.classList = "";
-
-            if (window.screen.width > 599) {
-                desktop.style.display = "none";
-                confirmed.classList.add("confirmed-success");
-                h2.classList.add("success-h2");
-                desktopWrap.classList.add("wrap-success");
-                picture.classList.add("message-picture-success");
-                success.classList.add("success-final");
-                ingress.classList.add("success-ingress");
-                homeBtn.classList.add("home-success");
-            }
-        })
-        .catch((error) => {
-            console.log(error)
-        })
-};
+/**
+* Stop it from autofilling inputs
+*/
 
 const readOnly = document.querySelectorAll("[readonly]");
 readOnly.forEach(input => {
@@ -93,6 +74,50 @@ readOnly.forEach(input => {
         this.removeAttribute("readonly");
     });
 });
+
+/**
+* When submit-button is pressed
+* Give feedback
+* Send contact-info to Wordpress
+*/
+
+formElement.onsubmit = async (e) => {
+    e.preventDefault();
+
+    let response = await fetch("https://grafs.no/wp-json/contact-form-7/v1/contact-forms/92/feedback", {
+        method: "post",
+        body: new FormData(formElement)
+    });
+
+    let result = await response.json();
+    console.log(result)
+
+    formElement.reset();
+    success.style.display = "flex";
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+    formElement.style.display = "none";
+    header.style.display = "none";
+    fullnameError.firstChild.classList = "";
+    emailError.firstChild.classList = "";
+    subjectError.firstChild.classList = "";
+    messageError.firstChild.classList = "";
+
+    if (window.screen.width > 599) {
+        desktop.style.display = "none";
+        confirmed.classList.add("confirmed-success");
+        h2.classList.add("success-h2");
+        wrapper.classList.add("wrap-success");
+        picture.classList.add("message-picture-success");
+        success.classList.add("success-final");
+        ingress.classList.add("success-ingress");
+        homeBtn.classList.add("home-success");
+    }
+};
+
+/**
+ * Validating inputs
+ */
 
 for (let i = 0; i < formInputs.length; i++) {
 
@@ -157,9 +182,6 @@ for (let i = 0; i < formInputs.length; i++) {
         })
     });
 };
-
-formElement.addEventListener("submit", formSubmission);
-
 
 newMessage.addEventListener("click", function () {
     reload()

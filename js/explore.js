@@ -16,17 +16,9 @@ function getApi() {
 
         })
         .catch((error) => {
-            const main = document.querySelector("main");
-            const body = document.querySelector("body");
-            main.innerHTML = `<div class="error-message">
-                            <figure class="lost-site">
-                                <img class="lost" src="/images/airplane-lost.jpg" alt="Airplane illustration - getting lost">
-                            </figure>
-                            <p class="sorry">So sorry!</p>
-                            <p>Looks like we got lost!</p>
-                        </div>`
+            displayError();
         })
-}
+};
 
 getApi();
 
@@ -58,7 +50,7 @@ const btnView = document.querySelector(".viewBtn");
 const contain = document.getElementById("container");
 
 /**
- * MOBILE LAYOUT
+ * Mobile layout
  */
 
 function createMobilePosts(place, tags, media) {
@@ -98,6 +90,10 @@ function createMobilePosts(place, tags, media) {
             })
         });
 
+        /**
+        * Header-post full width
+        */
+
         if (count <= 1) {
 
             let text = placeResult.title.rendered;
@@ -119,6 +115,10 @@ function createMobilePosts(place, tags, media) {
 
         }
 
+        /**
+        * Two posts columns (black background)
+        */
+
         if (count > 1 && count <= 3) {
 
             split.innerHTML += `<article class="blog-top">
@@ -135,6 +135,10 @@ function createMobilePosts(place, tags, media) {
                                 </article>`
         }
 
+        /**
+        * Three standard posts
+        */
+
         if (count >= 4 && count <= 6) {
             standardPosts.innerHTML += `<article class="article-wrap">
                                         <a href="detail.html?id=${placeResult.id}">
@@ -148,6 +152,10 @@ function createMobilePosts(place, tags, media) {
                                         </article>
                                         `
         }
+
+        /**
+        * Two posts columns (black background)
+        */
 
         if (count >= 7 && count <= 8) {
 
@@ -165,6 +173,11 @@ function createMobilePosts(place, tags, media) {
                                         </article>`
         }
 
+        /**
+        * Two posts columns (black background)
+        * This is hidden by default
+        */
+
         if (count >= 9 && count <= 10) {
 
             showMoreSplit.innerHTML += `<article class="blog-top">
@@ -181,6 +194,11 @@ function createMobilePosts(place, tags, media) {
                                         </article>`
         }
 
+        /**
+        * Two posts standard
+        * This is hidden by default
+        */
+
         if (count >= 11 && count <= 12) {
             showMorestandardPosts.innerHTML += `<article class="article-wrap">
                                                 <a href="detail.html?id=${placeResult.id}">
@@ -196,6 +214,10 @@ function createMobilePosts(place, tags, media) {
         }
 
         const images = document.querySelectorAll(".img");
+
+        /**
+        * Fetching alt-text
+        */
 
         media.filter(m => {
             images.forEach(img => {
@@ -248,11 +270,9 @@ function createDesktopPosts(tags, media, place) {
             })
         });
 
-
         /**
          * 3 top posts (standard layout)
          */
-
 
         if (count < 5) {
 
@@ -312,8 +332,9 @@ function createDesktopPosts(tags, media, place) {
         }
 
         /**
-         * 3 bottom posts (same layout as top)
-         */
+        * 3 bottom posts (same layout as top)
+        * Hidden by default
+        */
 
         if (count > 9) {
             desktopBottomPosts.innerHTML += `<article class="article-wrap">
