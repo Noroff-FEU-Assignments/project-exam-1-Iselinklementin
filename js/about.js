@@ -36,7 +36,7 @@ openModal.forEach(fig => {
 })
 
 window.onload = () => {
-    window.setInterval(function () {
+    let loadImg = window.setInterval(function () {
         const sofie = document.querySelector(".sofie");
         const johan = document.querySelector(".johan");
 
@@ -47,5 +47,5 @@ window.onload = () => {
                         alt="Picture of Johan Lofiensen. He got dark, short hair and are standing in a field.">`
     }, 1000)
 
-    clearInterval();
+    clearInterval(loadImg);
 };
