@@ -162,7 +162,6 @@ h2 {
 .wrap-two-posts-middle,
 .wrap-four-posts {
     display: flex;
-    /* width: 90%; */
     padding: 15px;
     max-width: 900px;
     margin: auto;
