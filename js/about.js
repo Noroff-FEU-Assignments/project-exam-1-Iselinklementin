@@ -46,4 +46,6 @@ window.onload = () => {
         johan.innerHTML = `<img src="/images/blog-guy.jpg"
                         alt="Picture of Johan Lofiensen. He got dark, short hair and are standing in a field.">`
     }, 1000)
+
+    clearInterval();
 };
