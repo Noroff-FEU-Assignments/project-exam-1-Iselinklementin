@@ -285,7 +285,7 @@ searchInput.addEventListener("keyup", (event) => {
 });
 
 /**
- * Errormessage used on detail and explore page
+ * Errormessage used on detail and travels page
  **/
 
 function displayError() {
