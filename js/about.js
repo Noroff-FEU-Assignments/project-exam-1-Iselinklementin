@@ -36,7 +36,10 @@ openModal.forEach(fig => {
 })
 
 window.onload = () => {
+    let count = 0;
+
     let loadImg = window.setInterval(function () {
+        count++
         const sofie = document.querySelector(".sofie");
         const johan = document.querySelector(".johan");
 
@@ -46,6 +49,7 @@ window.onload = () => {
         johan.innerHTML = `<img src="/images/blog-guy.jpg"
                         alt="Picture of Johan Lofiensen. He got dark, short hair and are standing in a field.">`
     }, 1000)
-
-    clearInterval(loadImg);
+    if (count === 2) {
+        clearInterval(loadImg);
+    }
 };
