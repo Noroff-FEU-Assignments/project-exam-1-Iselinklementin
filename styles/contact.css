@@ -172,7 +172,7 @@ h2 {
         padding-right: 3rem;
     }
 
-    .desktop-wrap {
+    .wrapper {
         display: flex;
         padding: 2rem 2rem 2rem 0;
         justify-content: center;
@@ -181,7 +181,7 @@ h2 {
         max-width: 700px;
     }
 
-    .desktop-wrap p {
+    .wrapper p {
         font-size: 1rem;
     }
 
@@ -224,7 +224,7 @@ h2 {
 
     /* ADD CLASSES ONCLICK */
 
-    .desktop-wrap-success {
+    .wrap-success {
         width: 100%;
         padding: 0;
         margin: 0;
@@ -236,7 +236,7 @@ h2 {
         min-height: 600px;
     }
 
-    .success-success {
+    .success-final {
         flex-direction: row;
         padding-bottom: 0;
     }

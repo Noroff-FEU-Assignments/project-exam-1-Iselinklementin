@@ -17,7 +17,7 @@ const messageValue = document.querySelector(".message-value");
 const subjectValue = document.querySelector(".subject-value");
 const emailValue = document.querySelector(".email-value");
 
-const desktopWrap = document.querySelector(".desktop-wrap");
+const desktopWrap = document.querySelector(".wrapper");
 const picture = document.querySelector(".message-picture");
 const h2 = document.querySelector(".success-header");
 const ingress = document.querySelector(".success-ing");
@@ -75,9 +75,9 @@ const formSubmission = (event) => {
                 desktop.style.display = "none";
                 confirmed.classList.add("confirmed-success");
                 h2.classList.add("success-h2");
-                desktopWrap.classList.add("desktop-wrap-success");
+                desktopWrap.classList.add("wrap-success");
                 picture.classList.add("message-picture-success");
-                success.classList.add("success-success");
+                success.classList.add("success-final");
                 ingress.classList.add("success-ingress");
                 homeBtn.classList.add("home-success");
             }

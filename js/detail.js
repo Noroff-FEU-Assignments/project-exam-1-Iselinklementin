@@ -1,7 +1,6 @@
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
-// console.log(id)
 
 function getApiDetail() {
     let urlPost = fetch("https://grafs.no/wp-json/wp/v2/posts/" + id);
@@ -38,7 +37,10 @@ let list = [];
 function createIntro(place, tag, media) {
     tagsStyle(place, tag);
 
-    // INTRO 
+    /**
+     * Intro - heading
+     */
+
     const title = document.querySelector("title");
     const breadcrumbs = document.querySelectorAll(".location");
     const heading = document.querySelector("h1");
@@ -56,7 +58,9 @@ function createIntro(place, tag, media) {
         location.innerText = place.acf.place;
     })
 
-    // INGRESS
+    /**
+    * Ingress
+    */
 
     const para = document.querySelector(".ingress-text");
     const map = document.querySelector(".map-img");
@@ -69,7 +73,9 @@ function createIntro(place, tag, media) {
     budget.innerHTML += place.acf.budget;
     budgetDesktop.innerHTML += place.acf.detailed_text_2;
 
-    // BODYTEXT
+    /**
+     * Bodytext
+     */
 
     const bodytext = document.querySelector(".bodytext");
 
@@ -106,7 +112,10 @@ function createIntro(place, tag, media) {
     bodytext.insertAdjacentHTML("afterbegin", place.acf.detailed_text);
 
 
-    // ADD ALT-TEXT TO IMAGES
+    /*
+    GET IMAGE-ALT-TEXT
+    Give images correct alt-text from API
+    */
 
     const imgAlt = document.querySelectorAll(".img");
 
@@ -118,6 +127,10 @@ function createIntro(place, tag, media) {
         })
     })
 };
+
+/*
+* Open / Close modal
+*/
 
 const modal = document.querySelector(".modal");
 const openModal = document.querySelectorAll("#open-modal");
@@ -147,6 +160,14 @@ window.onclick = function (event) {
         searchIcon.classList.toggle("fa-times");
     }
 };
+
+/**
+* TAGS:
+* Filter tags & give them styling/classes:
+* Get id from blogpost-API
+* Compare id on posts to tags-id (from tagResponse)
+* Show name of the id in list & give style
+*/
 
 function tagsStyle(place, tag) {
     place.tags.filter(t => {

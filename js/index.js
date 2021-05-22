@@ -33,9 +33,10 @@ function getApi() {
 
 getApi();
 
-/**
- * Give images correct alt-text from API
- */
+/*
+GET IMAGE-ALT-TEXT
+Give images correct alt-text from API
+*/
 
 let sourceUrl = [];
 
@@ -54,10 +55,10 @@ function imageAlt(urlResponse, media) {
     })
 };
 
-/**
- * Clock countdown / Next trip:
- * Countdown to August 1 2021
- */
+/*
+CLOCK COUNTDOWN
+Countdown to August 1 2021
+*/
 
 const time = document.querySelector("#time");
 const trip = document.querySelector(".trip");
@@ -65,43 +66,28 @@ const line = document.querySelector(".first-line");
 
 const deadline = 'August 1 2021';
 
-function getTimeRemaining(endtime) {
-    const total = Date.parse(endtime) - Date.parse(new Date());
+const timeinterval = setInterval(() => {
+    const total = Date.parse(deadline) - Date.parse(new Date());
     const seconds = Math.floor((total / 1000) % 60);
     const minutes = Math.floor((total / 1000 / 60) % 60);
     const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
     const days = Math.floor(total / (1000 * 60 * 60 * 24));
 
-    return {
-        total,
-        days,
-        hours,
-        minutes,
-        seconds
-    };
-}
-getTimeRemaining(deadline);
+    time.innerHTML = `<p class="time-number"><span>${days}</span> days</p>
+                          <p class="time-number"><span>${hours}</span> hours</p> 
+                          <p class="time-number"><span>${minutes}</span> min</p>
+                          <p class="time-number"><span>${seconds}</span> sec</p>`
 
-function initializeTime(id, endtime) {
+    if (total.total <= 0) {
+        clearInterval(timeinterval);
+        time.style.display = "none";
+        line.innerText = `We are out traveling! \n Currently in:`
+    }
+}, 1000);
 
-    const timeinterval = setInterval(() => {
-        const t = getTimeRemaining(endtime);
-        time.innerHTML = `<p class="time-number"><span>${t.days}</span> days</p>
-                          <p class="time-number"><span>${t.hours}</span> hours</p> 
-                          <p class="time-number"><span>${t.minutes}</span> min</p>
-                          <p class="time-number"><span>${t.seconds}</span> sec</p>`
-
-        if (t.total <= 0) {
-            clearInterval(timeinterval);
-            time.style.display = "none";
-            line.innerText = `We are out traveling! \n Currently in:`
-        }
-    }, 1000);
-};
-
-initializeTime('clockdiv', deadline);
-
-// CAROUSEL SLIDE
+/*
+CAROUSEL SLIDE
+*/
 
 const sliderOne = document.querySelector("#slider-1");
 const sliderTwo = document.querySelector("#slider-2");
@@ -113,9 +99,9 @@ let slideIndex = 1;
 
 function latestPosts(urlResponse, media) {
 
-    /**
+    /*
      * Fetch new posts to slider/carousel
-     * Slice to get the 3 latest
+     * Slice to get the 3 latest posts added in wp
      */
 
     imageAlt(urlResponse, media);
@@ -137,9 +123,9 @@ function latestPosts(urlResponse, media) {
 
     sliderThree.href = `detail.html?id=${galleryPosts[0].id}`;
 
-    /**
+    /*
      * Buttons to carousel/slider
-     * Activate buttons
+     * Activate buttons (previous & next)
      */
 
     function previous() {
@@ -158,8 +144,9 @@ function latestPosts(urlResponse, media) {
     prev.addEventListener("click", previous);
 };
 
-/**
- * Give the 3 slider-posts correct classes when using prev/next-buttons
+/*
+Give the 3 slider-posts correct classes when using prev/next-buttons,
+both ways
  */
 
 function slideShowPrev() {
@@ -234,6 +221,7 @@ function createPost(urlResponse, tagResponse) {
         };
 
         /**
+         * TAGS:
          * Filter tags & give them styling/classes:
          * Get id from blogpost-API
          * Compare id on posts to tags-id (from tagResponse)

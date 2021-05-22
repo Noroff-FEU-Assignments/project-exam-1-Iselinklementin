@@ -1,6 +1,6 @@
-/**
- * Modal on pictures
- */
+/*
+ Modal on pictures
+*/
 
 const modal = document.querySelector(".modal");
 const openModal = document.querySelectorAll("#open-modal");
@@ -23,6 +23,11 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 };
+
+/*
+Add loader / spinner
+when waiting for images
+*/
 
 openModal.forEach(fig => {
     fig.innerHTML = `<div class="container">

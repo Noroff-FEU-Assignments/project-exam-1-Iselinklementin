@@ -208,7 +208,7 @@ function createMobilePosts(place, tags, media) {
 };
 
 /**
- * DESKTOP LAYOUT
+ * Desktop layout
  */
 
 function createDesktopPosts(tags, media, place) {
@@ -250,7 +250,7 @@ function createDesktopPosts(tags, media, place) {
 
 
         /**
-         * 3 top posts
+         * 3 top posts (standard layout)
          */
 
 
@@ -269,7 +269,7 @@ function createDesktopPosts(tags, media, place) {
         }
 
         /**
-         * 1 Flex posts (Flex 2)
+         * 1 Flex posts (wide post with black background)
          */
 
         if (count >= 5 && count < 6) {
@@ -290,7 +290,7 @@ function createDesktopPosts(tags, media, place) {
         }
 
         /**
-         * 4 posts small columns
+         * 4 posts small columns (black background)
          */
 
 
@@ -343,7 +343,9 @@ function createDesktopPosts(tags, media, place) {
 
 
 /**
- * FILTER POSTS BY TAG
+ * Creating filter results
+ * Filter tags, id`s & name
+ * Create html based on results
  */
 
 const tag = document.querySelectorAll(".tag");
@@ -396,11 +398,20 @@ function filterByTag(tags, place, media) {
                                     })
                                 });
 
+                                /**
+                                * Give filterbutton feedback
+                                * Black button on selected filter
+                                */
+
                                 for (let i = 0; i < childList.length; i++) {
                                     if (childList[i].classList.contains("black-tag")) {
                                         childList[i].classList.remove("black-tag");
                                     }
                                 }
+
+                                /**
+                                * Create html
+                                */
 
                                 const all = document.querySelector(".all-tag");
                                 all.classList.remove("black-tag")
@@ -421,11 +432,13 @@ function filterByTag(tags, place, media) {
                                                              </article>
                                                              `
 
+                                /*
+                                Give the 3/4 item a bigger picture in filter-results
+                                */
+
                                 for (let i = 0; i < 5; i++) {
                                     count++
-
                                     if (count === 15 || count === 20) {
-
                                         showPostsFiltered.lastElementChild.classList.add("wide-post");
                                     }
                                 };
@@ -433,6 +446,10 @@ function filterByTag(tags, place, media) {
                             };
 
                             const imagesFilter = document.querySelectorAll(".img");
+
+                            /**
+                            * Fetching alt-text
+                            */
 
                             media.filter(m => {
                                 imagesFilter.forEach(img => {
@@ -446,6 +463,10 @@ function filterByTag(tags, place, media) {
                     });
                 };
             });
+
+            /**
+            * Show all posts if all-button is clicked
+            */
 
             if (this.innerText === "All") {
                 contain.style.display = "block";
@@ -461,6 +482,11 @@ function filterByTag(tags, place, media) {
         })
     })
 };
+
+/**
+* View more / view less - button
+* Toggle show / hide
+*/
 
 function toggleShowMore() {
     showMoreSplit.classList.toggle("show");
@@ -478,8 +504,8 @@ function toggleShowMore() {
 btnView.addEventListener("click", toggleShowMore);
 
 /**
- * Loadingscreen
- */
+* Loadingscreen
+*/
 
 const loader = document.querySelector(".loader");
 main.style.display = "none";

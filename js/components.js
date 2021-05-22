@@ -118,7 +118,7 @@ window.onclick = function (event) {
 let travels = []
 
 /**
- * FETCH DESTINATION-LIST
+ * Fetch destination list
  */
 
 const loadTravels = async () => {
@@ -133,7 +133,7 @@ const loadTravels = async () => {
 loadTravels();
 
 /**
- * SHOW SEARCH SUGGESTIONS
+ * Show search suggestions in dropdown
  */
 
 function showSuggestions(list) {
@@ -151,7 +151,7 @@ function showSuggestions(list) {
 };
 
 /**
- * FILTER NAMES VS SEARCHSTRING
+ * Filter names vs searchstring (input.value)
  */
 
 searchInput.addEventListener("keyup", (event) => {
